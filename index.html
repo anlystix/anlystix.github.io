@@ -604,7 +604,6 @@ document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
 
 document.getElementById('year').textContent=new Date().getFullYear();
 
-function submitForm(e){e.preventDefault();const f=e.target;const btn=f.querySelector('button');const o=btn.innerHTML;btn.innerHTML='<i class="fa-solid fa-check"></i> Message Sent!';btn.style.background='linear-gradient(135deg,#22c55e,#16a34a)';f.reset();setTimeout(()=>{btn.innerHTML=o;btn.style.background='';},2500);return false;}
 </script>
 </body>
 </html>
