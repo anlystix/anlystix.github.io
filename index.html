@@ -222,6 +222,1064 @@ nav a:hover{
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--cyan),var(--blue));border-radius:10px}
 @media (max-width:600px){.section{padding:80px 0}.hero{padding:120px 0 60px}}
+/* =========================================================
+   AX ASSISTANT — PREMIUM UI
+   ========================================================= */
+
+:root{
+    --ax-bg:#071421;
+    --ax-panel:#0b1d2d;
+    --ax-panel-2:#10283d;
+    --ax-primary:#00cfff;
+    --ax-primary-2:#00e5ff;
+    --ax-text:#ffffff;
+    --ax-muted:#9eb3c7;
+    --ax-border:rgba(255,255,255,.09);
+    --ax-glass:rgba(10,29,45,.88);
+    --ax-shadow:0 25px 80px rgba(0,0,0,.45);
+}
+
+
+/* =========================================================
+   MAIN WRAPPER
+   ========================================================= */
+
+.ax-assistant{
+    position:fixed;
+    right:28px;
+    bottom:100px;
+    z-index:99999;
+    font-family:inherit;
+}
+
+
+/* =========================================================
+   FLOATING LAUNCHER
+   ========================================================= */
+
+.ax-launcher{
+    position:relative;
+    width:64px;
+    height:64px;
+    padding:0;
+    border:1px solid rgba(0,207,255,.35);
+    border-radius:50%;
+    background:linear-gradient(
+        145deg,
+        #102a40,
+        #071421
+    );
+    color:#fff;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.4),
+        0 0 0 1px rgba(255,255,255,.04),
+        0 0 30px rgba(0,207,255,.12);
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+}
+
+.ax-launcher:hover{
+    transform:translateY(-4px) scale(1.04);
+    border-color:rgba(0,229,255,.8);
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.5),
+        0 0 45px rgba(0,207,255,.28);
+}
+
+.ax-launcher:active{
+    transform:scale(.94);
+}
+
+
+/* =========================================================
+   AI ORB
+   ========================================================= */
+
+.ax-orb{
+    position:relative;
+    width:42px;
+    height:42px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffffff 0%,
+            #8eeeff 12%,
+            #00cfff 38%,
+            #087a9b 72%,
+            #071421 100%
+        );
+    box-shadow:
+        inset 0 0 12px rgba(255,255,255,.5),
+        0 0 20px rgba(0,207,255,.45);
+}
+
+.ax-orb i{
+    color:#06111c;
+    font-size:17px;
+    filter:drop-shadow(0 1px 2px rgba(255,255,255,.35));
+}
+
+
+/* =========================================================
+   LAUNCHER PULSE
+   ========================================================= */
+
+.ax-launcher-pulse{
+    position:absolute;
+    inset:-6px;
+    border:1px solid rgba(0,207,255,.25);
+    border-radius:50%;
+    pointer-events:none;
+    animation:axPulse 2.4s ease-out infinite;
+}
+
+@keyframes axPulse{
+    0%{
+        opacity:.8;
+        transform:scale(.9);
+    }
+
+    70%{
+        opacity:0;
+        transform:scale(1.28);
+    }
+
+    100%{
+        opacity:0;
+        transform:scale(1.28);
+    }
+}
+
+
+/* =========================================================
+   CHAT WINDOW
+   ========================================================= */
+
+.ax-chat{
+    position:absolute;
+    right:0;
+    bottom:82px;
+    width:390px;
+    height:600px;
+    max-height:calc(100vh - 120px);
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    border:1px solid var(--ax-border);
+    border-radius:24px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(16,40,61,.96),
+            rgba(5,18,30,.97)
+        );
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+    box-shadow:var(--ax-shadow);
+    opacity:0;
+    visibility:hidden;
+    transform:
+        translateY(18px)
+        scale(.94);
+    transform-origin:bottom right;
+    pointer-events:none;
+    transition:
+        opacity .3s ease,
+        transform .35s cubic-bezier(.2,.8,.2,1),
+        visibility .3s ease;
+}
+
+.ax-chat::before{
+    content:"";
+    position:absolute;
+    top:-120px;
+    right:-100px;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    background:rgba(0,207,255,.08);
+    filter:blur(50px);
+    pointer-events:none;
+}
+
+.ax-chat.ax-open{
+    opacity:1;
+    visibility:visible;
+    transform:
+        translateY(0)
+        scale(1);
+    pointer-events:auto;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.ax-header{
+    position:relative;
+    z-index:2;
+    min-height:76px;
+    padding:15px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid var(--ax-border);
+    background:rgba(8,23,36,.72);
+}
+
+.ax-brand{
+    display:flex;
+    align-items:center;
+    gap:11px;
+}
+
+.ax-avatar{
+    width:42px;
+    height:42px;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:13px;
+    color:#06131e;
+    background:
+        linear-gradient(
+            135deg,
+            #00e5ff,
+            #00a8d4
+        );
+    box-shadow:
+        0 0 22px rgba(0,207,255,.22);
+}
+
+.ax-avatar i{
+    font-size:17px;
+}
+
+.ax-brand-text{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+}
+
+.ax-brand-text strong{
+    color:var(--ax-text);
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:.1px;
+}
+
+.ax-brand-text span{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    color:var(--ax-muted);
+    font-size:11px;
+}
+
+.ax-status-dot{
+    width:7px;
+    height:7px;
+    display:inline-block;
+    border-radius:50%;
+    background:#32e875;
+    box-shadow:0 0 9px rgba(50,232,117,.7);
+}
+
+
+/* =========================================================
+   HEADER BUTTONS
+   ========================================================= */
+
+.ax-header-actions{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.ax-header-btn{
+    width:32px;
+    height:32px;
+    padding:0;
+    border:0;
+    border-radius:9px;
+    background:transparent;
+    color:#91a9bb;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:
+        background .25s ease,
+        color .25s ease,
+        transform .25s ease;
+}
+
+.ax-header-btn:hover{
+    color:#fff;
+    background:rgba(255,255,255,.08);
+}
+
+.ax-header-btn:active{
+    transform:scale(.9);
+}
+
+
+/* =========================================================
+   CHAT BODY
+   ========================================================= */
+
+.ax-body{
+    position:relative;
+    z-index:1;
+    flex:1;
+    min-height:0;
+    padding:20px 17px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    scroll-behavior:smooth;
+}
+
+.ax-body::-webkit-scrollbar{
+    width:5px;
+}
+
+.ax-body::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+.ax-body::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,.12);
+    border-radius:20px;
+}
+
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+.ax-message{
+    display:flex;
+    align-items:flex-start;
+    gap:9px;
+    margin-bottom:18px;
+    animation:axMessageIn .4s ease both;
+}
+
+@keyframes axMessageIn{
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.ax-message-avatar,
+.ax-typing-avatar{
+    width:30px;
+    height:30px;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:10px;
+    color:#06131e;
+    background:linear-gradient(
+        135deg,
+        #00e5ff,
+        #00a8d4
+    );
+    font-size:12px;
+}
+
+.ax-message-content{
+    min-width:0;
+    max-width:calc(100% - 40px);
+}
+
+.ax-message-bubble{
+    padding:12px 14px;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:5px 16px 16px 16px;
+    background:rgba(255,255,255,.055);
+    color:#dce9f3;
+    font-size:13px;
+    line-height:1.65;
+}
+
+.ax-message-bubble p{
+    margin:0;
+}
+
+.ax-message-bubble p + p{
+    margin-top:7px;
+}
+
+.ax-message-bubble strong{
+    color:#fff;
+}
+
+.ax-message-time{
+    display:block;
+    margin-top:5px;
+    padding-left:3px;
+    color:#61798c;
+    font-size:9px;
+}
+
+
+/* =========================================================
+   QUICK ACTIONS
+   ========================================================= */
+
+.ax-quick-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin:4px 0 6px 39px;
+}
+
+.ax-quick-btn{
+    min-height:39px;
+    padding:8px 9px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:11px;
+    background:rgba(255,255,255,.035);
+    color:#bcd0df;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    font:inherit;
+    font-size:11px;
+    transition:
+        border-color .25s ease,
+        background .25s ease,
+        color .25s ease,
+        transform .25s ease;
+}
+
+.ax-quick-btn i{
+    color:var(--ax-primary);
+    font-size:11px;
+}
+
+.ax-quick-btn:hover{
+    color:#fff;
+    border-color:rgba(0,207,255,.35);
+    background:rgba(0,207,255,.08);
+    transform:translateY(-2px);
+}
+
+
+/* =========================================================
+   TYPING INDICATOR
+   ========================================================= */
+
+.ax-typing{
+    position:relative;
+    z-index:2;
+    display:none;
+    align-items:flex-start;
+    gap:9px;
+    padding:0 17px 10px;
+}
+
+.ax-typing.ax-show{
+    display:flex;
+}
+
+.ax-typing-bubble{
+    height:30px;
+    padding:0 12px;
+    display:flex;
+    align-items:center;
+    gap:4px;
+    border-radius:6px 14px 14px 14px;
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.ax-typing-bubble span{
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:#6d8da1;
+    animation:axTyping 1.2s infinite ease-in-out;
+}
+
+.ax-typing-bubble span:nth-child(2){
+    animation-delay:.15s;
+}
+
+.ax-typing-bubble span:nth-child(3){
+    animation-delay:.3s;
+}
+
+@keyframes axTyping{
+    0%,60%,100%{
+        transform:translateY(0);
+        opacity:.4;
+    }
+
+    30%{
+        transform:translateY(-4px);
+        opacity:1;
+    }
+}
+
+
+/* =========================================================
+   INPUT AREA
+   ========================================================= */
+
+.ax-input-area{
+    position:relative;
+    z-index:3;
+    padding:12px 14px 13px;
+    border-top:1px solid var(--ax-border);
+    background:rgba(6,19,31,.78);
+}
+
+.ax-input-wrapper{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    min-height:47px;
+    padding:5px 5px 5px 14px;
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:15px;
+    background:rgba(255,255,255,.045);
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.ax-input-wrapper:focus-within{
+    border-color:rgba(0,207,255,.4);
+    box-shadow:0 0 0 3px rgba(0,207,255,.06);
+}
+
+.ax-input{
+    width:100%;
+    min-width:0;
+    height:35px;
+    padding:0;
+    border:0;
+    outline:0;
+    background:transparent;
+    color:#fff;
+    font:inherit;
+    font-size:12px;
+}
+
+.ax-input::placeholder{
+    color:#60788a;
+}
+
+.ax-send{
+    width:36px;
+    height:36px;
+    flex-shrink:0;
+    border:0;
+    border-radius:11px;
+    background:linear-gradient(
+        135deg,
+        #00dfff,
+        #00a8d4
+    );
+    color:#04131d;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.ax-send:hover{
+    transform:translateY(-1px) scale(1.03);
+    box-shadow:0 6px 18px rgba(0,207,255,.25);
+}
+
+.ax-send:active{
+    transform:scale(.92);
+}
+
+.ax-powered{
+    padding-top:8px;
+    text-align:center;
+    color:#536b7d;
+    font-size:9px;
+    letter-spacing:.2px;
+}
+
+.ax-powered strong{
+    color:#7895a8;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width:600px){
+
+    .ax-assistant{
+        right:16px;
+        bottom:92px;
+    }
+
+    .ax-launcher{
+        width:58px;
+        height:58px;
+    }
+
+    .ax-orb{
+        width:39px;
+        height:39px;
+    }
+
+    .ax-chat{
+        right:-8px;
+        bottom:74px;
+        width:min(
+            calc(100vw - 24px),
+            390px
+        );
+        height:min(
+            620px,
+            calc(100vh - 105px)
+        );
+        border-radius:21px;
+    }
+
+    .ax-header{
+        min-height:70px;
+    }
+
+    .ax-body{
+        padding:17px 13px;
+    }
+
+    .ax-quick-actions{
+        margin-left:38px;
+        gap:7px;
+    }
+
+    .ax-input-area{
+        padding:10px 11px 11px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width:380px){
+
+    .ax-assistant{
+        right:12px;
+        bottom:12px;
+    }
+
+    .ax-chat{
+        right:-6px;
+        width:calc(100vw - 18px);
+    }
+
+    .ax-quick-actions{
+        grid-template-columns:1fr;
+    }
+
+    .ax-quick-btn{
+        justify-content:flex-start;
+        padding-left:13px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion:reduce){
+
+    .ax-launcher-pulse,
+    .ax-message,
+    .ax-typing-bubble span{
+        animation:none !important;
+    }
+
+    .ax-chat,
+    .ax-launcher,
+    .ax-header-btn,
+    .ax-quick-btn,
+    .ax-send{
+        transition:none !important;
+    }
+
+}
+
+/* =========================================================
+   AX ASSISTANT — PART 5
+   FINAL PREMIUM POLISH
+========================================================= */
+
+
+/* =========================================================
+   USER MESSAGE
+========================================================= */
+
+.ax-user-message{
+    justify-content:flex-end;
+    animation:axUserMessageIn .35s ease both;
+}
+
+@keyframes axUserMessageIn{
+
+    from{
+        opacity:0;
+        transform:translateY(8px) translateX(8px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) translateX(0);
+    }
+
+}
+
+.ax-user-message .ax-message-content{
+    max-width:82%;
+}
+
+.ax-user-message .ax-message-bubble{
+    border-radius:16px 5px 16px 16px;
+    border:1px solid rgba(0,207,255,.16);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,207,255,.15),
+            rgba(0,130,170,.08)
+        );
+    color:#eafaff;
+}
+
+.ax-user-message .ax-message-time{
+    text-align:right;
+    padding-right:3px;
+}
+
+
+/* =========================================================
+   RESPONSE ACTION BUTTONS
+========================================================= */
+
+.ax-response-actions{
+    animation:axActionsIn .4s ease both;
+}
+
+@keyframes axActionsIn{
+
+    from{
+        opacity:0;
+        transform:translateY(6px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+.ax-response-actions .ax-quick-btn{
+    border-color:rgba(0,207,255,.14);
+    background:rgba(0,207,255,.045);
+}
+
+.ax-response-actions .ax-quick-btn:hover{
+    border-color:rgba(0,207,255,.45);
+    background:rgba(0,207,255,.11);
+    box-shadow:0 6px 18px rgba(0,207,255,.08);
+}
+
+
+/* =========================================================
+   CHAT INPUT — PREMIUM FOCUS
+========================================================= */
+
+.ax-input::selection{
+    background:rgba(0,207,255,.3);
+}
+
+.ax-input:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+
+/* =========================================================
+   SEND BUTTON GLOW
+========================================================= */
+
+.ax-send i{
+    transition:transform .25s ease;
+}
+
+.ax-send:hover i{
+    transform:translateX(2px) rotate(-8deg);
+}
+
+
+/* =========================================================
+   LAUNCHER — PREMIUM HOVER
+========================================================= */
+
+.ax-launcher::after{
+    content:"";
+    position:absolute;
+    inset:3px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.06);
+    pointer-events:none;
+}
+
+.ax-launcher:hover .ax-orb{
+    animation:axOrbFloat .8s ease-in-out infinite alternate;
+}
+
+@keyframes axOrbFloat{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(-2px);
+    }
+
+}
+
+
+/* =========================================================
+   CHAT WINDOW TOP GLOW
+========================================================= */
+
+.ax-chat::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:12%;
+    width:76%;
+    height:1px;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0,207,255,.55),
+            transparent
+        );
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   ACCESSIBILITY FOCUS
+========================================================= */
+
+.ax-launcher:focus-visible,
+.ax-header-btn:focus-visible,
+.ax-quick-btn:focus-visible,
+.ax-send:focus-visible{
+    outline:2px solid rgba(0,207,255,.75);
+    outline-offset:3px;
+}
+
+
+/* =========================================================
+   MOBILE FINAL POLISH
+========================================================= */
+
+@media(max-width:600px){
+
+    .ax-user-message .ax-message-content{
+        max-width:84%;
+    }
+
+    .ax-message-bubble{
+        font-size:12.5px;
+    }
+
+    .ax-quick-btn{
+        min-height:40px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL SCREENS
+========================================================= */
+
+@media(max-width:340px){
+
+    .ax-chat{
+        right:-4px;
+        width:calc(100vw - 14px);
+    }
+
+    .ax-header{
+        padding-left:12px;
+        padding-right:10px;
+    }
+
+    .ax-brand-text strong{
+        font-size:14px;
+    }
+
+    .ax-body{
+        padding-left:10px;
+        padding-right:10px;
+    }
+
+}
+/* =========================================================
+   AX ASSISTANT — WELCOME NOTIFICATION
+========================================================= */
+
+.ax-welcome-notice{
+    position:absolute;
+    right:0;
+    bottom:78px;
+    width:255px;
+    padding:12px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    border:1px solid rgba(0,207,255,.15);
+    border-radius:15px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(12,35,52,.96),
+            rgba(5,18,30,.97)
+        );
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.35),
+        0 0 25px rgba(0,207,255,.08);
+    opacity:0;
+    visibility:hidden;
+    transform:
+        translateY(10px)
+        scale(.95);
+    transform-origin:bottom right;
+    pointer-events:none;
+    transition:
+        opacity .3s ease,
+        transform .3s ease,
+        visibility .3s ease;
+}
+
+.ax-welcome-notice.ax-notice-show{
+    opacity:1;
+    visibility:visible;
+    transform:
+        translateY(0)
+        scale(1);
+    pointer-events:auto;
+}
+
+.ax-notice-icon{
+    width:34px;
+    height:34px;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:10px;
+    color:#06131e;
+    background:linear-gradient(
+        135deg,
+        #00e5ff,
+        #00a8d4
+    );
+}
+
+.ax-notice-icon i{
+    font-size:13px;
+}
+
+.ax-notice-text{
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+}
+
+.ax-notice-text strong{
+    color:#fff;
+    font-size:12px;
+}
+
+.ax-notice-text span{
+    color:#8ea7b9;
+    font-size:10px;
+}
+
+.ax-notice-close{
+    width:24px;
+    height:24px;
+    margin-left:auto;
+    flex-shrink:0;
+    border:0;
+    border-radius:7px;
+    background:transparent;
+    color:#698193;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.ax-notice-close:hover{
+    color:#fff;
+    background:rgba(255,255,255,.07);
+}
+
+@media(max-width:600px){
+
+    .ax-welcome-notice{
+        right:-2px;
+        bottom:72px;
+        width:235px;
+    }
+
+}
+
 </style>
 </head>
 <body>
@@ -1098,8 +2156,223 @@ VIP STORE
   </div>
 </footer>
 
-<a href="https://wa.me/9373220070" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+<a href="https://wa.me/919373220070" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 
+<!-- =========================================================
+     AX ASSISTANT
+     Premium AI Chatbot
+========================================================= -->
+
+<div id="axAssistant" class="ax-assistant">
+
+    <!-- Floating AI Button -->
+    <button
+        class="ax-launcher"
+        id="axLauncher"
+        type="button"
+        aria-label="Open AX Assistant"
+        aria-expanded="false">
+
+        <span class="ax-orb">
+            <i class="fa-solid fa-sparkles"></i>
+        </span>
+
+        <span class="ax-launcher-pulse"></span>
+
+    </button>
+
+
+    <!-- Chat Window -->
+    <section
+        class="ax-chat"
+        id="axChat"
+        aria-hidden="true">
+
+        <!-- Header -->
+        <header class="ax-header">
+
+            <div class="ax-brand">
+
+                <div class="ax-avatar">
+                    <i class="fa-solid fa-sparkles"></i>
+                </div>
+
+                <div class="ax-brand-text">
+                    <strong>AX Assistant</strong>
+                    <span>
+                        <b class="ax-status-dot"></b>
+                        Online
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="ax-header-actions">
+
+                <button
+                    type="button"
+                    class="ax-header-btn"
+                    id="axMinimize"
+                    aria-label="Minimize AX Assistant">
+
+                    <i class="fa-solid fa-minus"></i>
+
+                </button>
+
+                <button
+                    type="button"
+                    class="ax-header-btn"
+                    id="axClose"
+                    aria-label="Close AX Assistant">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- Chat Body -->
+        <div class="ax-body" id="axMessages">
+
+            <!-- Welcome Message -->
+            <div class="ax-message ax-bot-message">
+
+                <div class="ax-message-avatar">
+                    <i class="fa-solid fa-sparkles"></i>
+                </div>
+
+                <div class="ax-message-content">
+
+                    <div class="ax-message-bubble">
+                        <p>
+                            Hi 👋 I'm <strong>AX Assistant</strong>.
+                        </p>
+
+                        <p>
+                            Welcome to ANLYSTIX. How can I help you today?
+                        </p>
+                    </div>
+
+                    <span class="ax-message-time">
+                        Just now
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Quick Actions -->
+            <div class="ax-quick-actions">
+
+                <button
+                    type="button"
+                    class="ax-quick-btn"
+                    data-message="Tell me about your services">
+
+                    <i class="fa-solid fa-chart-column"></i>
+                    Services
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="ax-quick-btn"
+                    data-message="What is your pricing?">
+
+                    <i class="fa-solid fa-indian-rupee-sign"></i>
+                    Pricing
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="ax-quick-btn"
+                    data-message="Tell me about Power BI">
+
+                    <i class="fa-solid fa-chart-pie"></i>
+                    Power BI
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="ax-quick-btn"
+                    data-message="How can I contact ANLYSTIX?">
+
+                    <i class="fa-solid fa-headset"></i>
+                    Contact
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Typing Indicator -->
+        <div
+            class="ax-typing"
+            id="axTyping"
+            aria-hidden="true">
+
+            <div class="ax-typing-avatar">
+                <i class="fa-solid fa-sparkles"></i>
+            </div>
+
+            <div class="ax-typing-bubble">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Input Area -->
+        <div class="ax-input-area">
+
+            <div class="ax-input-wrapper">
+
+                <input
+                    type="text"
+                    id="axInput"
+                    class="ax-input"
+                    placeholder="Ask AX Assistant..."
+                    autocomplete="off"
+                    maxlength="500"
+                    aria-label="Message AX Assistant">
+
+                <button
+                    type="button"
+                    id="axSend"
+                    class="ax-send"
+                    aria-label="Send message">
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                </button>
+
+            </div>
+
+            <div class="ax-powered">
+                Powered by <strong>ANLYSTIX</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
 <script>
 const header=document.getElementById('header');
 window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>30));
@@ -1148,6 +2421,1316 @@ document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
 
 document.getElementById('year').textContent=new Date().getFullYear();
 
+<script>
+/* =========================================================
+   AX ASSISTANT — JAVASCRIPT ENGINE
+   Phase 3
+========================================================= */
+
+(function(){
+
+    "use strict";
+/* =========================================================
+   AX AI BACKEND
+========================================================= */
+
+const AX_AI_BACKEND_URL =
+    "https://script.google.com/macros/s/AKfycbxF_Ph3pULL-rXOQyslKR8gey1ULibFjTlfjhW0nv_p3GdGpLR7RLRBYVKF9hmIXgFL/exec";
+
+/* =========================================================
+   AX AI REQUEST
+========================================================= */
+
+async function askAXAI(message){
+
+    try{
+
+        const response =
+            await fetch(
+                AX_AI_BACKEND_URL,
+                {
+                    method:"POST",
+
+                    headers:{
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+                    },
+
+                    body:JSON.stringify({
+
+                        message:message
+
+                    })
+                }
+            );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Backend request failed"
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        if(
+            !data.status ||
+            !data.reply
+        ){
+
+            throw new Error(
+                data.message ||
+                "Invalid AI response"
+            );
+
+        }
+
+
+        return data.reply;
+
+
+    }catch(error){
+
+        console.error(
+            "AX AI Error:",
+            error
+        );
+
+
+        return null;
+
+    }
+
+}
+
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
+
+    const axLauncher = document.getElementById("axLauncher");
+    const axChat = document.getElementById("axChat");
+    const axClose = document.getElementById("axClose");
+    const axMinimize = document.getElementById("axMinimize");
+
+    const axInput = document.getElementById("axInput");
+    const axSend = document.getElementById("axSend");
+
+    const axMessages = document.getElementById("axMessages");
+    const axTyping = document.getElementById("axTyping");
+
+    const axQuickButtons =
+        document.querySelectorAll(".ax-quick-btn");
+
+
+    /* =====================================================
+       SAFETY CHECK
+    ===================================================== */
+
+    if(
+        !axLauncher ||
+        !axChat ||
+        !axClose ||
+        !axMinimize ||
+        !axInput ||
+        !axSend ||
+        !axMessages ||
+        !axTyping
+    ){
+        console.warn("AX Assistant: Required elements not found.");
+        return;
+    }
+
+
+    /* =====================================================
+       STATE
+    ===================================================== */
+
+    let axIsOpen = false;
+    let axIsTyping = false;
+
+
+    /* =====================================================
+       OPEN ASSISTANT
+    ===================================================== */
+
+    function openAX(){
+
+        axIsOpen = true;
+
+        axChat.classList.add("ax-open");
+
+        axChat.setAttribute("aria-hidden","false");
+
+        axLauncher.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+        setTimeout(function(){
+
+            axInput.focus();
+
+            scrollAXToBottom();
+
+        },350);
+
+    }
+
+
+    /* =====================================================
+       CLOSE ASSISTANT
+    ===================================================== */
+
+    function closeAX(){
+
+        axIsOpen = false;
+
+        axChat.classList.remove("ax-open");
+
+        axChat.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        axLauncher.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    }
+
+
+    /* =====================================================
+       TOGGLE ASSISTANT
+    ===================================================== */
+
+    function toggleAX(){
+
+        if(axIsOpen){
+
+            closeAX();
+
+        }else{
+
+            openAX();
+
+        }
+
+    }
+
+
+    /* =====================================================
+       MINIMIZE
+    ===================================================== */
+
+    function minimizeAX(){
+
+        closeAX();
+
+    }
+
+
+    /* =====================================================
+       SCROLL
+    ===================================================== */
+
+    function scrollAXToBottom(){
+
+        axMessages.scrollTo({
+
+            top:axMessages.scrollHeight,
+
+            behavior:"smooth"
+
+        });
+
+    }
+
+
+    /* =====================================================
+       ESCAPE HTML
+       Prevents user input from becoming HTML.
+    ===================================================== */
+
+    function escapeAXHTML(text){
+
+        const div = document.createElement("div");
+
+        div.textContent = text;
+
+        return div.innerHTML;
+
+    }
+
+
+    /* =====================================================
+       CURRENT TIME
+    ===================================================== */
+
+    function getAXTime(){
+
+        const now = new Date();
+
+        return now.toLocaleTimeString(
+            [],
+            {
+                hour:"2-digit",
+                minute:"2-digit"
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       ADD USER MESSAGE
+    ===================================================== */
+
+    function addAXUserMessage(text){
+
+        const safeText =
+            escapeAXHTML(text);
+
+        const message =
+            document.createElement("div");
+
+        message.className =
+            "ax-message ax-user-message";
+
+        message.innerHTML = `
+
+            <div class="ax-message-content">
+
+                <div class="ax-message-bubble">
+
+                    <p>${safeText}</p>
+
+                </div>
+
+                <span class="ax-message-time">
+
+                    ${getAXTime()}
+
+                </span>
+
+            </div>
+
+        `;
+
+        axMessages.appendChild(message);
+
+        scrollAXToBottom();
+
+    }
+
+
+    /* =====================================================
+       ADD BOT MESSAGE
+    ===================================================== */
+
+    function addAXBotMessage(text){
+
+        const safeText =
+            escapeAXHTML(text);
+
+        const message =
+            document.createElement("div");
+
+        message.className =
+            "ax-message ax-bot-message";
+
+        message.innerHTML = `
+
+            <div class="ax-message-avatar">
+
+                <i class="fa-solid fa-sparkles"></i>
+
+            </div>
+
+            <div class="ax-message-content">
+
+                <div class="ax-message-bubble">
+
+                    <p>${safeText}</p>
+
+                </div>
+
+                <span class="ax-message-time">
+
+                    ${getAXTime()}
+
+                </span>
+
+            </div>
+
+        `;
+
+        axMessages.appendChild(message);
+
+        scrollAXToBottom();
+
+    }
+
+
+    /* =====================================================
+       TYPING INDICATOR
+    ===================================================== */
+
+    function showAXTyping(){
+
+        axIsTyping = true;
+
+        axTyping.classList.add("ax-show");
+
+        axTyping.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        scrollAXToBottom();
+
+    }
+
+
+    function hideAXTyping(){
+
+        axIsTyping = false;
+
+        axTyping.classList.remove("ax-show");
+
+        axTyping.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+    }
+
+
+    /* =====================================================
+       WEBSITE KNOWLEDGE
+    ===================================================== */
+
+    /* =========================================================
+   AX ASSISTANT — SMART RESPONSE ENGINE
+   PART 4
+========================================================= */
+
+
+/* =====================================================
+   SMART RESPONSE
+===================================================== */
+
+function getAXReply(message){
+
+    const text = String(message || "")
+        .toLowerCase()
+        .trim();
+
+
+    /* ---------------------------------------------
+       GREETING
+    --------------------------------------------- */
+
+    if(
+        text.includes("hello") ||
+        text.includes("hi") ||
+        text.includes("hey") ||
+        text.includes("hii") ||
+        text.includes("namaste")
+    ){
+
+        return {
+            text:
+                "Hi 👋 I'm AX Assistant. Welcome to ANLYSTIX! How can I help you today?",
+            actions: [
+                ["Services", "#services", "link"],
+                ["Pricing", "pricing", "smart"],
+                ["Contact", "#contact", "link"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       SERVICES
+    --------------------------------------------- */
+
+    if(
+        text.includes("service") ||
+        text.includes("services") ||
+        text.includes("what do you do") ||
+        text.includes("what can you do")
+    ){
+
+        return {
+            text:
+                "ANLYSTIX provides Data Analytics, Power BI dashboards, Excel dashboards, Excel automation, SQL & Business Intelligence solutions, and data cleaning services.",
+            actions: [
+                ["View Services", "#services", "link"],
+                ["Get Started", "#contact", "link"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       DATA ANALYTICS
+    --------------------------------------------- */
+
+    if(
+        text.includes("data analytic") ||
+        text.includes("data analysis") ||
+        text.includes("analytics")
+    ){
+
+        return {
+            text:
+                "Our Data Analytics service helps transform raw business data into clear and useful insights for smarter decision-making.",
+            actions: [
+                ["View Services", "#services", "link"],
+                ["Contact ANLYSTIX", "#contact", "link"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       POWER BI
+    --------------------------------------------- */
+
+    if(
+        text.includes("power bi") ||
+        text.includes("powerbi") ||
+        text.includes("dashboard")
+    ){
+
+        return {
+            text:
+                "ANLYSTIX creates professional Power BI dashboards with interactive reports, KPIs and business insights.",
+            actions: [
+                ["View Services", "#services", "link"],
+                ["Discuss Project", "#contact", "link"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       EXCEL
+    --------------------------------------------- */
+
+    if(
+        text.includes("excel") ||
+        text.includes("spreadsheet")
+    ){
+
+        return {
+            text:
+                "We can help with Excel dashboards, reporting, data analysis and Excel automation for business workflows.",
+            actions: [
+                ["Excel Services", "#services", "link"],
+                ["Contact Us", "#contact", "link"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       AUTOMATION
+    --------------------------------------------- */
+
+    if(
+        text.includes("automation") ||
+        text.includes("automate") ||
+        text.includes("automated")
+    ){
+
+        return {
+            text:
+                "ANLYSTIX can automate repetitive Excel and business processes to reduce manual work and improve efficiency.",
+            actions: [
+                ["View Services", "#services", "link"],
+                ["Start a Project", "#contact", "link"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       SQL
+    --------------------------------------------- */
+
+    if(
+        text.includes("sql") ||
+        text.includes("database")
+    ){
+
+        return {
+            text:
+                "We provide SQL and Business Intelligence solutions for business data, reporting and analysis.",
+            actions: [
+                ["View Services", "#services", "link"],
+                ["Contact Us", "#contact", "link"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       DATA CLEANING
+    --------------------------------------------- */
+
+    if(
+        text.includes("data cleaning") ||
+        text.includes("clean data") ||
+        text.includes("cleaning")
+    ){
+
+        return {
+            text:
+                "We can clean, organize and prepare business data so it is ready for analysis, dashboards and reporting.",
+            actions: [
+                ["View Services", "#services", "link"],
+                ["Get Started", "#contact", "link"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       PRICING
+    --------------------------------------------- */
+
+    if(
+        text.includes("price") ||
+        text.includes("pricing") ||
+        text.includes("cost") ||
+        text.includes("charge") ||
+        text.includes("how much") ||
+        text.includes("199") ||
+        text.includes("₹")
+    ){
+
+        return {
+            text:
+                "Our data analysis services start from ₹199. The final price depends on your requirements and project complexity.",
+            actions: [
+                ["Get Started", "#contact", "link"],
+                ["WhatsApp Us", "https://wa.me/919373220070", "whatsapp"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       PORTFOLIO
+    --------------------------------------------- */
+
+    if(
+        text.includes("portfolio") ||
+        text.includes("project") ||
+        text.includes("projects") ||
+        text.includes("work") ||
+        text.includes("your work")
+    ){
+
+        return {
+            text:
+                "You can explore the ANLYSTIX portfolio to see our work and capabilities.",
+            actions: [
+                ["View Portfolio", "#portfolio", "link"],
+                ["Contact Us", "#contact", "link"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       ABOUT
+    --------------------------------------------- */
+
+    if(
+        text.includes("about") ||
+        text.includes("company") ||
+        text.includes("anlystix")
+    ){
+
+        return {
+            text:
+                "ANLYSTIX focuses on data analytics, business intelligence, dashboards, automation and data-driven solutions.",
+            actions: [
+                ["About ANLYSTIX", "#about", "link"],
+                ["Our Services", "#services", "link"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       CONTACT
+    --------------------------------------------- */
+
+    if(
+        text.includes("contact") ||
+        text.includes("phone") ||
+        text.includes("email") ||
+        text.includes("whatsapp") ||
+        text.includes("talk") ||
+        text.includes("reach")
+    ){
+
+        return {
+            text:
+                "You can contact ANLYSTIX through the Contact section or directly on WhatsApp. We're ready to discuss your project.",
+            actions: [
+                ["Contact Section", "#contact", "link"],
+                ["WhatsApp", "https://wa.me/919373220070", "whatsapp"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       THANK YOU
+    --------------------------------------------- */
+
+    if(
+        text.includes("thank") ||
+        text.includes("thanks") ||
+        text.includes("thank you")
+    ){
+
+        return {
+            text:
+                "You're welcome! 😊 I'm here whenever you need help.",
+            actions: []
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       HELP
+    --------------------------------------------- */
+
+    if(
+        text.includes("help") ||
+        text.includes("can you")
+    ){
+
+        return {
+            text:
+                "Absolutely. You can ask me about ANLYSTIX services, Data Analytics, Power BI, Excel, Automation, SQL, Pricing, Portfolio or Contact.",
+            actions: [
+                ["Services", "#services", "link"],
+                ["Pricing", "pricing", "smart"],
+                ["Portfolio", "#portfolio", "link"],
+                ["Contact", "#contact", "link"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       DEFAULT
+    --------------------------------------------- */
+
+    return {
+        text:
+            "I can help you with ANLYSTIX services, Data Analytics, Power BI, Excel, Automation, SQL, Pricing, Portfolio and Contact.",
+        actions: [
+            ["Services", "#services", "link"],
+            ["Pricing", "pricing", "smart"],
+            ["Portfolio", "#portfolio", "link"],
+            ["Contact", "#contact", "link"]
+        ]
+    };
+
+}
+
+
+/* =====================================================
+   ACTION BUTTONS
+===================================================== */
+
+function addAXActionButtons(actions){
+
+    if(
+        !actions ||
+        !actions.length
+    ){
+
+        return;
+
+    }
+
+
+    const wrapper =
+        document.createElement("div");
+
+    wrapper.className =
+        "ax-quick-actions ax-response-actions";
+
+
+    actions.forEach(function(action){
+
+        const label = action[0];
+        const target = action[1];
+        const type = action[2];
+
+
+        /* -----------------------------------------
+           INTERNAL WEBSITE LINK
+        ----------------------------------------- */
+
+        if(type === "link"){
+
+            const button =
+                document.createElement("button");
+
+            button.type = "button";
+
+            button.className =
+                "ax-quick-btn";
+
+            button.textContent =
+                label;
+
+
+            button.addEventListener(
+                "click",
+                function(){
+
+                    const section =
+                        document.querySelector(target);
+
+                    if(section){
+
+                        section.scrollIntoView({
+                            behavior:"smooth",
+                            block:"start"
+                        });
+
+                    }
+
+
+                    closeAX();
+
+                }
+            );
+
+
+            wrapper.appendChild(button);
+
+        }
+
+
+        /* -----------------------------------------
+           WHATSAPP
+        ----------------------------------------- */
+
+        else if(type === "whatsapp"){
+
+            const link =
+                document.createElement("a");
+
+            link.className =
+                "ax-quick-btn";
+
+            link.href =
+                target;
+
+            link.target =
+                "_blank";
+
+            link.rel =
+                "noopener noreferrer";
+
+            link.textContent =
+                label;
+
+            link.style.textDecoration =
+                "none";
+
+
+            wrapper.appendChild(link);
+
+        }
+
+
+        /* -----------------------------------------
+           SMART MESSAGE
+        ----------------------------------------- */
+
+        else if(type === "smart"){
+
+            const button =
+                document.createElement("button");
+
+            button.type = "button";
+
+            button.className =
+                "ax-quick-btn";
+
+            button.textContent =
+                label;
+
+
+            button.addEventListener(
+                "click",
+                function(){
+
+                    sendAXMessage(target);
+
+                }
+            );
+
+
+            wrapper.appendChild(button);
+
+        }
+
+    });
+
+
+    axMessages.appendChild(wrapper);
+
+    scrollAXToBottom();
+
+}
+
+
+/* =====================================================
+   SEND MESSAGE
+===================================================== */
+
+/* =========================================================
+   SEND MESSAGE — REAL AI
+========================================================= */
+
+function sendAXMessage(text){
+
+    const message =
+        String(text || "").trim();
+
+
+    if(!message){
+
+        return;
+
+    }
+
+
+    if(axIsTyping){
+
+        return;
+
+    }
+
+
+    addAXUserMessage(message);
+
+    axInput.value = "";
+
+    showAXTyping();
+
+
+    askAXAI(message)
+        .then(function(aiReply){
+
+            hideAXTyping();
+
+
+            if(aiReply){
+
+                addAXBotMessage(
+                    aiReply
+                );
+
+                return;
+
+            }
+
+
+            /* LOCAL FALLBACK */
+
+            const fallback =
+                getAXReply(message);
+
+
+            addAXBotMessage(
+                fallback
+            );
+
+        })
+        .catch(function(error){
+
+            console.error(
+                "AX Assistant Error:",
+                error
+            );
+
+
+            hideAXTyping();
+
+
+            /* LOCAL FALLBACK */
+
+            const fallback =
+                getAXReply(message);
+
+
+            addAXBotMessage(
+                fallback
+            );
+
+        });
+
+} 
+
+    /* =====================================================
+       LAUNCHER
+    ===================================================== */
+
+    axLauncher.addEventListener(
+        "click",
+        toggleAX
+    );
+
+
+    /* =====================================================
+       CLOSE
+    ===================================================== */
+
+    axClose.addEventListener(
+        "click",
+        closeAX
+    );
+
+
+    /* =====================================================
+       MINIMIZE
+    ===================================================== */
+
+    axMinimize.addEventListener(
+        "click",
+        minimizeAX
+    );
+
+
+    /* =====================================================
+       SEND BUTTON
+    ===================================================== */
+
+    axSend.addEventListener(
+        "click",
+        function(){
+
+            sendAXMessage(
+                axInput.value
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       ENTER KEY
+    ===================================================== */
+
+    axInput.addEventListener(
+        "keydown",
+        function(event){
+
+            if(
+                event.key === "Enter" &&
+                !event.shiftKey
+            ){
+
+                event.preventDefault();
+
+                sendAXMessage(
+                    axInput.value
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       QUICK ACTION BUTTONS
+    ===================================================== */
+
+    axQuickButtons.forEach(
+        function(button){
+
+            button.addEventListener(
+                "click",
+                function(){
+
+                    const message =
+                        button.getAttribute(
+                            "data-message"
+                        );
+
+                    if(message){
+
+                        sendAXMessage(message);
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       ESC KEY
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function(event){
+
+            if(
+                event.key === "Escape" &&
+                axIsOpen
+            ){
+
+                closeAX();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       CLICK OUTSIDE
+       Desktop only
+    ===================================================== */
+
+    document.addEventListener(
+        "click",
+        function(event){
+
+            if(
+                !axIsOpen ||
+                window.innerWidth <= 600
+            ){
+
+                return;
+
+            }
+
+
+            const assistant =
+                document.getElementById(
+                    "axAssistant"
+                );
+
+
+            if(
+                assistant &&
+                !assistant.contains(event.target)
+            ){
+
+                closeAX();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       INITIAL STATE
+    ===================================================== */
+
+    axChat.classList.remove("ax-open");
+
+    axChat.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    axLauncher.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+
+    console.log(
+        "AX Assistant initialized successfully."
+    );
+/* =========================================================
+   AX ASSISTANT — WELCOME NOTIFICATION
+========================================================= */
+
+(function(){
+
+    const launcher =
+        document.getElementById("axLauncher");
+
+    const assistant =
+        document.getElementById("axAssistant");
+
+
+    if(!launcher || !assistant){
+
+        return;
+
+    }
+
+
+    /* ---------------------------------------------
+       CREATE NOTIFICATION
+    --------------------------------------------- */
+
+    const notice =
+        document.createElement("div");
+
+    notice.className =
+        "ax-welcome-notice";
+
+    notice.innerHTML = `
+
+        <div class="ax-notice-icon">
+            <i class="fa-solid fa-sparkles"></i>
+        </div>
+
+        <div class="ax-notice-text">
+
+            <strong>Need help?</strong>
+
+            <span>
+                Chat with AX Assistant
+            </span>
+
+        </div>
+
+        <button
+            type="button"
+            class="ax-notice-close"
+            aria-label="Close notification">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+    `;
+
+
+    assistant.appendChild(notice);
+
+
+    /* ---------------------------------------------
+       SHOW AFTER DELAY
+    --------------------------------------------- */
+
+    const showNotice =
+        setTimeout(function(){
+
+            if(
+                !axIsOpen &&
+                !sessionStorage.getItem(
+                    "axNoticeClosed"
+                )
+            ){
+
+                notice.classList.add(
+                    "ax-notice-show"
+                );
+
+            }
+
+        },3500);
+
+
+    /* ---------------------------------------------
+       CLOSE NOTICE
+    --------------------------------------------- */
+
+    const closeNotice =
+        notice.querySelector(
+            ".ax-notice-close"
+        );
+
+
+    if(closeNotice){
+
+        closeNotice.addEventListener(
+            "click",
+            function(event){
+
+                event.stopPropagation();
+
+                notice.classList.remove(
+                    "ax-notice-show"
+                );
+
+                sessionStorage.setItem(
+                    "axNoticeClosed",
+                    "true"
+                );
+
+            }
+        );
+
+    }
+
+
+    /* ---------------------------------------------
+       CLICK NOTICE → OPEN CHAT
+    --------------------------------------------- */
+
+    notice.addEventListener(
+        "click",
+        function(event){
+
+            if(
+                event.target.closest(
+                    ".ax-notice-close"
+                )
+            ){
+
+                return;
+
+            }
+
+
+            notice.classList.remove(
+                "ax-notice-show"
+            );
+
+            openAX();
+
+        }
+    );
+
+})();
 </script>
 </body>
 </html>
