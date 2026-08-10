@@ -3706,28 +3706,31 @@ function sendAXMessage(text){
     --------------------------------------------- */
 
     notice.addEventListener(
-        "click",
-        function(event){
+    "click",
+    function(event){
 
-            if(
-                event.target.closest(
-                    ".ax-notice-close"
-                )
-            ){
+        if(
+            event.target.closest(
+                ".ax-notice-close"
+            )
+        ){
 
-                return;
-
-            }
-
-
-            notice.classList.remove(
-                "ax-notice-show"
-            );
-
-            openAX();
+            return;
 
         }
-    );
+
+        notice.classList.remove(
+            "ax-notice-show"
+        );
+
+        openAX();
+
+    }
+);
+
+})();
+
+/* CLOSE MAIN AX ASSISTANT IIFE */
 
 })();
 </script>
