@@ -3217,21 +3217,8 @@ function addAXActionButtons(actions){
                 "click",
                 function(){
 
-                    const section =
-                        document.querySelector(target);
-
-                    if(section){
-
-                        section.scrollIntoView({
-                            behavior:"smooth",
-                            block:"start"
-                        });
-
-                    }
-
-
-                    closeAX();
-
+                 sendAXMessage(target);
+                  
                 }
             );
 
