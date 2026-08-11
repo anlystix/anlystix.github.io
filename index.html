@@ -2842,6 +2842,244 @@ function getAXReply(message){
         text.includes("namaste")
     ){
 
+        return {
+            text:
+                "Hi 👋 I'm AX Assistant. Welcome to ANLYSTIX! How can I help you today?",
+            actions: [
+                ["Services", "#services", "link"],
+                ["Pricing", "pricing", "smart"],
+                ["Contact", "#contact", "link"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       SERVICES
+    --------------------------------------------- */
+
+    if(
+        text.includes("service") ||
+        text.includes("services") ||
+        text.includes("what do you do") ||
+        text.includes("what can you do")
+    ){
+
+        return {
+            text:
+                "ANLYSTIX provides Data Analytics, Power BI dashboards, Excel dashboards, Excel automation, SQL & Business Intelligence solutions, and data cleaning services.",
+            actions: [
+                ["View Services", "#services", "link"],
+                ["Get Started", "#contact", "link"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       DATA ANALYTICS
+    --------------------------------------------- */
+
+    if(
+        text.includes("data analytic") ||
+        text.includes("data analysis") ||
+        text.includes("analytics")
+    ){
+
+        return {
+            text:
+                "Our Data Analytics service helps transform raw business data into clear and useful insights for smarter decision-making.",
+            actions: [
+                ["View Services", "#services", "link"],
+                ["Contact ANLYSTIX", "#contact", "link"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       POWER BI
+    --------------------------------------------- */
+
+    if(
+        text.includes("power bi") ||
+        text.includes("powerbi") ||
+        text.includes("dashboard")
+    ){
+
+        return {
+            text:
+                "ANLYSTIX creates professional Power BI dashboards with interactive reports, KPIs and business insights.",
+            actions: [
+                ["View Services", "#services", "link"],
+                ["Discuss Project", "#contact", "link"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       EXCEL
+    --------------------------------------------- */
+
+    if(
+        text.includes("excel") ||
+        text.includes("spreadsheet")
+    ){
+
+        return {
+            text:
+                "We can help with Excel dashboards, reporting, data analysis and Excel automation for business workflows.",
+            actions: [
+                ["Excel Services", "#services", "link"],
+                ["Contact Us", "#contact", "link"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       AUTOMATION
+    --------------------------------------------- */
+
+    if(
+        text.includes("automation") ||
+        text.includes("automate") ||
+        text.includes("automated")
+    ){
+
+        return {
+            text:
+                "ANLYSTIX can automate repetitive Excel and business processes to reduce manual work and improve efficiency.",
+            actions: [
+                ["View Services", "#services", "link"],
+                ["Start a Project", "#contact", "link"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       SQL
+    --------------------------------------------- */
+
+    if(
+        text.includes("sql") ||
+        text.includes("database")
+    ){
+
+        return {
+            text:
+                "We provide SQL and Business Intelligence solutions for business data, reporting and analysis.",
+            actions: [
+                ["View Services", "#services", "link"],
+                ["Contact Us", "#contact", "link"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       DATA CLEANING
+    --------------------------------------------- */
+
+    if(
+        text.includes("data cleaning") ||
+        text.includes("clean data") ||
+        text.includes("cleaning")
+    ){
+
+        return {
+            text:
+                "We can clean, organize and prepare business data so it is ready for analysis, dashboards and reporting.",
+            actions: [
+                ["View Services", "#services", "link"],
+                ["Get Started", "#contact", "link"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       PRICING
+    --------------------------------------------- */
+
+    if(
+        text.includes("price") ||
+        text.includes("pricing") ||
+        text.includes("cost") ||
+        text.includes("charge") ||
+        text.includes("how much") ||
+        text.includes("199") ||
+        text.includes("₹")
+    ){
+
+        return {
+            text:
+                "Our data analysis services start from ₹199. The final price depends on your requirements and project complexity.",
+            actions: [
+                ["Get Started", "#contact", "link"],
+                ["WhatsApp Us", "https://wa.me/919373220070", "whatsapp"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       PORTFOLIO
+    --------------------------------------------- */
+
+    if(
+        text.includes("portfolio") ||
+        text.includes("project") ||
+        text.includes("projects") ||
+        text.includes("work") ||
+        text.includes("your work")
+    ){
+
+        return {
+            text:
+                "You can explore the ANLYSTIX portfolio to see our work and capabilities.",
+            actions: [
+                ["View Portfolio", "#portfolio", "link"],
+                ["Contact Us", "#contact", "link"]
+            ]
+        };
+
+    }
+
+
+    /* ---------------------------------------------
+       ABOUT
+    --------------------------------------------- */
+
+    if(
+        text.includes("about") ||
+        text.includes("company") ||
+        text.includes("anlystix")
+    ){
+
+        return {
+            text:
+                "ANLYSTIX focuses on data analytics, business intelligence, dashboards, automation and data-driven solutions.",
+            actions: [
+                ["About ANLYSTIX", "#about", "link"],
+                ["Our Services", "#services", "link"]
+            ]
+        };
+
+    }
+
+
     /* ---------------------------------------------
        CONTACT
     --------------------------------------------- */
@@ -2917,10 +3155,10 @@ function getAXReply(message){
         text:
             "I can help you with ANLYSTIX services, Data Analytics, Power BI, Excel, Automation, SQL, Pricing, Portfolio and Contact.",
         actions: [
-            ["Services", "services", "smart"],
+            ["Services", "#services", "link"],
             ["Pricing", "pricing", "smart"],
-            ["Portfolio", "portfolio", "smart"],
-            ["Contact", "contact", "smart"]
+            ["Portfolio", "#portfolio", "link"],
+            ["Contact", "#contact", "link"]
         ]
     };
 
@@ -2937,7 +3175,9 @@ function addAXActionButtons(actions){
         !actions ||
         !actions.length
     ){
+
         return;
+
     }
 
 
@@ -2956,7 +3196,7 @@ function addAXActionButtons(actions){
 
 
         /* -----------------------------------------
-           CHAT REPLY
+           INTERNAL WEBSITE LINK
         ----------------------------------------- */
 
         if(type === "link"){
@@ -2977,13 +3217,20 @@ function addAXActionButtons(actions){
                 "click",
                 function(){
 
-                    /*
-                     * Do NOT redirect or scroll.
-                     * Send the selected option back
-                     * into AX Assistant.
-                     */
+                    const section =
+                        document.querySelector(target);
 
-                    sendAXMessage(target);
+                    if(section){
+
+                        section.scrollIntoView({
+                            behavior:"smooth",
+                            block:"start"
+                        });
+
+                    }
+
+
+                    closeAX();
 
                 }
             );
@@ -3068,6 +3315,7 @@ function addAXActionButtons(actions){
 
 }
 
+
 /* =====================================================
    SEND MESSAGE
 ===================================================== */
@@ -3148,15 +3396,13 @@ addAXActionButtons(
             /* LOCAL FALLBACK */
 
             const fallback =
-    getAXReply(message);
+                getAXReply(message);
 
-addAXBotMessage(
-    fallback.text
-);
 
-addAXActionButtons(
-    fallback.actions
-);
+            addAXBotMessage(
+                fallback
+            );
+
         });
 
 } 
