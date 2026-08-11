@@ -3260,8 +3260,33 @@ function addAXActionButtons(actions){
             wrapper.appendChild(link);
 
         }
+    
+          
+/* -----------------------------------------
+   EMAIL
+----------------------------------------- */
 
+else if(type === "email"){
 
+    const link =
+        document.createElement("a");
+
+    link.className =
+        "ax-quick-btn";
+
+    link.href =
+        "mailto:" + target;
+
+    link.textContent =
+        label;
+
+    link.style.textDecoration =
+        "none";
+
+    wrapper.appendChild(link);
+
+}
+  
         /* -----------------------------------------
            SMART MESSAGE
         ----------------------------------------- */
