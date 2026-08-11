@@ -3370,21 +3370,24 @@ function sendAXMessage(text){
 
             /* LOCAL FALLBACK */
 
-            const fallback =
-                getAXReply(message);
+const fallback =
+    getAXReply(message);
 
+addAXBotMessage(
+    fallback.text
+);
 
-            addAXBotMessage(
-                fallback
-            );
+addAXActionButtons(
+    fallback.actions
+);
 
-        })
-        .catch(function(error){
+})
+.catch(function(error){
 
-            console.error(
-                "AX Assistant Error:",
-                error
-            );
+    console.error(
+        "AX Assistant Error:",
+        error
+    );
 
 
             hideAXTyping();
