@@ -3250,8 +3250,8 @@ function addAXActionButtons(actions){
             link.rel =
                 "noopener noreferrer";
 
-            link.textContent =
-                label;
+            link.innerHTML =
+    '<i class="fa-brands fa-whatsapp"></i> ' + label;
 
             link.style.textDecoration =
                 "none";
@@ -3277,8 +3277,8 @@ else if(type === "email"){
     link.href =
         "mailto:" + target;
 
-    link.textContent =
-        label;
+    link.innerHTML =
+    '<i class="fa-solid fa-envelope"></i> ' + label;
 
     link.style.textDecoration =
         "none";
@@ -3301,9 +3301,8 @@ else if(type === "email"){
             button.className =
                 "ax-quick-btn";
 
-            button.textContent =
-                label;
-
+           button.innerHTML =
+    '<i class="fa-solid fa-address-book"></i> ' + label;
 
             button.addEventListener(
                 "click",
