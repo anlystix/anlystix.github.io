@@ -2830,30 +2830,141 @@ function getAXReply(message){
         .trim();
 
 
-    /* ---------------------------------------------
-       GREETING
-    --------------------------------------------- */
+   /* ---------------------------------------------
+   SMART GREETING
+--------------------------------------------- */
 
-    if(
-        text.includes("hello") ||
-        text.includes("hi") ||
-        text.includes("hey") ||
-        text.includes("hii") ||
-        text.includes("namaste")
-    ){
+if(
+    text === "hello" ||
+    text === "hi" ||
+    text === "h" ||
+    text === "hey" ||
+    text === "hii" ||
+    text === "hlo"
+){
 
-        return {
-            text:
-                "Hi 👋 I'm AX Assistant. Welcome to ANLYSTIX! How can I help you today?",
-            actions: [
-                ["Services", "#services", "link"],
-                ["Pricing", "pricing", "smart"],
-                ["Contact", "#contact", "link"]
-            ]
-        };
+    return {
+        text:
+            "Hello! 👋 Welcome to ANLYSTIX. How can I help you today?",
+        actions: [
+            ["Services", "services", "smart"],
+            ["Pricing", "pricing", "smart"],
+            ["Contact", "contact", "smart"]
+        ]
+    };
 
-    }
+}
 
+
+/* ---------------------------------------------
+   NAMASTE
+--------------------------------------------- */
+
+if(
+    text === "namaste" ||
+    text === "namaskar"
+){
+
+    return {
+        text:
+            "Namaste 🙏 Welcome to ANLYSTIX! How can I help you today?",
+        actions: [
+            ["Services", "services", "smart"],
+            ["Pricing", "pricing", "smart"],
+            ["Contact", "contact", "smart"]
+        ]
+    };
+
+}
+
+
+/* ---------------------------------------------
+   SALAM
+--------------------------------------------- */
+
+if(
+    text === "salam" ||
+    text === "salaam" ||
+    text === "assalamualaikum" ||
+    text === "assalamu alaikum"
+){
+
+    return {
+        text:
+            "Walaikum Assalam 🤝 Welcome to ANLYSTIX! How can I help you today?",
+        actions: [
+            ["Services", "services", "smart"],
+            ["Pricing", "pricing", "smart"],
+            ["Contact", "contact", "smart"]
+        ]
+    };
+
+}
+
+
+/* ---------------------------------------------
+   GOOD MORNING
+--------------------------------------------- */
+
+if(
+    text === "good morning" ||
+    text === "gm"
+){
+
+    return {
+        text:
+            "Good Morning! ☀️ Welcome to ANLYSTIX. How can I help you today?",
+        actions: [
+            ["Services", "services", "smart"],
+            ["Pricing", "pricing", "smart"],
+            ["Contact", "contact", "smart"]
+        ]
+    };
+
+}
+
+
+/* ---------------------------------------------
+   GOOD AFTERNOON
+--------------------------------------------- */
+
+if(
+    text === "good afternoon"
+){
+
+    return {
+        text:
+            "Good Afternoon! 😊 Welcome to ANLYSTIX. How can I help you today?",
+        actions: [
+            ["Services", "services", "smart"],
+            ["Pricing", "pricing", "smart"],
+            ["Contact", "contact", "smart"]
+        ]
+    };
+
+}
+
+
+/* ---------------------------------------------
+   GOOD EVENING
+--------------------------------------------- */
+
+if(
+    text === "good evening" ||
+    text === "good eve"
+){
+
+    return {
+        text:
+            "Good Evening! 🌆 Welcome to ANLYSTIX. How can I help you today?",
+        actions: [
+            ["Services", "services", "smart"],
+            ["Pricing", "pricing", "smart"],
+            ["Contact", "contact", "smart"]
+        ]
+    };
+
+}
 
     /* ---------------------------------------------
        SERVICES
