@@ -604,7 +604,7 @@ display:flex;
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:10px;
+    border-radius:50%;
     color:#06131e;
     background:linear-gradient(
         135deg,
@@ -612,8 +612,17 @@ display:flex;
         #00a8d4
     );
     font-size:12px;
+    overflow:hidden;
 }
 
+.ax-message-avatar img,
+.ax-typing-avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    border-radius:50%;
+}
 .ax-message-content{
     min-width:0;
     max-width:calc(100% - 40px);
@@ -2328,25 +2337,27 @@ VIP STORE
 
 
         <!-- Typing Indicator -->
-        <div
-            class="ax-typing"
-            id="axTyping"
-            aria-hidden="true">
+<div
+    class="ax-typing"
+    id="axTyping"
+    aria-hidden="true">
 
-            <div class="ax-typing-avatar">
-                <i class="fa-solid fa-sparkles"></i>
-            </div>
+    <div class="ax-typing-avatar">
+        <img
+            src="https://anlystix.github.io/ai.png.jpeg"
+            alt="AX AI"
+        >
+    </div>
 
-            <div class="ax-typing-bubble">
+    <div class="ax-typing-bubble">
 
-                <span></span>
-                <span></span>
-                <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
 
-            </div>
+    </div>
 
-        </div>
-
+</div>
 
         <!-- Input Area -->
         <div class="ax-input-area">
