@@ -3866,27 +3866,7 @@ addAXActionButtons(
 
             /* LOCAL FALLBACK */
 
-            const fallback =
-    getAXReply(message);
-
-if(fallback){
-
-    addAXBotMessage(
-        fallback.text
-    );
-
-    if(
-        fallback.actions &&
-        fallback.actions.length
-    ){
-
-        addAXQuickActions(
-            fallback.actions
-        );
-
-    }
-
-}
+const fallback = getAXReply(message); addAXBotMessage( fallback ); }); }
 
     /* =====================================================
        LAUNCHER
