@@ -2758,49 +2758,50 @@ async function askAXAI(message){
 
     function addAXBotMessage(text){
 
-        const safeText =
-            escapeAXHTML(text);
+    const safeText =
+        String(text || "")
+            .replace(/<(?!\/?(strong|br)\b)[^>]*>/gi, "");
 
-        const message =
-            document.createElement("div");
+    const message =
+        document.createElement("div");
 
-        message.className =
-            "ax-message ax-bot-message";
+    message.className =
+        "ax-message ax-bot-message";
 
-        message.innerHTML = `
+    message.innerHTML = `
 
-            <div class="ax-message-avatar">
+        <div class="ax-message-avatar">
 
-                <img
-    src="https://anlystix.github.io/ai.png.jpeg"
-    alt="AX AI"
->
+            <img
+                src="https://anlystix.github.io/ai.png.jpeg"
+                alt="AX AI"
+            >
 
-            </div>
+        </div>
 
-            <div class="ax-message-content">
+        <div class="ax-message-content">
 
-                <div class="ax-message-bubble">
+            <div class="ax-message-bubble">
 
-                    <p>${safeText}</p>
-
-                </div>
-
-                <span class="ax-message-time">
-
-                    ${getAXTime()}
-
-                </span>
+                <p>${safeText}</p>
 
             </div>
 
-        `;
+            <span class="ax-message-time">
 
-        axMessages.appendChild(message);
+                ${getAXTime()}
 
-        scrollAXToBottom();
+            </span>
 
-    }
+        </div>
+
+    `;
+
+    axMessages.appendChild(message);
+
+    scrollAXToBottom();
+
+}
 
 
     /* =====================================================
