@@ -2955,22 +2955,308 @@ if(
    SHAH
 --------------------------------------------- */
 
+/* =========================================================
+   AX ASSISTANT — CLEAN REPLY RULES
+========================================================= */
+
+
+/* ---------------------------------------------
+   ABOUT AX ASSISTANT
+--------------------------------------------- */
+
 if(
-    text === "shah ali kon h" ||
-    text === "shah kon h" ||
-    text === "shah ali kon hai" ||
-    text === "shan ali kon h" ||
-    text === "who is shah ali" ||
-    text === "shah ali"
+    text === "tum kaun ho" ||
+    text === "tumhara naam kya hai" ||
+    text === "tumhe kisne banaya" ||
+    text === "tumhara creator kaun hai" ||
+    text === "tum kya kar sakte ho" ||
+    text === "tum kaise kaam karte ho" ||
+    text === "tum kis ai model par based ho" ||
+    text === "kya tum chatgpt ho" ||
+    text === "kya tum insaan ho" ||
+    text === "tumhari age kitni hai" ||
+    text === "tum kahan rehte ho" ||
+    text === "tumhe kisne develop kiya" ||
+    text === "tumhara developer kaun hai" ||
+    text === "tum kis company ke ho" ||
+    text === "tumhari capabilities kya hain" ||
+    text === "tumhare features kya hain" ||
+    text === "tumhari limitations kya hain" ||
+    text === "tum kya nahi kar sakte" ||
+    text === "kya tum internet use karte ho" ||
+    text === "kya tum live information de sakte ho" ||
+    text === "kya tum galti karte ho" ||
+    text === "tum kitne smart ho" ||
+    text === "tumhara purpose kya hai" ||
+    text === "tumhare baare mein batao" ||
+    text === "apne baare mein batao" ||
+    text === "who are you" ||
+    text === "what is your name" ||
+    text === "who made you" ||
+    text === "who is your creator" ||
+    text === "what can you do" ||
+    text === "how do you work" ||
+    text === "which ai model are you based on" ||
+    text === "are you chatgpt" ||
+    text === "are you human" ||
+    text === "how old are you" ||
+    text === "where do you live" ||
+    text === "who developed you" ||
+    text === "who is your developer" ||
+    text === "which company are you from" ||
+    text === "what are your capabilities" ||
+    text === "what are your features" ||
+    text === "what are your limitations" ||
+    text === "what can you not do" ||
+    text === "do you use the internet" ||
+    text === "can you provide live information" ||
+    text === "can you make mistakes" ||
+    text === "how smart are you" ||
+    text === "what is your purpose" ||
+    text === "tell me about yourself" ||
+    text === "introduce yourself"
 ){
 
     return {
         text:
-            "Shah Ali! Shah ali jiko loh Shan ali ke name se bhi jante hai, Wo abhi ek chote se construction company me kam karta hai, waise kam toh ek bahana hai wo sirf company ke khane pine aur rahene ke liye hai mtb company usko pal rahi hai wo toh bas site pe jake bachodi karta hai aur salary free ka leleta hai, baki iski aukat jhat barabar hai. bas main ek ai hu mujhe iske bare main batate huye sharam arhi hai ye itna bada berozgar inshan hai, mere gali nahi de sakta nahi toh batata kaisa hai ye. tumhe bhi ek salah deta hu tum jitna dur raho ke isse utna hi kamiyab rahoge",
+            "Hi! 👋 I’m AX Assistant, the AI assistant for ANLYSTIX. I’m here to help you with information about ANLYSTIX, our services, data analytics, dashboards, automation, pricing, portfolio and contact options. 😊 How can I help you today?",
         actions: [
             ["Services", "services", "smart"],
             ["Pricing", "pricing", "smart"],
             ["Contact", "contact", "smart"]
+        ]
+    };
+
+}
+
+
+/* ---------------------------------------------
+   SERVICES
+--------------------------------------------- */
+
+if(
+    text === "service" ||
+    text === "services" ||
+    text === "what services do you offer" ||
+    text === "what are your services" ||
+    text === "what services do you provide" ||
+    text === "what do you offer" ||
+    text === "aapki services kya hain" ||
+    text === "tumhari services kya hain" ||
+    text === "aap kya services provide karte ho" ||
+    text === "tum kya services provide karte ho" ||
+    text === "aap kya offer karte ho" ||
+    text === "tum kya offer karte ho" ||
+    text === "mujhe aapki services ke baare mein batao" ||
+    text === "services ke baare mein batao" ||
+    text === "aap kya kaam karte ho" ||
+    text === "tum kya kaam karte ho"
+){
+
+    return {
+        text:
+            "Bilkul! 😊 ANLYSTIX provides Data Analytics, Power BI dashboards, Excel dashboards, Excel automation, SQL & Business Intelligence solutions, and data cleaning services.",
+        actions: [
+            ["Data Analysis", "data analysis", "smart"],
+            ["Dashboards", "dashboards", "smart"],
+            ["Automation", "automation", "smart"]
+        ]
+    };
+
+}
+
+
+/* ---------------------------------------------
+   ABOUT ANLYSTIX
+--------------------------------------------- */
+
+if(
+    text === "anlystix kya hai" ||
+    text === "anlystix kya company hai" ||
+    text === "anlystix ke baare mein batao" ||
+    text === "anlystix kya karti hai" ||
+    text === "anlystix ka kya kaam hai" ||
+    text === "anlystix kis field mein hai" ||
+    text === "anlystix kis field ki company hai" ||
+    text === "aapki company kya karti hai" ||
+    text === "tumhari company kya karti hai" ||
+    text === "company ke baare mein batao" ||
+    text === "ye company kya karti hai" ||
+    text === "what is anlystix" ||
+    text === "what is anlystix about" ||
+    text === "what does anlystix do" ||
+    text === "what kind of company is anlystix" ||
+    text === "tell me about anlystix" ||
+    text === "tell me about your company" ||
+    text === "what does your company do" ||
+    text === "what does anlystix offer"
+){
+
+    return {
+        text:
+            "ANLYSTIX ek data-focused company hai jo businesses ko unke data ko samajhne aur better decisions lene mein help karti hai. 📊 Hum Data Analytics, Data Cleaning, Business Intelligence, Dashboards aur Automation jaise solutions provide karte hain. Hamara goal simple hai — data ko meaningful insights mein badalna, taaki businesses smarter aur faster decisions le sakein. 🚀",
+        actions: [
+            ["Our Services", "services", "smart"],
+            ["Our Portfolio", "portfolio", "smart"],
+            ["Contact Us", "contact", "smart"]
+        ]
+    };
+
+}
+
+
+/* ---------------------------------------------
+   FOUNDER
+--------------------------------------------- */
+
+if(
+    text === "anlystix ka founder kaun hai" ||
+    text === "anlystix ke founder kaun hain" ||
+    text === "anlystix ko kisne start kiya" ||
+    text === "anlystix kisne banaya" ||
+    text === "anlystix ka owner kaun hai" ||
+    text === "anlystix ke founder ke baare mein batao" ||
+    text === "founder kaun hai" ||
+    text === "founder ka name kya hai" ||
+    text === "company ka founder kaun hai" ||
+    text === "who is the founder of anlystix" ||
+    text === "who founded anlystix" ||
+    text === "who started anlystix" ||
+    text === "who is the owner of anlystix" ||
+    text === "tell me about the founder" ||
+    text === "tell me about anlystix founder"
+){
+
+    return {
+        text:
+            "ANLYSTIX ke founder ki specific information abhi AX Assistant ke knowledge base mein configured nahi hai. Agar aap ANLYSTIX ke business, services ya portfolio ke baare mein jaana chahte hain, main usmein aapki help kar sakta hoon. 😊",
+        actions: [
+            ["About ANLYSTIX", "about anlystix", "smart"],
+            ["Our Services", "services", "smart"],
+            ["Contact Us", "contact", "smart"]
+        ]
+    };
+
+}
+
+
+/* ---------------------------------------------
+   NEGATIVE / ANGRY USER
+--------------------------------------------- */
+
+if(
+    text === "tumhe kuch pata nahi hai" ||
+    text === "tumhe kuch nahi pata" ||
+    text === "tumhe malum nahi hai" ||
+    text === "tumhe kuch malum nahi" ||
+    text === "tumhe kuch aata nahi hai" ||
+    text === "tumhe kuch nahi aata" ||
+    text === "tum bekar ho" ||
+    text === "tum bekaar ho" ||
+    text === "bekar ai ho" ||
+    text === "tum useless ho" ||
+    text === "you don't know anything" ||
+    text === "you know nothing" ||
+    text === "you are useless" ||
+    text === "you are a bad ai" ||
+    text === "you are stupid" ||
+    text === "you are dumb" ||
+    text === "galat jawab de rahe ho" ||
+    text === "tum galat ho" ||
+    text === "ye kya bakwas hai" ||
+    text === "bakwas ai" ||
+    text === "kya bakwas kar rahe ho" ||
+    text === "tumse nahi hoga" ||
+    text === "tumse kuch nahi hoga" ||
+    text === "mujhe kuch nahi mila" ||
+    text === "answer galat hai"
+){
+
+    return {
+        text:
+            "Maaf karna! 🙏 Shayad main aapki baat sahi tarah samajh nahi paaya ya mera jawab sahi nahi tha. Kabhi-kabhi mujhse galti ho sakti hai. 😊 Aap bas mujhe bata dijiye ki kahan galti hui, main usse samajhne aur behtar jawab dene ki poori koshish karunga. 🤝",
+        actions: [
+            ["Try Again", "try again", "smart"],
+            ["Ask Something", "ask something", "smart"]
+        ]
+    };
+
+}
+
+
+/* ---------------------------------------------
+   CONTACT
+--------------------------------------------- */
+
+if(
+    text === "contact" ||
+    text === "mujhe team ka number do" ||
+    text === "mujhe company ka contact number chahiye" ||
+    text === "company ka contact number kya hai" ||
+    text === "company ka number do" ||
+    text === "team ka contact number kya hai" ||
+    text === "team se contact kaise karu" ||
+    text === "main contact kaise karu" ||
+    text === "aapse contact kaise karu" ||
+    text === "company se contact kaise karu" ||
+    text === "aapki team se kaise baat karu" ||
+    text === "team se kaise baat kar sakta hoon" ||
+    text === "company se kaise baat kar sakta hoon" ||
+    text === "mujhe team se baat karni hai" ||
+    text === "mujhe company se baat karni hai" ||
+    text === "kya main team se baat kar sakta hoon" ||
+    text === "kya main company se contact kar sakta hoon" ||
+    text === "contact details do" ||
+    text === "contact details kya hain" ||
+    text === "company ka email kya hai" ||
+    text === "email id do" ||
+    text === "team ka email kya hai" ||
+    text === "mujhe kisi se baat karni hai" ||
+    text === "mujhe kisi representative se baat karni hai" ||
+    text === "mujhe support chahiye" ||
+    text === "support team se kaise contact karu" ||
+    text === "support team ka number do" ||
+    text === "customer support ka number kya hai" ||
+    text === "customer care number kya hai" ||
+    text === "kisi se direct baat kaise karu" ||
+    text === "kya koi mujhe call kar sakta hai" ||
+    text === "team ko message kaise karu" ||
+    text === "team ko mail kaise karu" ||
+    text === "email se contact kaise karu" ||
+    text === "whatsapp number kya hai" ||
+    text === "whatsapp par contact kar sakte hain" ||
+    text === "whatsapp number do" ||
+    text === "phone number kya hai" ||
+    text === "mobile number do" ||
+    text === "contact number do" ||
+    text === "contact ka number kya hai" ||
+    text === "office ka number kya hai" ||
+    text === "office se kaise contact karu" ||
+    text === "mujhe enquiry karni hai" ||
+    text === "enquiry kaise karu" ||
+    text === "business enquiry ke liye contact kaise karu" ||
+    text === "project ke liye contact kaise karu" ||
+    text === "service lene ke liye contact kaise karu" ||
+    text === "mujhe aapse baat karni hai" ||
+    text === "aapki team se contact karna hai" ||
+    text === "team ka email id do" ||
+    text === "company ki email id kya hai" ||
+    text === "how can i contact you" ||
+    text === "how can i contact the company" ||
+    text === "what is your contact number" ||
+    text === "what is the company contact number" ||
+    text === "how can i contact your team" ||
+    text === "i want to contact your team" ||
+    text === "i want to talk to your team"
+){
+
+    return {
+        text:
+            "Bilkul! 😊 ANLYSTIX ki team se contact karna kaafi simple hai. Agar aapko kisi service ke baare mein jaanna hai, project discuss karna hai ya koi enquiry karni hai, toh neeche diye gaye options mein se WhatsApp, Email ya Contact ke through humse connect kar sakte hain. 🤝",
+        actions: [
+            ["WhatsApp Us", "https://wa.me/919373220070", "whatsapp"],
+            ["Email Us", "anlystix@gmail.com", "email"],
+            ["Contact Us", "contact", "smart"]
         ]
     };
 
