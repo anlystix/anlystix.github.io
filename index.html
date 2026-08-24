@@ -1757,38 +1757,244 @@ display:flex;
     }
 
 }
-  .excel-logo{
-    animation: excelFloat 3s ease-in-out infinite;
+ /* =========================================
+   ADVANCED EXCEL LOGO ANIMATION
+========================================= */
+
+.excel-logo{
+    position:relative;
+    overflow:visible !important;
+
+    transform-style:preserve-3d;
+
+    animation:
+        excelFloat 4s cubic-bezier(.45,.05,.55,.95) infinite;
+
+    transition:
+        transform .5s cubic-bezier(.2,.8,.2,1),
+        box-shadow .5s ease;
 }
 
-.excel-logo i{
-    color:#21a366;
-    font-size:36px;
 
-    filter:drop-shadow(0 0 6px rgba(33,163,102,.45));
+/* Rotating energy ring */
 
-    transition:transform .35s ease, filter .35s ease;
+.excel-logo::before{
+    content:"";
+
+    position:absolute;
+
+    inset:-5px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(33,163,102,.35);
+
+    box-shadow:
+        0 0 8px rgba(33,163,102,.18),
+        inset 0 0 8px rgba(33,163,102,.12);
+
+    opacity:.65;
+
+    animation:
+        excelRing 5s linear infinite;
+
+    pointer-events:none;
 }
 
-.service-card:hover .excel-logo{
-    transform:translateY(-5px) scale(1.05);
-}
 
-.service-card:hover .excel-logo i{
-    transform:scale(1.15);
+/* Moving light */
+
+.excel-logo::after{
+    content:"";
+
+    position:absolute;
+
+    width:65px;
+    height:2px;
+
+    left:-18px;
+    top:50%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.85),
+            transparent
+        );
 
     filter:
-        drop-shadow(0 0 12px rgba(33,163,102,.8));
+        blur(2px);
+
+    transform:
+        rotate(-45deg)
+        translateX(-70px);
+
+    opacity:0;
+
+    animation:
+        excelSweep 3.8s ease-in-out infinite;
+
+    pointer-events:none;
 }
+
+
+/* Excel icon */
+
+.excel-logo i{
+    position:relative;
+
+    z-index:2;
+
+    color:#21a366;
+
+    font-size:36px;
+
+    transform:translateZ(20px);
+
+    filter:
+        drop-shadow(0 0 5px rgba(33,163,102,.45));
+
+    animation:
+        excelIconPulse 2.8s ease-in-out infinite;
+
+    transition:
+        transform .5s cubic-bezier(.2,.8,.2,1),
+        filter .5s ease;
+}
+
+
+/* =========================================
+   HOVER — ADVANCED INTERACTION
+========================================= */
+
+.service-card:hover .excel-logo{
+
+    animation-play-state:paused;
+
+    transform:
+        perspective(600px)
+        rotateX(8deg)
+        rotateY(-10deg)
+        translateY(-7px)
+        scale(1.08);
+
+    box-shadow:
+        0 15px 35px rgba(33,163,102,.18),
+        0 0 30px rgba(33,163,102,.12);
+}
+
+
+.service-card:hover .excel-logo i{
+
+    transform:
+        translateZ(35px)
+        scale(1.16);
+
+    filter:
+        drop-shadow(0 0 8px rgba(33,163,102,.8))
+        drop-shadow(0 0 18px rgba(33,163,102,.35));
+}
+
+
+.service-card:hover .excel-logo::before{
+
+    opacity:1;
+
+    border-color:
+        rgba(33,163,102,.75);
+
+    box-shadow:
+        0 0 14px rgba(33,163,102,.45),
+        inset 0 0 12px rgba(33,163,102,.2);
+}
+
+
+/* =========================================
+   KEYFRAMES
+========================================= */
 
 @keyframes excelFloat{
 
     0%,100%{
-        transform:translateY(0);
+        transform:
+            translateY(0)
+            rotateZ(0deg);
+    }
+
+    25%{
+        transform:
+            translateY(-4px)
+            rotateZ(-1deg);
     }
 
     50%{
-        transform:translateY(-5px);
+        transform:
+            translateY(-7px)
+            rotateZ(0deg);
+    }
+
+    75%{
+        transform:
+            translateY(-3px)
+            rotateZ(1deg);
+    }
+
+}
+
+
+@keyframes excelRing{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+@keyframes excelSweep{
+
+    0%,35%{
+        transform:
+            rotate(-45deg)
+            translateX(-75px);
+
+        opacity:0;
+    }
+
+    45%{
+        opacity:.9;
+    }
+
+    65%{
+        transform:
+            rotate(-45deg)
+            translateX(75px);
+
+        opacity:0;
+    }
+
+    100%{
+        opacity:0;
+    }
+
+}
+
+
+@keyframes excelIconPulse{
+
+    0%,100%{
+        filter:
+            drop-shadow(0 0 4px rgba(33,163,102,.35));
+    }
+
+    50%{
+        filter:
+            drop-shadow(0 0 9px rgba(33,163,102,.7));
     }
 
 }
