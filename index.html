@@ -1954,7 +1954,8 @@ display:flex;
     }
 }
 /* =========================================
-   PREMIUM GLASS SERVICE LOGOS
+   ANLYSTIX — PREMIUM GLASS LOGO SYSTEM
+   Same animation language as Excel
 ========================================= */
 
 .premium-logo{
@@ -1972,26 +1973,30 @@ display:flex;
         linear-gradient(
             145deg,
             rgba(255,255,255,.18),
-            rgba(255,255,255,.045) 50%,
+            rgba(255,255,255,.055) 45%,
             rgba(0,207,255,.08)
         );
 
-    border:1px solid rgba(255,255,255,.20);
+    border:1px solid rgba(255,255,255,.22);
 
-    backdrop-filter:blur(16px) saturate(150%);
-    -webkit-backdrop-filter:blur(16px) saturate(150%);
+    backdrop-filter:blur(18px) saturate(160%);
+    -webkit-backdrop-filter:blur(18px) saturate(160%);
 
     box-shadow:
-        inset 0 1px 2px rgba(255,255,255,.25),
+        inset 0 1px 2px rgba(255,255,255,.30),
         inset 0 -8px 20px rgba(0,0,0,.12),
-        0 10px 28px rgba(0,0,0,.22);
+        0 10px 28px rgba(0,0,0,.22),
+        0 0 18px rgba(0,207,255,.10);
 
     overflow:hidden;
 
     transform-style:preserve-3d;
 
+    animation:
+        premiumLogoFloat 4s ease-in-out infinite;
+
     transition:
-        transform .5s cubic-bezier(.2,.8,.2,1),
+        transform .55s cubic-bezier(.2,.8,.2,1),
         box-shadow .5s ease,
         border-color .5s ease;
 }
@@ -2014,16 +2019,20 @@ display:flex;
         linear-gradient(
             90deg,
             transparent,
-            rgba(255,255,255,.25),
+            rgba(255,255,255,.30),
             transparent
         );
 
     transform:rotate(30deg);
 
+    filter:blur(2px);
+
     animation:
-        premiumShine 5s ease-in-out infinite;
+        premiumLogoShine 4.5s ease-in-out infinite;
 
     pointer-events:none;
+
+    z-index:10;
 }
 
 
@@ -2038,12 +2047,14 @@ display:flex;
 
     border-radius:15px;
 
-    border:1px solid rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.09);
 
     box-shadow:
-        inset 0 0 18px rgba(255,255,255,.04);
+        inset 0 0 18px rgba(255,255,255,.055);
 
     pointer-events:none;
+
+    z-index:9;
 }
 
 
@@ -2052,16 +2063,15 @@ display:flex;
 ========================================= */
 
 .analytics-glass{
-    animation:
-        analyticsFloat 4s ease-in-out infinite;
+    --logo-color:#00cfff;
 }
 
 .analytics-bars{
     position:relative;
-    z-index:3;
+    z-index:4;
 
     width:42px;
-    height:38px;
+    height:40px;
 
     display:flex;
     align-items:flex-end;
@@ -2075,40 +2085,41 @@ display:flex;
 .analytics-bars span{
     width:7px;
 
-    border-radius:3px 3px 1px 1px;
+    border-radius:4px 4px 2px 2px;
 
     background:
         linear-gradient(
             to top,
             #008dcc,
-            #00d9ff
+            #00e1ff
         );
 
     box-shadow:
-        0 0 8px rgba(0,207,255,.55);
+        0 4px 10px rgba(0,207,255,.35),
+        0 0 9px rgba(0,207,255,.45);
 
     animation:
-        analyticsBars 2s ease-in-out infinite;
+        analyticsBarMotion 2.4s ease-in-out infinite;
 }
 
 .analytics-bars span:nth-child(1){
-    height:17px;
-    animation-delay:.1s;
+    height:18px;
+    animation-delay:.05s;
 }
 
 .analytics-bars span:nth-child(2){
-    height:27px;
-    animation-delay:.25s;
+    height:29px;
+    animation-delay:.18s;
 }
 
 .analytics-bars span:nth-child(3){
-    height:35px;
-    animation-delay:.4s;
+    height:38px;
+    animation-delay:.31s;
 }
 
 .analytics-bars span:nth-child(4){
-    height:23px;
-    animation-delay:.55s;
+    height:25px;
+    animation-delay:.44s;
 }
 
 
@@ -2117,13 +2128,12 @@ display:flex;
 ========================================= */
 
 .powerbi-glass{
-    animation:
-        powerbiFloat 4.2s ease-in-out infinite;
+    --logo-color:#f6b800;
 }
 
 .powerbi-bars{
     position:relative;
-    z-index:3;
+    z-index:4;
 
     display:flex;
     align-items:flex-end;
@@ -2138,33 +2148,35 @@ display:flex;
 .powerbi-bars span{
     width:10px;
 
-    border-radius:3px 3px 1px 1px;
+    border-radius:4px 4px 2px 2px;
 
     background:
         linear-gradient(
             to top,
-            #f2a900,
+            #d88900,
             #ffd83d
         );
 
     box-shadow:
-        0 0 9px rgba(255,196,0,.45);
+        0 4px 10px rgba(255,190,0,.30),
+        0 0 10px rgba(255,196,0,.40);
 
     animation:
-        powerbiBars 2.4s ease-in-out infinite;
+        powerbiBarMotion 2.5s ease-in-out infinite;
 }
 
 .powerbi-bars span:nth-child(1){
     height:22px;
+    animation-delay:.1s;
 }
 
 .powerbi-bars span:nth-child(2){
-    height:35px;
-    animation-delay:.2s;
+    height:37px;
+    animation-delay:.25s;
 }
 
 .powerbi-bars span:nth-child(3){
-    height:29px;
+    height:30px;
     animation-delay:.4s;
 }
 
@@ -2174,20 +2186,20 @@ display:flex;
 ========================================= */
 
 .automation-glass{
-    animation:
-        automationFloat 4s ease-in-out infinite;
+    --logo-color:#00cfff;
 }
 
 .gear-main,
 .gear-small{
     position:absolute;
 
-    z-index:3;
+    z-index:5;
 
     color:#00cfff;
 
     filter:
-        drop-shadow(0 0 7px rgba(0,207,255,.6));
+        drop-shadow(0 0 6px rgba(0,207,255,.65))
+        drop-shadow(0 0 14px rgba(0,207,255,.20));
 
     transform:translateZ(25px);
 }
@@ -2196,7 +2208,7 @@ display:flex;
     font-size:36px;
 
     animation:
-        gearRotate 5s linear infinite;
+        mainGearMotion 5s linear infinite;
 }
 
 .gear-small{
@@ -2206,7 +2218,7 @@ display:flex;
     font-size:19px;
 
     animation:
-        gearRotateReverse 3.5s linear infinite;
+        smallGearMotion 3.5s linear infinite;
 }
 
 
@@ -2215,21 +2227,23 @@ display:flex;
 ========================================= */
 
 .sql-glass{
-    animation:
-        sqlFloat 4.3s ease-in-out infinite;
+    --logo-color:#28a9ff;
 }
 
 .sql-database{
     position:absolute;
 
-    z-index:2;
+    z-index:4;
 
     top:16px;
 
-    width:38px;
-    height:35px;
+    width:40px;
+    height:36px;
 
     transform:translateZ(25px);
+
+    filter:
+        drop-shadow(0 0 7px rgba(40,169,255,.45));
 }
 
 .sql-database span{
@@ -2237,22 +2251,23 @@ display:flex;
 
     left:0;
 
-    width:38px;
-    height:13px;
+    width:40px;
+    height:14px;
 
     border-radius:50%;
 
     background:
         linear-gradient(
             180deg,
-            #28a9ff,
+            #43b7ff,
             #0878c8
         );
 
-    border:1px solid rgba(255,255,255,.2);
+    border:1px solid rgba(255,255,255,.22);
 
     box-shadow:
-        0 0 8px rgba(0,150,255,.45);
+        inset 0 1px 2px rgba(255,255,255,.25),
+        0 0 8px rgba(0,150,255,.35);
 }
 
 .sql-database span:nth-child(1){
@@ -2270,13 +2285,15 @@ display:flex;
 .sql-glass strong{
     position:relative;
 
-    z-index:4;
+    z-index:6;
 
-    margin-top:30px;
+    margin-top:31px;
 
     color:#fff;
 
     font-size:10px;
+    font-weight:700;
+
     letter-spacing:1px;
 
     text-shadow:
@@ -2291,14 +2308,13 @@ display:flex;
 ========================================= */
 
 .bi-glass{
-    animation:
-        biFloat 4.5s ease-in-out infinite;
+    --logo-color:#b46cff;
 }
 
 .bi-glass > i{
     position:relative;
 
-    z-index:3;
+    z-index:5;
 
     color:#b46cff;
 
@@ -2307,14 +2323,15 @@ display:flex;
     transform:translateZ(28px);
 
     filter:
-        drop-shadow(0 0 8px rgba(180,108,255,.65));
+        drop-shadow(0 0 7px rgba(180,108,255,.65))
+        drop-shadow(0 0 15px rgba(180,108,255,.20));
 
     animation:
-        brainPulse 2.5s ease-in-out infinite;
+        brainMotion 2.8s ease-in-out infinite;
 }
 
 
-/* BI NETWORK NODES */
+/* NETWORK NODES */
 
 .bi-node{
     position:absolute;
@@ -2327,12 +2344,13 @@ display:flex;
     background:#00d9ff;
 
     box-shadow:
-        0 0 10px rgba(0,217,255,.9);
+        0 0 8px rgba(0,217,255,.9),
+        0 0 16px rgba(0,217,255,.35);
 
-    z-index:4;
+    z-index:6;
 
     animation:
-        nodePulse 2s ease-in-out infinite;
+        nodeMotion 2s ease-in-out infinite;
 }
 
 .node1{
@@ -2344,44 +2362,80 @@ display:flex;
     bottom:15px;
     left:15px;
 
-    animation-delay:.5s;
+    animation-delay:.45s;
 }
 
 .node3{
     bottom:13px;
     right:14px;
 
-    animation-delay:1s;
+    animation-delay:.9s;
 }
 
 
 /* =========================================
-   HOVER EFFECT
+   HOVER — SAME PREMIUM FEEL
 ========================================= */
 
 .service-card:hover .premium-logo{
+
+    animation-play-state:paused;
+
     transform:
         perspective(700px)
         rotateX(8deg)
-        rotateY(-10deg)
+        rotateY(-12deg)
         translateY(-8px)
         scale(1.08);
 
     border-color:
-        rgba(0,207,255,.45);
+        rgba(255,255,255,.38);
 
     box-shadow:
-        inset 0 1px 3px rgba(255,255,255,.3),
-        0 20px 42px rgba(0,0,0,.3),
-        0 0 30px rgba(0,207,255,.22);
+        inset 0 1px 3px rgba(255,255,255,.35),
+        inset 0 -8px 20px rgba(0,0,0,.14),
+        0 20px 45px rgba(0,0,0,.30),
+        0 0 30px var(--logo-color);
 }
 
 
 /* =========================================
-   ANIMATIONS
+   FLOATING
 ========================================= */
 
-@keyframes premiumShine{
+@keyframes premiumLogoFloat{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotateZ(0deg);
+    }
+
+    25%{
+        transform:
+            translateY(-3px)
+            rotateZ(-.7deg);
+    }
+
+    50%{
+        transform:
+            translateY(-7px)
+            rotateZ(0deg);
+    }
+
+    75%{
+        transform:
+            translateY(-3px)
+            rotateZ(.7deg);
+    }
+}
+
+
+/* =========================================
+   GLASS SHINE
+========================================= */
+
+@keyframes premiumLogoShine{
 
     0%,25%{
         left:-70px;
@@ -2399,133 +2453,138 @@ display:flex;
 }
 
 
-@keyframes analyticsFloat{
+/* =========================================
+   ANALYTICS
+========================================= */
+
+@keyframes analyticsBarMotion{
 
     0%,100%{
-        transform:translateY(0);
+        transform:
+            scaleY(.88)
+            translateZ(0);
     }
 
     50%{
-        transform:translateY(-6px);
+        transform:
+            scaleY(1.08)
+            translateZ(8px);
     }
 }
 
 
-@keyframes analyticsBars{
+/* =========================================
+   POWER BI
+========================================= */
+
+@keyframes powerbiBarMotion{
 
     0%,100%{
-        transform:scaleY(.9);
+        transform:
+            scaleY(.9);
     }
 
     50%{
-        transform:scaleY(1.08);
+        transform:
+            scaleY(1.10);
     }
 }
 
 
-@keyframes powerbiFloat{
+/* =========================================
+   GEARS
+========================================= */
 
-    0%,100%{
-        transform:translateY(0) rotateZ(0);
-    }
+@keyframes mainGearMotion{
 
-    50%{
-        transform:translateY(-6px) rotateZ(1deg);
-    }
-}
-
-
-@keyframes powerbiBars{
-
-    0%,100%{
-        transform:scaleY(.9);
-    }
-
-    50%{
-        transform:scaleY(1.12);
-    }
-}
-
-
-@keyframes automationFloat{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-5px);
-    }
-}
-
-
-@keyframes gearRotate{
     from{
-        transform:translateZ(25px) rotate(0);
+        transform:
+            translateZ(25px)
+            rotate(0deg);
     }
 
     to{
-        transform:translateZ(25px) rotate(360deg);
+        transform:
+            translateZ(25px)
+            rotate(360deg);
     }
 }
 
 
-@keyframes gearRotateReverse{
+@keyframes smallGearMotion{
+
     from{
-        transform:translateZ(25px) rotate(360deg);
+        transform:
+            translateZ(25px)
+            rotate(360deg);
     }
 
     to{
-        transform:translateZ(25px) rotate(0);
+        transform:
+            translateZ(25px)
+            rotate(0deg);
     }
 }
 
 
-@keyframes sqlFloat{
+/* =========================================
+   BRAIN
+========================================= */
+
+@keyframes brainMotion{
 
     0%,100%{
-        transform:translateY(0);
+        transform:
+            translateZ(28px)
+            scale(1);
     }
 
     50%{
-        transform:translateY(-6px);
+        transform:
+            translateZ(35px)
+            scale(1.08);
     }
 }
 
 
-@keyframes biFloat{
+/* =========================================
+   SQL SUBTLE MOTION
+========================================= */
+
+.sql-glass .sql-database{
+    animation:
+        sqlDepth 3s ease-in-out infinite;
+}
+
+@keyframes sqlDepth{
 
     0%,100%{
-        transform:translateY(0);
+        transform:
+            translateZ(25px)
+            translateY(0);
     }
 
     50%{
-        transform:translateY(-6px);
+        transform:
+            translateZ(35px)
+            translateY(-3px);
     }
 }
 
 
-@keyframes brainPulse{
+/* =========================================
+   BI NODES
+========================================= */
+
+@keyframes nodeMotion{
 
     0%,100%{
-        transform:translateZ(28px) scale(1);
+        transform:scale(.75);
+        opacity:.55;
     }
 
     50%{
-        transform:translateZ(28px) scale(1.08);
-    }
-}
-
-
-@keyframes nodePulse{
-
-    0%,100%{
-        transform:scale(.8);
-        opacity:.6;
-    }
-
-    50%{
-        transform:scale(1.5);
+        transform:scale(1.45);
         opacity:1;
     }
 }
