@@ -1295,7 +1295,109 @@ display:flex;
     }
 
 }
+/* =========================================
+   PREMIUM HEADER ACTIONS
+========================================= */
 
+.header{
+    transition:
+        background .35s ease,
+        backdrop-filter .35s ease,
+        border-color .35s ease,
+        padding .35s ease,
+        box-shadow .35s ease;
+}
+
+.header.scrolled{
+    background:rgba(7,17,31,.72);
+    backdrop-filter:blur(22px) saturate(140%);
+    -webkit-backdrop-filter:blur(22px) saturate(140%);
+    border-bottom:1px solid rgba(255,255,255,.09);
+    box-shadow:0 10px 40px rgba(0,0,0,.18);
+}
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.header-icon,
+.menu-toggle{
+    width:42px;
+    height:42px;
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:50%;
+    background:rgba(255,255,255,.045);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:
+        background .25s ease,
+        border-color .25s ease,
+        transform .25s ease,
+        color .25s ease;
+}
+
+.header-icon:hover,
+.menu-toggle:hover{
+    background:rgba(0,207,255,.10);
+    border-color:rgba(0,207,255,.45);
+    color:#00cfff;
+    transform:translateY(-2px);
+}
+
+.header-icon:active,
+.menu-toggle:active{
+    transform:scale(.92);
+}
+
+@media (min-width:961px){
+
+    .header-actions{
+        display:none;
+    }
+
+}
+
+@media (max-width:960px){
+
+    .header-actions{
+        display:flex;
+    }
+
+    .menu-toggle{
+        display:flex;
+        font-size:17px;
+    }
+
+    .header-icon{
+        font-size:15px;
+    }
+
+}
+
+@media (max-width:520px){
+
+    .header{
+        padding:12px 0;
+    }
+
+    .header-icon,
+    .menu-toggle{
+        width:38px;
+        height:38px;
+    }
+
+    .header-actions{
+        gap:6px;
+    }
+
+}
+  
 </style>
 </head>
 <body>
@@ -1314,7 +1416,24 @@ display:flex;
       <a href="#contact">Contact</a>
       <a href="#contact" class="nav-cta">Get Started</a>
     </nav>
-    <button class="menu-toggle" id="menuToggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+    <div class="header-actions">
+
+    <button
+        class="header-icon"
+        id="searchToggle"
+        type="button"
+        aria-label="Search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Menu">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+</div>
   </div>
 </header>
 
