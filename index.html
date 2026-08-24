@@ -1986,13 +1986,83 @@ display:flex;
       <p class="section-subtitle">From data engineering to executive dashboards — a complete analytics stack delivered by specialists.</p>
     </div>
     <div class="services-grid">
-      <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-chart-pie"></i></div><h3>Data Analytics</h3><p>Deep statistical analysis that surfaces patterns and opportunities hidden in your business data.</p></div>
-      <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-chart-line"></i></div><h3>Power BI Dashboards</h3><p>Interactive, beautifully designed dashboards your leadership team will actually use every day.</p></div>
-      <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-file-excel"></i></div><h3>Excel Reporting</h3><p>Boardroom-ready Excel reports with elegant formatting, dynamic charts and pivot analytics.</p></div>
-      <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-robot"></i></div><h3>Excel Automation</h3><p>VBA, Power Query and macros that turn hours of manual work into one-click workflows.</p></div>
-      <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-database"></i></div><h3>SQL Data Analysis</h3><p>Production-grade SQL queries, optimization and modeling for large transactional datasets.</p></div>
-      <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-brain"></i></div><h3>Business Intelligence</h3><p>End-to-end BI strategy, data warehousing and KPI architecture aligned with your goals.</p></div>
+
+  <!-- DATA ANALYTICS -->
+  <div class="service-card reveal">
+    <div class="service-icon animated-logo analytics-logo">
+      <i class="fa-solid fa-chart-pie"></i>
     </div>
+    <h3>Data Analytics</h3>
+    <p>
+      Deep statistical analysis that surfaces patterns and opportunities hidden in your business data.
+    </p>
+  </div>
+
+  <!-- POWER BI -->
+  <div class="service-card reveal">
+    <div class="service-icon animated-logo powerbi-logo">
+      <img
+        src="https://cdn.simpleicons.org/powerbi"
+        alt="Power BI"
+      >
+    </div>
+    <h3>Power BI Dashboards</h3>
+    <p>
+      Interactive, beautifully designed dashboards your leadership team will actually use every day.
+    </p>
+  </div>
+
+  <!-- EXCEL REPORTING -->
+  <div class="service-card reveal">
+    <div class="service-icon animated-logo excel-logo">
+      <img
+        src="https://cdn.simpleicons.org/microsoftexcel"
+        alt="Microsoft Excel"
+      >
+    </div>
+    <h3>Excel Reporting</h3>
+    <p>
+      Boardroom-ready Excel reports with elegant formatting, dynamic charts and pivot analytics.
+    </p>
+  </div>
+
+  <!-- EXCEL AUTOMATION -->
+  <div class="service-card reveal">
+    <div class="service-icon animated-logo automation-logo">
+      <i class="fa-solid fa-gears"></i>
+    </div>
+    <h3>Excel Automation</h3>
+    <p>
+      VBA, Power Query and macros that turn hours of manual work into one-click workflows.
+    </p>
+  </div>
+
+  <!-- SQL -->
+  <div class="service-card reveal">
+    <div class="service-icon animated-logo sql-logo">
+      <img
+        src="https://cdn.simpleicons.org/microsoftsqlserver"
+        alt="SQL"
+      >
+    </div>
+    <h3>SQL Data Analysis</h3>
+    <p>
+      Production-grade SQL queries, optimization and modeling for large transactional datasets.
+    </p>
+  </div>
+
+  <!-- BUSINESS INTELLIGENCE -->
+  <div class="service-card reveal">
+    <div class="service-icon animated-logo bi-logo">
+      <i class="fa-solid fa-brain"></i>
+    </div>
+    <h3>Business Intelligence</h3>
+    <p>
+      End-to-end BI strategy, data warehousing and KPI architecture aligned with your goals.
+    </p>
+  </div>
+
+</div>
   </div>
 </section>
 
@@ -4720,6 +4790,182 @@ const fallback = getAXReply(message); addAXBotMessage( fallback ); }); }
 /* CLOSE MAIN AX ASSISTANT IIFE */
 
 })();
+/* =========================================
+   SERVICE LOGO ANIMATIONS
+========================================= */
+
+.animated-logo{
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+}
+
+/* LOGO IMAGE */
+
+.animated-logo img{
+    width:42px;
+    height:42px;
+
+    object-fit:contain;
+
+    transition:
+        transform .45s ease,
+        filter .45s ease;
+}
+
+/* LIGHT SWEEP */
+
+.animated-logo::after{
+    content:"";
+
+    position:absolute;
+
+    width:45px;
+    height:120px;
+
+    background:rgba(255,255,255,.18);
+
+    transform:rotate(35deg) translateX(-90px);
+
+    transition:transform .6s ease;
+
+    pointer-events:none;
+}
+
+/* CARD HOVER */
+
+.service-card:hover .animated-logo{
+    transform:translateY(-5px) scale(1.04);
+
+    box-shadow:
+        0 12px 30px rgba(0,207,255,.20);
+
+    border-color:rgba(0,207,255,.45);
+}
+
+.service-card:hover .animated-logo img{
+    transform:scale(1.12);
+
+    filter:
+        drop-shadow(0 0 8px rgba(0,207,255,.55));
+}
+
+.service-card:hover .animated-logo::after{
+    transform:rotate(35deg) translateX(120px);
+}
+
+
+/* =========================================
+   CONTINUOUS SOFT ANIMATION
+========================================= */
+
+.analytics-logo i,
+.automation-logo i,
+.bi-logo i{
+    animation:
+        serviceIconFloat 3s ease-in-out infinite;
+}
+
+.powerbi-logo img,
+.excel-logo img,
+.sql-logo img{
+    animation:
+        serviceLogoFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes serviceIconFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-4px);
+    }
+
+}
+
+@keyframes serviceLogoFloat{
+
+    0%,100%{
+        transform:translateY(0) scale(1);
+    }
+
+    50%{
+        transform:translateY(-4px) scale(1.04);
+    }
+
+}
+
+
+/* EXCEL */
+
+.excel-logo{
+    background:rgba(33,115,70,.10);
+}
+
+.excel-logo img{
+    filter:
+        drop-shadow(0 0 5px rgba(33,115,70,.35));
+}
+
+
+/* POWER BI */
+
+.powerbi-logo{
+    background:rgba(242,200,0,.08);
+}
+
+.powerbi-logo img{
+    filter:
+        drop-shadow(0 0 6px rgba(242,200,0,.35));
+}
+
+
+/* SQL */
+
+.sql-logo{
+    background:rgba(0,120,215,.08);
+}
+
+.sql-logo img{
+    filter:
+        drop-shadow(0 0 6px rgba(0,120,215,.35));
+}
+
+
+/* AUTOMATION */
+
+.automation-logo i{
+    color:#00cfff;
+    font-size:38px;
+}
+
+
+/* ANALYTICS */
+
+.analytics-logo i{
+    color:#00cfff;
+    font-size:36px;
+}
+
+
+/* BUSINESS INTELLIGENCE */
+
+.bi-logo i{
+    color:#00cfff;
+    font-size:36px;
+}
+  
 </script>
 </body>
 </html>
