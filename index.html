@@ -1757,241 +1757,200 @@ display:flex;
     }
 
 }
-/* =========================================
-   PREMIUM GLASS EXCEL LOGO
-========================================= */
+/* PREMIUM GLASS EXCEL LOGO */
 
-.excel-logo{
+.excel-glass-logo{
     position:relative;
-
-    width:78px;
-    height:78px;
+    width:58px;
+    height:58px;
+    border-radius:14px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    border-radius:20px;
-
-    /* Glass */
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.18),
-            rgba(255,255,255,.045) 45%,
-            rgba(33,163,102,.10)
+            rgba(255,255,255,.24),
+            rgba(255,255,255,.07)
         );
 
-    border:1px solid rgba(255,255,255,.22);
-
-    backdrop-filter:blur(18px) saturate(160%);
-    -webkit-backdrop-filter:blur(18px) saturate(160%);
+    border:1px solid rgba(255,255,255,.28);
 
     box-shadow:
-        inset 0 1px 1px rgba(255,255,255,.25),
-        inset 0 -1px 1px rgba(0,0,0,.20),
-        0 12px 30px rgba(0,0,0,.22),
-        0 0 18px rgba(33,163,102,.12);
+        inset 0 1px 2px rgba(255,255,255,.35),
+        inset 0 -8px 20px rgba(0,0,0,.12),
+        0 8px 25px rgba(0,0,0,.25),
+        0 0 22px rgba(33,163,102,.18);
 
-    overflow:hidden;
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
 
     transform-style:preserve-3d;
 
-    animation:
-        excelGlassFloat 4s ease-in-out infinite;
+    animation:excelFloat 4s ease-in-out infinite;
+
+    overflow:hidden;
 
     transition:
         transform .5s cubic-bezier(.2,.8,.2,1),
-        box-shadow .5s ease,
-        border-color .5s ease;
+        box-shadow .5s ease;
 }
 
 
-/* Glass shine */
+/* Glass reflection */
 
-.excel-logo::before{
+.excel-glass-logo::before{
     content:"";
 
     position:absolute;
+    width:28px;
+    height:90px;
 
-    top:-55%;
-    left:-70%;
+    left:-45px;
+    top:-15px;
 
-    width:70%;
-    height:180%;
+    background:rgba(255,255,255,.22);
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.28),
-            transparent
-        );
+    transform:rotate(35deg);
 
-    transform:rotate(25deg);
+    filter:blur(4px);
 
-    animation:
-        excelGlassShine 4.5s ease-in-out infinite;
-
-    pointer-events:none;
+    animation:excelReflection 4s ease-in-out infinite;
 }
 
 
-/* Inner glow */
+/* Excel X */
 
-.excel-logo::after{
-    content:"";
-
+.excel-x{
     position:absolute;
 
-    inset:7px;
+    left:8px;
+    top:10px;
 
-    border-radius:15px;
+    width:34px;
+    height:38px;
 
-    border:1px solid rgba(255,255,255,.08);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:linear-gradient(
+        145deg,
+        #35c879,
+        #107c41
+    );
+
+    color:white;
+
+    font-size:27px;
+    font-weight:800;
+
+    border-radius:5px;
+
+    text-shadow:
+        0 2px 4px rgba(0,0,0,.25);
 
     box-shadow:
-        inset 0 0 18px rgba(255,255,255,.05),
-        0 0 20px rgba(33,163,102,.08);
+        0 5px 10px rgba(0,0,0,.28);
 
-    pointer-events:none;
-}
-
-
-/* Actual Excel logo */
-
-.excel-logo img{
-    position:relative;
+    transform:
+        translateZ(20px)
+        rotateY(-8deg);
 
     z-index:3;
-
-    width:44px;
-    height:44px;
-
-    object-fit:contain;
-
-    filter:
-        drop-shadow(0 5px 7px rgba(0,0,0,.35))
-        drop-shadow(0 0 8px rgba(33,163,102,.35));
-
-    transform:
-        translateZ(22px);
-
-    animation:
-        excelLogoPulse 3s ease-in-out infinite;
-
-    transition:
-        transform .5s cubic-bezier(.2,.8,.2,1),
-        filter .5s ease;
 }
 
 
-/* =========================================
-   HOVER — 3D GLASS
-========================================= */
+/* Excel grid */
 
-.service-card:hover .excel-logo{
+.excel-grid{
+    position:absolute;
 
-    animation-play-state:paused;
+    right:7px;
+    top:14px;
 
+    width:22px;
+    height:30px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:3px;
+
+    z-index:2;
+
+    transform:translateZ(15px);
+}
+
+.excel-grid span{
+    background:
+        rgba(255,255,255,.9);
+
+    border-radius:1px;
+
+    box-shadow:
+        0 0 2px rgba(255,255,255,.5);
+}
+
+
+/* Hover */
+
+.service-card:hover .excel-glass-logo{
     transform:
-        perspective(700px)
+        perspective(600px)
         rotateX(8deg)
         rotateY(-12deg)
         translateY(-8px)
-        scale(1.08);
-
-    border-color:
-        rgba(33,163,102,.55);
+        scale(1.1);
 
     box-shadow:
-        inset 0 1px 1px rgba(255,255,255,.32),
-        inset 0 -1px 1px rgba(0,0,0,.20),
-        0 20px 45px rgba(0,0,0,.30),
-        0 0 30px rgba(33,163,102,.30);
+        inset 0 1px 3px rgba(255,255,255,.4),
+        0 18px 40px rgba(0,0,0,.35),
+        0 0 35px rgba(33,163,102,.4);
 }
 
-
-.service-card:hover .excel-logo img{
-
+.service-card:hover .excel-x{
     transform:
-        translateZ(42px)
-        scale(1.16);
-
-    filter:
-        drop-shadow(0 8px 8px rgba(0,0,0,.35))
-        drop-shadow(0 0 12px rgba(33,163,102,.8))
-        drop-shadow(0 0 24px rgba(33,163,102,.25));
+        translateZ(35px)
+        rotateY(-12deg)
+        scale(1.08);
 }
 
 
-/* =========================================
-   ANIMATIONS
-========================================= */
+/* Floating */
 
-@keyframes excelGlassFloat{
+@keyframes excelFloat{
 
     0%,100%{
-        transform:
-            translateY(0)
-            rotateZ(0deg);
-    }
-
-    25%{
-        transform:
-            translateY(-3px)
-            rotateZ(-1deg);
+        transform:translateY(0) rotateZ(0);
     }
 
     50%{
-        transform:
-            translateY(-7px)
-            rotateZ(0deg);
-    }
-
-    75%{
-        transform:
-            translateY(-3px)
-            rotateZ(1deg);
+        transform:translateY(-7px) rotateZ(1deg);
     }
 }
 
 
-@keyframes excelGlassShine{
+/* Reflection sweep */
+
+@keyframes excelReflection{
 
     0%,30%{
-        left:-80%;
+        left:-50px;
         opacity:0;
     }
 
-    42%{
+    45%{
         opacity:.8;
     }
 
-    62%{
-        left:130%;
+    65%,100%{
+        left:75px;
         opacity:0;
-    }
-
-    100%{
-        left:130%;
-        opacity:0;
-    }
-}
-
-
-@keyframes excelLogoPulse{
-
-    0%,100%{
-        filter:
-            drop-shadow(0 5px 7px rgba(0,0,0,.35))
-            drop-shadow(0 0 5px rgba(33,163,102,.25));
-    }
-
-    50%{
-        filter:
-            drop-shadow(0 6px 8px rgba(0,0,0,.38))
-            drop-shadow(0 0 12px rgba(33,163,102,.65));
     }
 }
   
@@ -2228,9 +2187,14 @@ display:flex;
       <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-chart-line"></i></div><h3>Power BI Dashboards</h3><p>Interactive, beautifully designed dashboards your leadership team will actually use every day.</p></div>
       <div class="service-card reveal">
         <div class="service-icon excel-logo">
-    <img
-        src="https://cdn.simpleicons.org/microsoftexcel"
-        alt="Microsoft Excel">
+    <div class="excel-glass-logo">
+        <div class="excel-x">X</div>
+        <div class="excel-grid">
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+        </div>
+    </div>
 </div>
         <h3>Excel Reporting</h3><p>Boardroom-ready Excel reports with elegant formatting, dynamic charts and pivot analytics.</p></div>
       <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-robot"></i></div><h3>Excel Automation</h3><p>VBA, Power Query and macros that turn hours of manual work into one-click workflows.</p></div>
