@@ -1953,6 +1953,582 @@ display:flex;
         opacity:0;
     }
 }
+/* =========================================
+   PREMIUM GLASS SERVICE LOGOS
+========================================= */
+
+.premium-logo{
+    position:relative;
+    width:78px;
+    height:78px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.18),
+            rgba(255,255,255,.045) 50%,
+            rgba(0,207,255,.08)
+        );
+
+    border:1px solid rgba(255,255,255,.20);
+
+    backdrop-filter:blur(16px) saturate(150%);
+    -webkit-backdrop-filter:blur(16px) saturate(150%);
+
+    box-shadow:
+        inset 0 1px 2px rgba(255,255,255,.25),
+        inset 0 -8px 20px rgba(0,0,0,.12),
+        0 10px 28px rgba(0,0,0,.22);
+
+    overflow:hidden;
+
+    transform-style:preserve-3d;
+
+    transition:
+        transform .5s cubic-bezier(.2,.8,.2,1),
+        box-shadow .5s ease,
+        border-color .5s ease;
+}
+
+
+/* GLASS REFLECTION */
+
+.premium-logo::before{
+    content:"";
+
+    position:absolute;
+
+    width:28px;
+    height:120px;
+
+    left:-60px;
+    top:-20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.25),
+            transparent
+        );
+
+    transform:rotate(30deg);
+
+    animation:
+        premiumShine 5s ease-in-out infinite;
+
+    pointer-events:none;
+}
+
+
+/* INNER GLASS EDGE */
+
+.premium-logo::after{
+    content:"";
+
+    position:absolute;
+
+    inset:6px;
+
+    border-radius:15px;
+
+    border:1px solid rgba(255,255,255,.07);
+
+    box-shadow:
+        inset 0 0 18px rgba(255,255,255,.04);
+
+    pointer-events:none;
+}
+
+
+/* =========================================
+   DATA ANALYTICS
+========================================= */
+
+.analytics-glass{
+    animation:
+        analyticsFloat 4s ease-in-out infinite;
+}
+
+.analytics-bars{
+    position:relative;
+    z-index:3;
+
+    width:42px;
+    height:38px;
+
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+
+    gap:5px;
+
+    transform:translateZ(25px);
+}
+
+.analytics-bars span{
+    width:7px;
+
+    border-radius:3px 3px 1px 1px;
+
+    background:
+        linear-gradient(
+            to top,
+            #008dcc,
+            #00d9ff
+        );
+
+    box-shadow:
+        0 0 8px rgba(0,207,255,.55);
+
+    animation:
+        analyticsBars 2s ease-in-out infinite;
+}
+
+.analytics-bars span:nth-child(1){
+    height:17px;
+    animation-delay:.1s;
+}
+
+.analytics-bars span:nth-child(2){
+    height:27px;
+    animation-delay:.25s;
+}
+
+.analytics-bars span:nth-child(3){
+    height:35px;
+    animation-delay:.4s;
+}
+
+.analytics-bars span:nth-child(4){
+    height:23px;
+    animation-delay:.55s;
+}
+
+
+/* =========================================
+   POWER BI
+========================================= */
+
+.powerbi-glass{
+    animation:
+        powerbiFloat 4.2s ease-in-out infinite;
+}
+
+.powerbi-bars{
+    position:relative;
+    z-index:3;
+
+    display:flex;
+    align-items:flex-end;
+
+    gap:5px;
+
+    height:42px;
+
+    transform:translateZ(25px);
+}
+
+.powerbi-bars span{
+    width:10px;
+
+    border-radius:3px 3px 1px 1px;
+
+    background:
+        linear-gradient(
+            to top,
+            #f2a900,
+            #ffd83d
+        );
+
+    box-shadow:
+        0 0 9px rgba(255,196,0,.45);
+
+    animation:
+        powerbiBars 2.4s ease-in-out infinite;
+}
+
+.powerbi-bars span:nth-child(1){
+    height:22px;
+}
+
+.powerbi-bars span:nth-child(2){
+    height:35px;
+    animation-delay:.2s;
+}
+
+.powerbi-bars span:nth-child(3){
+    height:29px;
+    animation-delay:.4s;
+}
+
+
+/* =========================================
+   EXCEL AUTOMATION
+========================================= */
+
+.automation-glass{
+    animation:
+        automationFloat 4s ease-in-out infinite;
+}
+
+.gear-main,
+.gear-small{
+    position:absolute;
+
+    z-index:3;
+
+    color:#00cfff;
+
+    filter:
+        drop-shadow(0 0 7px rgba(0,207,255,.6));
+
+    transform:translateZ(25px);
+}
+
+.gear-main{
+    font-size:36px;
+
+    animation:
+        gearRotate 5s linear infinite;
+}
+
+.gear-small{
+    right:18px;
+    bottom:17px;
+
+    font-size:19px;
+
+    animation:
+        gearRotateReverse 3.5s linear infinite;
+}
+
+
+/* =========================================
+   SQL
+========================================= */
+
+.sql-glass{
+    animation:
+        sqlFloat 4.3s ease-in-out infinite;
+}
+
+.sql-database{
+    position:absolute;
+
+    z-index:2;
+
+    top:16px;
+
+    width:38px;
+    height:35px;
+
+    transform:translateZ(25px);
+}
+
+.sql-database span{
+    position:absolute;
+
+    left:0;
+
+    width:38px;
+    height:13px;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #28a9ff,
+            #0878c8
+        );
+
+    border:1px solid rgba(255,255,255,.2);
+
+    box-shadow:
+        0 0 8px rgba(0,150,255,.45);
+}
+
+.sql-database span:nth-child(1){
+    top:0;
+}
+
+.sql-database span:nth-child(2){
+    top:10px;
+}
+
+.sql-database span:nth-child(3){
+    top:20px;
+}
+
+.sql-glass strong{
+    position:relative;
+
+    z-index:4;
+
+    margin-top:30px;
+
+    color:#fff;
+
+    font-size:10px;
+    letter-spacing:1px;
+
+    text-shadow:
+        0 0 8px rgba(0,180,255,.8);
+
+    transform:translateZ(35px);
+}
+
+
+/* =========================================
+   BUSINESS INTELLIGENCE
+========================================= */
+
+.bi-glass{
+    animation:
+        biFloat 4.5s ease-in-out infinite;
+}
+
+.bi-glass > i{
+    position:relative;
+
+    z-index:3;
+
+    color:#b46cff;
+
+    font-size:36px;
+
+    transform:translateZ(28px);
+
+    filter:
+        drop-shadow(0 0 8px rgba(180,108,255,.65));
+
+    animation:
+        brainPulse 2.5s ease-in-out infinite;
+}
+
+
+/* BI NETWORK NODES */
+
+.bi-node{
+    position:absolute;
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:#00d9ff;
+
+    box-shadow:
+        0 0 10px rgba(0,217,255,.9);
+
+    z-index:4;
+
+    animation:
+        nodePulse 2s ease-in-out infinite;
+}
+
+.node1{
+    top:15px;
+    right:15px;
+}
+
+.node2{
+    bottom:15px;
+    left:15px;
+
+    animation-delay:.5s;
+}
+
+.node3{
+    bottom:13px;
+    right:14px;
+
+    animation-delay:1s;
+}
+
+
+/* =========================================
+   HOVER EFFECT
+========================================= */
+
+.service-card:hover .premium-logo{
+    transform:
+        perspective(700px)
+        rotateX(8deg)
+        rotateY(-10deg)
+        translateY(-8px)
+        scale(1.08);
+
+    border-color:
+        rgba(0,207,255,.45);
+
+    box-shadow:
+        inset 0 1px 3px rgba(255,255,255,.3),
+        0 20px 42px rgba(0,0,0,.3),
+        0 0 30px rgba(0,207,255,.22);
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes premiumShine{
+
+    0%,25%{
+        left:-70px;
+        opacity:0;
+    }
+
+    40%{
+        opacity:.8;
+    }
+
+    60%,100%{
+        left:130px;
+        opacity:0;
+    }
+}
+
+
+@keyframes analyticsFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+}
+
+
+@keyframes analyticsBars{
+
+    0%,100%{
+        transform:scaleY(.9);
+    }
+
+    50%{
+        transform:scaleY(1.08);
+    }
+}
+
+
+@keyframes powerbiFloat{
+
+    0%,100%{
+        transform:translateY(0) rotateZ(0);
+    }
+
+    50%{
+        transform:translateY(-6px) rotateZ(1deg);
+    }
+}
+
+
+@keyframes powerbiBars{
+
+    0%,100%{
+        transform:scaleY(.9);
+    }
+
+    50%{
+        transform:scaleY(1.12);
+    }
+}
+
+
+@keyframes automationFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-5px);
+    }
+}
+
+
+@keyframes gearRotate{
+    from{
+        transform:translateZ(25px) rotate(0);
+    }
+
+    to{
+        transform:translateZ(25px) rotate(360deg);
+    }
+}
+
+
+@keyframes gearRotateReverse{
+    from{
+        transform:translateZ(25px) rotate(360deg);
+    }
+
+    to{
+        transform:translateZ(25px) rotate(0);
+    }
+}
+
+
+@keyframes sqlFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+}
+
+
+@keyframes biFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+}
+
+
+@keyframes brainPulse{
+
+    0%,100%{
+        transform:translateZ(28px) scale(1);
+    }
+
+    50%{
+        transform:translateZ(28px) scale(1.08);
+    }
+}
+
+
+@keyframes nodePulse{
+
+    0%,100%{
+        transform:scale(.8);
+        opacity:.6;
+    }
+
+    50%{
+        transform:scale(1.5);
+        opacity:1;
+    }
+}
   
 </style>
 </head>
@@ -2183,8 +2759,25 @@ display:flex;
       <p class="section-subtitle">From data engineering to executive dashboards — a complete analytics stack delivered by specialists.</p>
     </div>
     <div class="services-grid">
-      <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-chart-pie"></i></div><h3>Data Analytics</h3><p>Deep statistical analysis that surfaces patterns and opportunities hidden in your business data.</p></div>
-      <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-chart-line"></i></div><h3>Power BI Dashboards</h3><p>Interactive, beautifully designed dashboards your leadership team will actually use every day.</p></div>
+      <div class="service-card reveal">
+        <div class="service-icon premium-logo analytics-glass">
+    <div class="analytics-bars">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+        <h3>Data Analytics</h3><p>Deep statistical analysis that surfaces patterns and opportunities hidden in your business data.</p></div>
+      <div class="service-card reveal">
+        <div class="service-icon premium-logo powerbi-glass">
+    <div class="powerbi-bars">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+        <h3>Power BI Dashboards</h3><p>Interactive, beautifully designed dashboards your leadership team will actually use every day.</p></div>
       <div class="service-card reveal">
         <div class="service-icon excel-logo">
     <div class="excel-glass-logo">
@@ -2197,9 +2790,34 @@ display:flex;
     </div>
 </div>
         <h3>Excel Reporting</h3><p>Boardroom-ready Excel reports with elegant formatting, dynamic charts and pivot analytics.</p></div>
-      <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-robot"></i></div><h3>Excel Automation</h3><p>VBA, Power Query and macros that turn hours of manual work into one-click workflows.</p></div>
-      <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-database"></i></div><h3>SQL Data Analysis</h3><p>Production-grade SQL queries, optimization and modeling for large transactional datasets.</p></div>
-      <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-brain"></i></div><h3>Business Intelligence</h3><p>End-to-end BI strategy, data warehousing and KPI architecture aligned with your goals.</p></div>
+      <div class="service-card reveal">
+        <div class="service-icon premium-logo automation-glass">
+    <div class="gear-main">
+        <i class="fa-solid fa-gear"></i>
+    </div>
+    <div class="gear-small">
+        <i class="fa-solid fa-gear"></i>
+    </div>
+</div>
+        <h3>Excel Automation</h3><p>VBA, Power Query and macros that turn hours of manual work into one-click workflows.</p></div>
+      <div class="service-card reveal">
+        <div class="service-icon premium-logo sql-glass">
+    <div class="sql-database">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <strong>SQL</strong>
+</div>
+        <h3>SQL Data Analysis</h3><p>Production-grade SQL queries, optimization and modeling for large transactional datasets.</p></div>
+      <div class="service-card reveal">
+        <div class="service-icon premium-logo bi-glass">
+    <i class="fa-solid fa-brain"></i>
+    <div class="bi-node node1"></div>
+    <div class="bi-node node2"></div>
+    <div class="bi-node node3"></div>
+</div>
+        <h3>Business Intelligence</h3><p>End-to-end BI strategy, data warehousing and KPI architecture aligned with your goals.</p></div>
     </div>
   </div>
 </section>
