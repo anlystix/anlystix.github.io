@@ -1462,14 +1462,23 @@ display:flex;
         0 8px 35px rgba(0,0,0,.18);
 
     transition:
-        background .35s ease,
-        backdrop-filter .35s ease,
-        box-shadow .35s ease;
+    top .35s ease,
+    left .35s ease,
+    right .35s ease,
+    background .35s ease,
+    backdrop-filter .35s ease,
+    box-shadow .35s ease,
+    border-radius .35s ease;
 }
 
 .header.scrolled{
+    top:8px;
+    left:4%;
+    right:4%;
+
     background:rgba(7,17,31,.68) !important;
-    border-radius:16px;
+    border-radius:18px;
+
     backdrop-filter:blur(24px) saturate(150%);
     -webkit-backdrop-filter:blur(24px) saturate(150%);
 
