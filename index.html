@@ -1841,14 +1841,14 @@ display:flex;
 
 /* Excel icon */
 
-.excel-logo i{
+.excel-logo img{
     position:relative;
-
     z-index:2;
 
-    color:#21a366;
+    width:38px;
+    height:38px;
 
-    font-size:36px;
+    object-fit:contain;
 
     transform:translateZ(20px);
 
@@ -1863,6 +1863,15 @@ display:flex;
         filter .5s ease;
 }
 
+.service-card:hover .excel-logo img{
+    transform:
+        translateZ(35px)
+        scale(1.16);
+
+    filter:
+        drop-shadow(0 0 8px rgba(33,163,102,.8))
+        drop-shadow(0 0 18px rgba(33,163,102,.35));
+}
 
 /* =========================================
    HOVER — ADVANCED INTERACTION
@@ -2229,8 +2238,11 @@ display:flex;
     <div class="services-grid">
       <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-chart-pie"></i></div><h3>Data Analytics</h3><p>Deep statistical analysis that surfaces patterns and opportunities hidden in your business data.</p></div>
       <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-chart-line"></i></div><h3>Power BI Dashboards</h3><p>Interactive, beautifully designed dashboards your leadership team will actually use every day.</p></div>
-      <div class="service-card reveal"><div class="service-icon excel-logo">
-    <i class="fa-solid fa-file-excel"></i>
+      <div class="service-card reveal">
+        <div class="service-icon excel-logo">
+    <img
+        src="https://cdn.simpleicons.org/microsoftexcel"
+        alt="Microsoft Excel">
 </div>
         <h3>Excel Reporting</h3><p>Boardroom-ready Excel reports with elegant formatting, dynamic charts and pivot analytics.</p></div>
       <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-robot"></i></div><h3>Excel Automation</h3><p>VBA, Power Query and macros that turn hours of manual work into one-click workflows.</p></div>
