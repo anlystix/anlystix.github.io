@@ -1757,6 +1757,41 @@ display:flex;
     }
 
 }
+  .excel-logo{
+    animation: excelFloat 3s ease-in-out infinite;
+}
+
+.excel-logo i{
+    color:#21a366;
+    font-size:36px;
+
+    filter:drop-shadow(0 0 6px rgba(33,163,102,.45));
+
+    transition:transform .35s ease, filter .35s ease;
+}
+
+.service-card:hover .excel-logo{
+    transform:translateY(-5px) scale(1.05);
+}
+
+.service-card:hover .excel-logo i{
+    transform:scale(1.15);
+
+    filter:
+        drop-shadow(0 0 12px rgba(33,163,102,.8));
+}
+
+@keyframes excelFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-5px);
+    }
+
+}
 </style>
 </head>
 <body>
@@ -1988,7 +2023,10 @@ display:flex;
     <div class="services-grid">
       <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-chart-pie"></i></div><h3>Data Analytics</h3><p>Deep statistical analysis that surfaces patterns and opportunities hidden in your business data.</p></div>
       <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-chart-line"></i></div><h3>Power BI Dashboards</h3><p>Interactive, beautifully designed dashboards your leadership team will actually use every day.</p></div>
-      <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-file-excel"></i></div><h3>Excel Reporting</h3><p>Boardroom-ready Excel reports with elegant formatting, dynamic charts and pivot analytics.</p></div>
+      <div class="service-card reveal"><div class="service-icon excel-logo">
+    <i class="fa-solid fa-file-excel"></i>
+</div>
+        <h3>Excel Reporting</h3><p>Boardroom-ready Excel reports with elegant formatting, dynamic charts and pivot analytics.</p></div>
       <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-robot"></i></div><h3>Excel Automation</h3><p>VBA, Power Query and macros that turn hours of manual work into one-click workflows.</p></div>
       <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-database"></i></div><h3>SQL Data Analysis</h3><p>Production-grade SQL queries, optimization and modeling for large transactional datasets.</p></div>
       <div class="service-card reveal"><div class="service-icon"><i class="fa-solid fa-brain"></i></div><h3>Business Intelligence</h3><p>End-to-end BI strategy, data warehousing and KPI architecture aligned with your goals.</p></div>
