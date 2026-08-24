@@ -1954,107 +1954,82 @@ display:flex;
     }
 }
 /* =========================================
-   ANLYSTIX — PREMIUM GLASS LOGO SYSTEM
-   Same animation language as Excel
+   PREMIUM GLASS LOGOS
+   SAME STYLE AS EXCEL LOGO
 ========================================= */
 
-.premium-logo{
+
+/* -----------------------------------------
+   COMMON GLASS CONTAINER
+----------------------------------------- */
+
+.premium-glass-logo{
     position:relative;
-    width:78px;
-    height:78px;
+
+    width:58px;
+    height:58px;
+
+    border-radius:14px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    border-radius:20px;
-
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.18),
-            rgba(255,255,255,.055) 45%,
-            rgba(0,207,255,.08)
+            rgba(255,255,255,.24),
+            rgba(255,255,255,.07)
         );
 
-    border:1px solid rgba(255,255,255,.22);
-
-    backdrop-filter:blur(18px) saturate(160%);
-    -webkit-backdrop-filter:blur(18px) saturate(160%);
+    border:1px solid rgba(255,255,255,.28);
 
     box-shadow:
-        inset 0 1px 2px rgba(255,255,255,.30),
+        inset 0 1px 2px rgba(255,255,255,.35),
         inset 0 -8px 20px rgba(0,0,0,.12),
-        0 10px 28px rgba(0,0,0,.22),
-        0 0 18px rgba(0,207,255,.10);
+        0 8px 25px rgba(0,0,0,.25);
 
-    overflow:hidden;
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
 
     transform-style:preserve-3d;
 
     animation:
         premiumLogoFloat 4s ease-in-out infinite;
 
+    overflow:hidden;
+
     transition:
-        transform .55s cubic-bezier(.2,.8,.2,1),
-        box-shadow .5s ease,
-        border-color .5s ease;
+        transform .5s cubic-bezier(.2,.8,.2,1),
+        box-shadow .5s ease;
 }
 
 
-/* GLASS REFLECTION */
+/* -----------------------------------------
+   SAME GLASS REFLECTION AS EXCEL
+----------------------------------------- */
 
-.premium-logo::before{
+.premium-glass-logo::before{
     content:"";
 
     position:absolute;
 
     width:28px;
-    height:120px;
+    height:90px;
 
-    left:-60px;
-    top:-20px;
+    left:-45px;
+    top:-15px;
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.30),
-            transparent
-        );
+    background:rgba(255,255,255,.22);
 
-    transform:rotate(30deg);
+    transform:rotate(35deg);
 
-    filter:blur(2px);
+    filter:blur(4px);
 
     animation:
-        premiumLogoShine 4.5s ease-in-out infinite;
-
-    pointer-events:none;
+        premiumLogoReflection 4s ease-in-out infinite;
 
     z-index:10;
-}
-
-
-/* INNER GLASS EDGE */
-
-.premium-logo::after{
-    content:"";
-
-    position:absolute;
-
-    inset:6px;
-
-    border-radius:15px;
-
-    border:1px solid rgba(255,255,255,.09);
-
-    box-shadow:
-        inset 0 0 18px rgba(255,255,255,.055);
-
-    pointer-events:none;
-
-    z-index:9;
 }
 
 
@@ -2063,63 +2038,65 @@ display:flex;
 ========================================= */
 
 .analytics-glass{
-    --logo-color:#00cfff;
+    box-shadow:
+        inset 0 1px 2px rgba(255,255,255,.35),
+        inset 0 -8px 20px rgba(0,0,0,.12),
+        0 8px 25px rgba(0,0,0,.25),
+        0 0 22px rgba(0,207,255,.18);
 }
 
 .analytics-bars{
-    position:relative;
-    z-index:4;
+    position:absolute;
+
+    left:8px;
+    bottom:10px;
 
     width:42px;
-    height:40px;
+    height:38px;
 
     display:flex;
     align-items:flex-end;
     justify-content:center;
 
-    gap:5px;
+    gap:4px;
 
-    transform:translateZ(25px);
+    z-index:3;
+
+    transform:translateZ(20px);
 }
 
 .analytics-bars span{
+    display:block;
+
     width:7px;
 
-    border-radius:4px 4px 2px 2px;
+    border-radius:2px 2px 1px 1px;
 
     background:
         linear-gradient(
-            to top,
-            #008dcc,
-            #00e1ff
+            145deg,
+            #39ddff,
+            #008dcc
         );
 
     box-shadow:
-        0 4px 10px rgba(0,207,255,.35),
-        0 0 9px rgba(0,207,255,.45);
-
-    animation:
-        analyticsBarMotion 2.4s ease-in-out infinite;
+        0 5px 10px rgba(0,207,255,.28);
 }
 
 .analytics-bars span:nth-child(1){
-    height:18px;
-    animation-delay:.05s;
+    height:16px;
 }
 
 .analytics-bars span:nth-child(2){
-    height:29px;
-    animation-delay:.18s;
+    height:25px;
 }
 
 .analytics-bars span:nth-child(3){
-    height:38px;
-    animation-delay:.31s;
+    height:35px;
 }
 
 .analytics-bars span:nth-child(4){
-    height:25px;
-    animation-delay:.44s;
+    height:22px;
 }
 
 
@@ -2128,56 +2105,61 @@ display:flex;
 ========================================= */
 
 .powerbi-glass{
-    --logo-color:#f6b800;
+    box-shadow:
+        inset 0 1px 2px rgba(255,255,255,.35),
+        inset 0 -8px 20px rgba(0,0,0,.12),
+        0 8px 25px rgba(0,0,0,.25),
+        0 0 22px rgba(255,193,7,.18);
 }
 
 .powerbi-bars{
-    position:relative;
-    z-index:4;
+    position:absolute;
+
+    left:10px;
+    bottom:9px;
+
+    width:38px;
+    height:40px;
 
     display:flex;
     align-items:flex-end;
+    justify-content:center;
 
-    gap:5px;
+    gap:4px;
 
-    height:42px;
+    z-index:3;
 
-    transform:translateZ(25px);
+    transform:translateZ(20px);
 }
 
 .powerbi-bars span{
-    width:10px;
+    display:block;
 
-    border-radius:4px 4px 2px 2px;
+    width:8px;
+
+    border-radius:3px 3px 1px 1px;
 
     background:
         linear-gradient(
-            to top,
-            #d88900,
-            #ffd83d
+            145deg,
+            #ffe36b,
+            #e7a500
         );
 
     box-shadow:
-        0 4px 10px rgba(255,190,0,.30),
-        0 0 10px rgba(255,196,0,.40);
-
-    animation:
-        powerbiBarMotion 2.5s ease-in-out infinite;
+        0 5px 10px rgba(255,190,0,.28);
 }
 
 .powerbi-bars span:nth-child(1){
-    height:22px;
-    animation-delay:.1s;
+    height:20px;
 }
 
 .powerbi-bars span:nth-child(2){
-    height:37px;
-    animation-delay:.25s;
+    height:34px;
 }
 
 .powerbi-bars span:nth-child(3){
-    height:30px;
-    animation-delay:.4s;
+    height:27px;
 }
 
 
@@ -2186,39 +2168,53 @@ display:flex;
 ========================================= */
 
 .automation-glass{
-    --logo-color:#00cfff;
-}
-
-.gear-main,
-.gear-small{
-    position:absolute;
-
-    z-index:5;
-
-    color:#00cfff;
-
-    filter:
-        drop-shadow(0 0 6px rgba(0,207,255,.65))
-        drop-shadow(0 0 14px rgba(0,207,255,.20));
-
-    transform:translateZ(25px);
+    box-shadow:
+        inset 0 1px 2px rgba(255,255,255,.35),
+        inset 0 -8px 20px rgba(0,0,0,.12),
+        0 8px 25px rgba(0,0,0,.25),
+        0 0 22px rgba(0,207,255,.18);
 }
 
 .gear-main{
-    font-size:36px;
+    position:absolute;
 
-    animation:
-        mainGearMotion 5s linear infinite;
+    left:11px;
+    top:11px;
+
+    color:#00cfff;
+
+    font-size:34px;
+
+    z-index:3;
+
+    transform:
+        translateZ(20px);
+
+    filter:
+        drop-shadow(
+            0 5px 8px rgba(0,0,0,.28)
+        );
 }
 
 .gear-small{
-    right:18px;
-    bottom:17px;
+    position:absolute;
 
-    font-size:19px;
+    right:12px;
+    bottom:11px;
 
-    animation:
-        smallGearMotion 3.5s linear infinite;
+    color:#5ee8ff;
+
+    font-size:18px;
+
+    z-index:4;
+
+    transform:
+        translateZ(30px);
+
+    filter:
+        drop-shadow(
+            0 4px 7px rgba(0,0,0,.28)
+        );
 }
 
 
@@ -2227,23 +2223,26 @@ display:flex;
 ========================================= */
 
 .sql-glass{
-    --logo-color:#28a9ff;
+    box-shadow:
+        inset 0 1px 2px rgba(255,255,255,.35),
+        inset 0 -8px 20px rgba(0,0,0,.12),
+        0 8px 25px rgba(0,0,0,.25),
+        0 0 22px rgba(40,169,255,.18);
 }
 
 .sql-database{
     position:absolute;
 
-    z-index:4;
-
-    top:16px;
+    left:9px;
+    top:13px;
 
     width:40px;
-    height:36px;
+    height:34px;
 
-    transform:translateZ(25px);
+    z-index:3;
 
-    filter:
-        drop-shadow(0 0 7px rgba(40,169,255,.45));
+    transform:
+        translateZ(20px);
 }
 
 .sql-database span{
@@ -2252,22 +2251,21 @@ display:flex;
     left:0;
 
     width:40px;
-    height:14px;
+    height:13px;
 
     border-radius:50%;
 
     background:
         linear-gradient(
-            180deg,
-            #43b7ff,
+            145deg,
+            #4dc1ff,
             #0878c8
         );
 
-    border:1px solid rgba(255,255,255,.22);
+    border:1px solid rgba(255,255,255,.25);
 
     box-shadow:
-        inset 0 1px 2px rgba(255,255,255,.25),
-        0 0 8px rgba(0,150,255,.35);
+        0 4px 8px rgba(0,0,0,.20);
 }
 
 .sql-database span:nth-child(1){
@@ -2275,31 +2273,32 @@ display:flex;
 }
 
 .sql-database span:nth-child(2){
-    top:10px;
+    top:9px;
 }
 
 .sql-database span:nth-child(3){
-    top:20px;
+    top:18px;
 }
 
 .sql-glass strong{
-    position:relative;
+    position:absolute;
 
-    z-index:6;
-
-    margin-top:31px;
+    bottom:5px;
 
     color:#fff;
 
-    font-size:10px;
-    font-weight:700;
+    font-size:8px;
+
+    font-weight:800;
 
     letter-spacing:1px;
 
-    text-shadow:
-        0 0 8px rgba(0,180,255,.8);
+    z-index:5;
 
-    transform:translateZ(35px);
+    transform:translateZ(30px);
+
+    text-shadow:
+        0 2px 4px rgba(0,0,0,.4);
 }
 
 
@@ -2308,99 +2307,124 @@ display:flex;
 ========================================= */
 
 .bi-glass{
-    --logo-color:#b46cff;
+    box-shadow:
+        inset 0 1px 2px rgba(255,255,255,.35),
+        inset 0 -8px 20px rgba(0,0,0,.12),
+        0 8px 25px rgba(0,0,0,.25),
+        0 0 22px rgba(180,108,255,.18);
 }
 
 .bi-glass > i{
     position:relative;
 
-    z-index:5;
+    z-index:3;
 
-    color:#b46cff;
+    color:#c28aff;
 
-    font-size:36px;
+    font-size:34px;
 
-    transform:translateZ(28px);
+    transform:
+        translateZ(20px);
 
     filter:
-        drop-shadow(0 0 7px rgba(180,108,255,.65))
-        drop-shadow(0 0 15px rgba(180,108,255,.20));
-
-    animation:
-        brainMotion 2.8s ease-in-out infinite;
+        drop-shadow(
+            0 5px 8px rgba(0,0,0,.28)
+        );
 }
-
-
-/* NETWORK NODES */
 
 .bi-node{
     position:absolute;
 
-    width:6px;
-    height:6px;
+    width:5px;
+    height:5px;
 
     border-radius:50%;
 
     background:#00d9ff;
 
     box-shadow:
-        0 0 8px rgba(0,217,255,.9),
-        0 0 16px rgba(0,217,255,.35);
+        0 0 8px rgba(0,217,255,.8);
 
-    z-index:6;
-
-    animation:
-        nodeMotion 2s ease-in-out infinite;
+    z-index:5;
 }
 
 .node1{
-    top:15px;
-    right:15px;
+    top:13px;
+    right:12px;
 }
 
 .node2{
-    bottom:15px;
-    left:15px;
-
-    animation-delay:.45s;
+    bottom:12px;
+    left:12px;
 }
 
 .node3{
-    bottom:13px;
-    right:14px;
-
-    animation-delay:.9s;
+    bottom:10px;
+    right:12px;
 }
 
 
 /* =========================================
-   HOVER — SAME PREMIUM FEEL
+   SAME HOVER EFFECT AS EXCEL
 ========================================= */
 
-.service-card:hover .premium-logo{
-
-    animation-play-state:paused;
+.service-card:hover .premium-glass-logo{
 
     transform:
-        perspective(700px)
+        perspective(600px)
         rotateX(8deg)
         rotateY(-12deg)
         translateY(-8px)
-        scale(1.08);
-
-    border-color:
-        rgba(255,255,255,.38);
+        scale(1.1);
 
     box-shadow:
-        inset 0 1px 3px rgba(255,255,255,.35),
-        inset 0 -8px 20px rgba(0,0,0,.14),
-        0 20px 45px rgba(0,0,0,.30),
-        0 0 30px var(--logo-color);
+        inset 0 1px 3px rgba(255,255,255,.4),
+        0 18px 40px rgba(0,0,0,.35);
+}
+
+
+/* -----------------------------------------
+   INDIVIDUAL HOVER GLOW
+----------------------------------------- */
+
+.service-card:hover .analytics-glass{
+    box-shadow:
+        inset 0 1px 3px rgba(255,255,255,.4),
+        0 18px 40px rgba(0,0,0,.35),
+        0 0 35px rgba(0,207,255,.4);
+}
+
+.service-card:hover .powerbi-glass{
+    box-shadow:
+        inset 0 1px 3px rgba(255,255,255,.4),
+        0 18px 40px rgba(0,0,0,.35),
+        0 0 35px rgba(255,193,7,.4);
+}
+
+.service-card:hover .automation-glass{
+    box-shadow:
+        inset 0 1px 3px rgba(255,255,255,.4),
+        0 18px 40px rgba(0,0,0,.35),
+        0 0 35px rgba(0,207,255,.4);
+}
+
+.service-card:hover .sql-glass{
+    box-shadow:
+        inset 0 1px 3px rgba(255,255,255,.4),
+        0 18px 40px rgba(0,0,0,.35),
+        0 0 35px rgba(40,169,255,.4);
+}
+
+.service-card:hover .bi-glass{
+    box-shadow:
+        inset 0 1px 3px rgba(255,255,255,.4),
+        0 18px 40px rgba(0,0,0,.35),
+        0 0 35px rgba(180,108,255,.4);
 }
 
 
 /* =========================================
-   FLOATING
+   SAME FLOATING ANIMATION AS EXCEL
 ========================================= */
 
 @keyframes premiumLogoFloat{
@@ -2408,186 +2432,38 @@ display:flex;
     0%,100%{
         transform:
             translateY(0)
-            rotateZ(0deg);
-    }
-
-    25%{
-        transform:
-            translateY(-3px)
-            rotateZ(-.7deg);
+            rotateZ(0);
     }
 
     50%{
         transform:
             translateY(-7px)
-            rotateZ(0deg);
-    }
-
-    75%{
-        transform:
-            translateY(-3px)
-            rotateZ(.7deg);
+            rotateZ(1deg);
     }
 }
 
 
 /* =========================================
-   GLASS SHINE
+   SAME REFLECTION SWEEP AS EXCEL
 ========================================= */
 
-@keyframes premiumLogoShine{
+@keyframes premiumLogoReflection{
 
-    0%,25%{
-        left:-70px;
+    0%,30%{
+        left:-50px;
         opacity:0;
     }
 
-    40%{
+    45%{
         opacity:.8;
     }
 
-    60%,100%{
-        left:130px;
+    65%,100%{
+        left:75px;
         opacity:0;
     }
 }
-
-
-/* =========================================
-   ANALYTICS
-========================================= */
-
-@keyframes analyticsBarMotion{
-
-    0%,100%{
-        transform:
-            scaleY(.88)
-            translateZ(0);
-    }
-
-    50%{
-        transform:
-            scaleY(1.08)
-            translateZ(8px);
-    }
-}
-
-
-/* =========================================
-   POWER BI
-========================================= */
-
-@keyframes powerbiBarMotion{
-
-    0%,100%{
-        transform:
-            scaleY(.9);
-    }
-
-    50%{
-        transform:
-            scaleY(1.10);
-    }
-}
-
-
-/* =========================================
-   GEARS
-========================================= */
-
-@keyframes mainGearMotion{
-
-    from{
-        transform:
-            translateZ(25px)
-            rotate(0deg);
-    }
-
-    to{
-        transform:
-            translateZ(25px)
-            rotate(360deg);
-    }
-}
-
-
-@keyframes smallGearMotion{
-
-    from{
-        transform:
-            translateZ(25px)
-            rotate(360deg);
-    }
-
-    to{
-        transform:
-            translateZ(25px)
-            rotate(0deg);
-    }
-}
-
-
-/* =========================================
-   BRAIN
-========================================= */
-
-@keyframes brainMotion{
-
-    0%,100%{
-        transform:
-            translateZ(28px)
-            scale(1);
-    }
-
-    50%{
-        transform:
-            translateZ(35px)
-            scale(1.08);
-    }
-}
-
-
-/* =========================================
-   SQL SUBTLE MOTION
-========================================= */
-
-.sql-glass .sql-database{
-    animation:
-        sqlDepth 3s ease-in-out infinite;
-}
-
-@keyframes sqlDepth{
-
-    0%,100%{
-        transform:
-            translateZ(25px)
-            translateY(0);
-    }
-
-    50%{
-        transform:
-            translateZ(35px)
-            translateY(-3px);
-    }
-}
-
-
-/* =========================================
-   BI NODES
-========================================= */
-
-@keyframes nodeMotion{
-
-    0%,100%{
-        transform:scale(.75);
-        opacity:.55;
-    }
-
-    50%{
-        transform:scale(1.45);
-        opacity:1;
-    }
-}
+  
 </style>
 </head>
 <body>
@@ -2818,13 +2694,15 @@ display:flex;
     </div>
     <div class="services-grid">
       <div class="service-card reveal">
-        <div class="service-icon premium-logo analytics-glass">
-    <div class="analytics-bars">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        <div class="service-icon">
+    <div class="premium-glass-logo powerbi-glass">
+        <div class="powerbi-bars">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
+</div>
 </div>
         <h3>Data Analytics</h3><p>Deep statistical analysis that surfaces patterns and opportunities hidden in your business data.</p></div>
       <div class="service-card reveal">
@@ -2849,12 +2727,14 @@ display:flex;
 </div>
         <h3>Excel Reporting</h3><p>Boardroom-ready Excel reports with elegant formatting, dynamic charts and pivot analytics.</p></div>
       <div class="service-card reveal">
-        <div class="service-icon premium-logo automation-glass">
-    <div class="gear-main">
-        <i class="fa-solid fa-gear"></i>
-    </div>
-    <div class="gear-small">
-        <i class="fa-solid fa-gear"></i>
+        <div class="service-icon">
+    <div class="premium-glass-logo sql-glass">
+        <div class="sql-database">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <strong>SQL</strong>
     </div>
 </div>
         <h3>Excel Automation</h3><p>VBA, Power Query and macros that turn hours of manual work into one-click workflows.</p></div>
@@ -2869,11 +2749,13 @@ display:flex;
 </div>
         <h3>SQL Data Analysis</h3><p>Production-grade SQL queries, optimization and modeling for large transactional datasets.</p></div>
       <div class="service-card reveal">
-        <div class="service-icon premium-logo bi-glass">
-    <i class="fa-solid fa-brain"></i>
-    <div class="bi-node node1"></div>
-    <div class="bi-node node2"></div>
-    <div class="bi-node node3"></div>
+        <div class="service-icon">
+    <div class="premium-glass-logo bi-glass">
+        <i class="fa-solid fa-brain"></i>
+        <div class="bi-node node1"></div>
+        <div class="bi-node node2"></div>
+        <div class="bi-node node3"></div>
+    </div>
 </div>
         <h3>Business Intelligence</h3><p>End-to-end BI strategy, data warehousing and KPI architecture aligned with your goals.</p></div>
     </div>
