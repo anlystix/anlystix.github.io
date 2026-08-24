@@ -1954,514 +1954,171 @@ display:flex;
     }
 }
 /* =========================================
-   PREMIUM GLASS LOGOS
-   SAME STYLE AS EXCEL LOGO
+   SAME EXCEL PREMIUM GLASS STYLE
+   OTHER SERVICE LOGOS
 ========================================= */
 
-
-/* -----------------------------------------
-   COMMON GLASS CONTAINER
------------------------------------------ */
-
-.premium-glass-logo{
+.analytics-logo i,
+.powerbi-logo i,
+.automation-logo i,
+.sql-logo i,
+.bi-logo i{
     position:relative;
 
-    width:58px;
-    height:58px;
+    z-index:5;
 
-    border-radius:14px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.24),
-            rgba(255,255,255,.07)
-        );
-
-    border:1px solid rgba(255,255,255,.28);
-
-    box-shadow:
-        inset 0 1px 2px rgba(255,255,255,.35),
-        inset 0 -8px 20px rgba(0,0,0,.12),
-        0 8px 25px rgba(0,0,0,.25);
-
-    backdrop-filter:blur(14px);
-    -webkit-backdrop-filter:blur(14px);
-
-    transform-style:preserve-3d;
-
-    animation:
-        premiumLogoFloat 4s ease-in-out infinite;
-
-    overflow:hidden;
-
-    transition:
-        transform .5s cubic-bezier(.2,.8,.2,1),
-        box-shadow .5s ease;
-}
-
-
-/* -----------------------------------------
-   SAME GLASS REFLECTION AS EXCEL
------------------------------------------ */
-
-.premium-glass-logo::before{
-    content:"";
-
-    position:absolute;
-
-    width:28px;
-    height:90px;
-
-    left:-45px;
-    top:-15px;
-
-    background:rgba(255,255,255,.22);
-
-    transform:rotate(35deg);
-
-    filter:blur(4px);
-
-    animation:
-        premiumLogoReflection 4s ease-in-out infinite;
-
-    z-index:10;
-}
-
-
-/* =========================================
-   DATA ANALYTICS
-========================================= */
-
-.analytics-glass{
-    box-shadow:
-        inset 0 1px 2px rgba(255,255,255,.35),
-        inset 0 -8px 20px rgba(0,0,0,.12),
-        0 8px 25px rgba(0,0,0,.25),
-        0 0 22px rgba(0,207,255,.18);
-}
-
-.analytics-bars{
-    position:absolute;
-
-    left:8px;
-    bottom:10px;
-
-    width:42px;
-    height:38px;
-
-    display:flex;
-    align-items:flex-end;
-    justify-content:center;
-
-    gap:4px;
-
-    z-index:3;
-
-    transform:translateZ(20px);
-}
-
-.analytics-bars span{
-    display:block;
-
-    width:7px;
-
-    border-radius:2px 2px 1px 1px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #39ddff,
-            #008dcc
-        );
-
-    box-shadow:
-        0 5px 10px rgba(0,207,255,.28);
-}
-
-.analytics-bars span:nth-child(1){
-    height:16px;
-}
-
-.analytics-bars span:nth-child(2){
-    height:25px;
-}
-
-.analytics-bars span:nth-child(3){
-    height:35px;
-}
-
-.analytics-bars span:nth-child(4){
-    height:22px;
-}
-
-
-/* =========================================
-   POWER BI
-========================================= */
-
-.powerbi-glass{
-    box-shadow:
-        inset 0 1px 2px rgba(255,255,255,.35),
-        inset 0 -8px 20px rgba(0,0,0,.12),
-        0 8px 25px rgba(0,0,0,.25),
-        0 0 22px rgba(255,193,7,.18);
-}
-
-.powerbi-bars{
-    position:absolute;
-
-    left:10px;
-    bottom:9px;
-
-    width:38px;
-    height:40px;
-
-    display:flex;
-    align-items:flex-end;
-    justify-content:center;
-
-    gap:4px;
-
-    z-index:3;
-
-    transform:translateZ(20px);
-}
-
-.powerbi-bars span{
-    display:block;
-
-    width:8px;
-
-    border-radius:3px 3px 1px 1px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #ffe36b,
-            #e7a500
-        );
-
-    box-shadow:
-        0 5px 10px rgba(255,190,0,.28);
-}
-
-.powerbi-bars span:nth-child(1){
-    height:20px;
-}
-
-.powerbi-bars span:nth-child(2){
-    height:34px;
-}
-
-.powerbi-bars span:nth-child(3){
-    height:27px;
-}
-
-
-/* =========================================
-   EXCEL AUTOMATION
-========================================= */
-
-.automation-glass{
-    box-shadow:
-        inset 0 1px 2px rgba(255,255,255,.35),
-        inset 0 -8px 20px rgba(0,0,0,.12),
-        0 8px 25px rgba(0,0,0,.25),
-        0 0 22px rgba(0,207,255,.18);
-}
-
-.gear-main{
-    position:absolute;
-
-    left:11px;
-    top:11px;
-
-    color:#00cfff;
-
-    font-size:34px;
-
-    z-index:3;
-
-    transform:
-        translateZ(20px);
-
-    filter:
-        drop-shadow(
-            0 5px 8px rgba(0,0,0,.28)
-        );
-}
-
-.gear-small{
-    position:absolute;
-
-    right:12px;
-    bottom:11px;
-
-    color:#5ee8ff;
-
-    font-size:18px;
-
-    z-index:4;
-
-    transform:
-        translateZ(30px);
-
-    filter:
-        drop-shadow(
-            0 4px 7px rgba(0,0,0,.28)
-        );
-}
-
-
-/* =========================================
-   SQL
-========================================= */
-
-.sql-glass{
-    box-shadow:
-        inset 0 1px 2px rgba(255,255,255,.35),
-        inset 0 -8px 20px rgba(0,0,0,.12),
-        0 8px 25px rgba(0,0,0,.25),
-        0 0 22px rgba(40,169,255,.18);
-}
-
-.sql-database{
-    position:absolute;
-
-    left:9px;
-    top:13px;
-
-    width:40px;
-    height:34px;
-
-    z-index:3;
-
-    transform:
-        translateZ(20px);
-}
-
-.sql-database span{
-    position:absolute;
-
-    left:0;
-
-    width:40px;
-    height:13px;
-
-    border-radius:50%;
-
-    background:
-        linear-gradient(
-            145deg,
-            #4dc1ff,
-            #0878c8
-        );
-
-    border:1px solid rgba(255,255,255,.25);
-
-    box-shadow:
-        0 4px 8px rgba(0,0,0,.20);
-}
-
-.sql-database span:nth-child(1){
-    top:0;
-}
-
-.sql-database span:nth-child(2){
-    top:9px;
-}
-
-.sql-database span:nth-child(3){
-    top:18px;
-}
-
-.sql-glass strong{
-    position:absolute;
-
-    bottom:5px;
+    font-size:28px;
 
     color:#fff;
 
-    font-size:8px;
+    transform:
+        translateZ(25px);
 
-    font-weight:800;
+    filter:
+        drop-shadow(
+            0 3px 5px rgba(0,0,0,.35)
+        );
 
-    letter-spacing:1px;
-
-    z-index:5;
-
-    transform:translateZ(30px);
-
-    text-shadow:
-        0 2px 4px rgba(0,0,0,.4);
+    transition:
+        transform .5s cubic-bezier(.2,.8,.2,1),
+        filter .5s ease;
 }
 
 
-/* =========================================
-   BUSINESS INTELLIGENCE
-========================================= */
+/* DATA ANALYTICS */
 
-.bi-glass{
+.analytics-logo{
     box-shadow:
         inset 0 1px 2px rgba(255,255,255,.35),
         inset 0 -8px 20px rgba(0,0,0,.12),
         0 8px 25px rgba(0,0,0,.25),
-        0 0 22px rgba(180,108,255,.18);
+        0 0 22px rgba(0,207,255,.20);
 }
 
-.bi-glass > i{
-    position:relative;
+.analytics-logo i{
+    color:#35d9ff;
+}
 
-    z-index:3;
 
-    color:#c28aff;
+/* POWER BI */
 
-    font-size:34px;
+.powerbi-logo{
+    box-shadow:
+        inset 0 1px 2px rgba(255,255,255,.35),
+        inset 0 -8px 20px rgba(0,0,0,.12),
+        0 8px 25px rgba(0,0,0,.25),
+        0 0 22px rgba(255,193,7,.20);
+}
+
+.powerbi-logo i{
+    color:#ffd23f;
+}
+
+
+/* EXCEL AUTOMATION */
+
+.automation-logo{
+    box-shadow:
+        inset 0 1px 2px rgba(255,255,255,.35),
+        inset 0 -8px 20px rgba(0,0,0,.12),
+        0 8px 25px rgba(0,0,0,.25),
+        0 0 22px rgba(0,207,255,.18);
+}
+
+.automation-logo i{
+    color:#42d8ff;
+}
+
+
+/* SQL */
+
+.sql-logo{
+    box-shadow:
+        inset 0 1px 2px rgba(255,255,255,.35),
+        inset 0 -8px 20px rgba(0,0,0,.12),
+        0 8px 25px rgba(0,0,0,.25),
+        0 0 22px rgba(40,169,255,.20);
+}
+
+.sql-logo i{
+    color:#42bfff;
+}
+
+
+/* BUSINESS INTELLIGENCE */
+
+.bi-logo{
+    box-shadow:
+        inset 0 1px 2px rgba(255,255,255,.35),
+        inset 0 -8px 20px rgba(0,0,0,.12),
+        0 8px 25px rgba(0,0,0,.25),
+        0 0 22px rgba(180,108,255,.20);
+}
+
+.bi-logo i{
+    color:#c18cff;
+}
+
+
+/* SAME 3D DEPTH ON HOVER */
+
+.service-card:hover
+.analytics-logo i,
+.service-card:hover
+.powerbi-logo i,
+.service-card:hover
+.automation-logo i,
+.service-card:hover
+.sql-logo i,
+.service-card:hover
+.bi-logo i{
 
     transform:
-        translateZ(20px);
+        translateZ(35px)
+        scale(1.08);
 
     filter:
         drop-shadow(
-            0 5px 8px rgba(0,0,0,.28)
+            0 6px 9px rgba(0,0,0,.4)
         );
 }
 
-.bi-node{
-    position:absolute;
 
-    width:5px;
-    height:5px;
+/* SAME EXCEL-STYLE HOVER GLOW */
 
-    border-radius:50%;
-
-    background:#00d9ff;
-
-    box-shadow:
-        0 0 8px rgba(0,217,255,.8);
-
-    z-index:5;
-}
-
-.node1{
-    top:13px;
-    right:12px;
-}
-
-.node2{
-    bottom:12px;
-    left:12px;
-}
-
-.node3{
-    bottom:10px;
-    right:12px;
-}
-
-
-/* =========================================
-   SAME HOVER EFFECT AS EXCEL
-========================================= */
-
-.service-card:hover .premium-glass-logo{
-
-    transform:
-        perspective(600px)
-        rotateX(8deg)
-        rotateY(-12deg)
-        translateY(-8px)
-        scale(1.1);
-
-    box-shadow:
-        inset 0 1px 3px rgba(255,255,255,.4),
-        0 18px 40px rgba(0,0,0,.35);
-}
-
-
-/* -----------------------------------------
-   INDIVIDUAL HOVER GLOW
------------------------------------------ */
-
-.service-card:hover .analytics-glass{
+.service-card:hover .analytics-logo{
     box-shadow:
         inset 0 1px 3px rgba(255,255,255,.4),
         0 18px 40px rgba(0,0,0,.35),
         0 0 35px rgba(0,207,255,.4);
 }
 
-.service-card:hover .powerbi-glass{
+.service-card:hover .powerbi-logo{
     box-shadow:
         inset 0 1px 3px rgba(255,255,255,.4),
         0 18px 40px rgba(0,0,0,.35),
         0 0 35px rgba(255,193,7,.4);
 }
 
-.service-card:hover .automation-glass{
+.service-card:hover .automation-logo{
     box-shadow:
         inset 0 1px 3px rgba(255,255,255,.4),
         0 18px 40px rgba(0,0,0,.35),
         0 0 35px rgba(0,207,255,.4);
 }
 
-.service-card:hover .sql-glass{
+.service-card:hover .sql-logo{
     box-shadow:
         inset 0 1px 3px rgba(255,255,255,.4),
         0 18px 40px rgba(0,0,0,.35),
         0 0 35px rgba(40,169,255,.4);
 }
 
-.service-card:hover .bi-glass{
+.service-card:hover .bi-logo{
     box-shadow:
         inset 0 1px 3px rgba(255,255,255,.4),
         0 18px 40px rgba(0,0,0,.35),
         0 0 35px rgba(180,108,255,.4);
-}
-
-
-/* =========================================
-   SAME FLOATING ANIMATION AS EXCEL
-========================================= */
-
-@keyframes premiumLogoFloat{
-
-    0%,100%{
-        transform:
-            translateY(0)
-            rotateZ(0);
-    }
-
-    50%{
-        transform:
-            translateY(-7px)
-            rotateZ(1deg);
-    }
-}
-
-
-/* =========================================
-   SAME REFLECTION SWEEP AS EXCEL
-========================================= */
-
-@keyframes premiumLogoReflection{
-
-    0%,30%{
-        left:-50px;
-        opacity:0;
-    }
-
-    45%{
-        opacity:.8;
-    }
-
-    65%,100%{
-        left:75px;
-        opacity:0;
-    }
 }
   
 </style>
@@ -2692,76 +2349,114 @@ display:flex;
       <h2 class="section-title">End-to-End <span class="gradient-text">Analytics Solutions</span></h2>
       <p class="section-subtitle">From data engineering to executive dashboards — a complete analytics stack delivered by specialists.</p>
     </div>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-icon">
-    <div class="premium-glass-logo powerbi-glass">
-        <div class="powerbi-bars">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-</div>
-</div>
-        <h3>Data Analytics</h3><p>Deep statistical analysis that surfaces patterns and opportunities hidden in your business data.</p></div>
-      <div class="service-card reveal">
-        <div class="service-icon premium-logo powerbi-glass">
-    <div class="powerbi-bars">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</div>
-        <h3>Power BI Dashboards</h3><p>Interactive, beautifully designed dashboards your leadership team will actually use every day.</p></div>
-      <div class="service-card reveal">
-        <div class="service-icon excel-logo">
-    <div class="excel-glass-logo">
-        <div class="excel-x">X</div>
-        <div class="excel-grid">
-            <span></span><span></span><span></span>
-            <span></span><span></span><span></span>
-            <span></span><span></span><span></span>
-        </div>
-    </div>
-</div>
-        <h3>Excel Reporting</h3><p>Boardroom-ready Excel reports with elegant formatting, dynamic charts and pivot analytics.</p></div>
-      <div class="service-card reveal">
-        <div class="service-icon">
-    <div class="premium-glass-logo sql-glass">
-        <div class="sql-database">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <strong>SQL</strong>
-    </div>
-</div>
-        <h3>Excel Automation</h3><p>VBA, Power Query and macros that turn hours of manual work into one-click workflows.</p></div>
-      <div class="service-card reveal">
-        <div class="service-icon premium-logo sql-glass">
-    <div class="sql-database">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <strong>SQL</strong>
-</div>
-        <h3>SQL Data Analysis</h3><p>Production-grade SQL queries, optimization and modeling for large transactional datasets.</p></div>
-      <div class="service-card reveal">
-        <div class="service-icon">
-    <div class="premium-glass-logo bi-glass">
-        <i class="fa-solid fa-brain"></i>
-        <div class="bi-node node1"></div>
-        <div class="bi-node node2"></div>
-        <div class="bi-node node3"></div>
-    </div>
-</div>
-        <h3>Business Intelligence</h3><p>End-to-end BI strategy, data warehousing and KPI architecture aligned with your goals.</p></div>
-    </div>
-  </div>
-</section>
+<div class="services-grid">
 
+    <!-- DATA ANALYTICS -->
+    <div class="service-card reveal">
+        <div class="service-icon">
+            <div class="excel-glass-logo analytics-logo">
+                <i class="fa-solid fa-chart-pie"></i>
+            </div>
+        </div>
+
+        <h3>Data Analytics</h3>
+        <p>
+            Deep statistical analysis that surfaces patterns and opportunities
+            hidden in your business data.
+        </p>
+    </div>
+
+
+    <!-- POWER BI -->
+    <div class="service-card reveal">
+        <div class="service-icon">
+            <div class="excel-glass-logo powerbi-logo">
+                <i class="fa-solid fa-chart-column"></i>
+            </div>
+        </div>
+
+        <h3>Power BI Dashboards</h3>
+        <p>
+            Interactive, beautifully designed dashboards your leadership team
+            will actually use every day.
+        </p>
+    </div>
+
+
+    <!-- EXCEL REPORTING -->
+    <div class="service-card reveal">
+        <div class="service-icon">
+            <div class="excel-glass-logo">
+
+                <div class="excel-x">X</div>
+
+                <div class="excel-grid">
+                    <span></span><span></span><span></span>
+                    <span></span><span></span><span></span>
+                    <span></span><span></span><span></span>
+                </div>
+
+            </div>
+        </div>
+
+        <h3>Excel Reporting</h3>
+        <p>
+            Boardroom-ready Excel reports with elegant formatting,
+            dynamic charts and pivot analytics.
+        </p>
+    </div>
+
+
+    <!-- EXCEL AUTOMATION -->
+    <div class="service-card reveal">
+        <div class="service-icon">
+            <div class="excel-glass-logo automation-logo">
+                <i class="fa-solid fa-gears"></i>
+            </div>
+        </div>
+
+        <h3>Excel Automation</h3>
+        <p>
+            VBA, Power Query and macros that turn hours of manual work
+            into one-click workflows.
+        </p>
+    </div>
+
+
+    <!-- SQL -->
+    <div class="service-card reveal">
+        <div class="service-icon">
+            <div class="excel-glass-logo sql-logo">
+                <i class="fa-solid fa-database"></i>
+            </div>
+        </div>
+
+        <h3>SQL Data Analysis</h3>
+        <p>
+            Production-grade SQL queries, optimization and modeling
+            for large transactional datasets.
+        </p>
+    </div>
+
+
+    <!-- BUSINESS INTELLIGENCE -->
+    <div class="service-card reveal">
+        <div class="service-icon">
+            <div class="excel-glass-logo bi-logo">
+                <i class="fa-solid fa-brain"></i>
+            </div>
+        </div>
+
+        <h3>Business Intelligence</h3>
+        <p>
+            End-to-end BI strategy, data warehousing and KPI architecture
+            aligned with your goals.
+        </p>
+    </div>
+
+</div>
+</div>
+</section>
 <section class="section" id="portfolio">
   <div class="container">
     <div class="text-center reveal">
