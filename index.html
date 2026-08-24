@@ -1358,10 +1358,15 @@ display:flex;
 @media (min-width:961px){
 
     .header-actions{
-        display:none;
+        display:flex;
+    }
+
+    .menu-toggle{
+        display:flex;
     }
 
 }
+  
 
 @media (max-width:960px){
 
@@ -1396,6 +1401,82 @@ display:flex;
         gap:6px;
     }
 
+}
+/* =========================================
+   ANLYSTIX GLASS HEADER
+========================================= */
+
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
+
+    background:rgba(7,17,31,.48) !important;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px) saturate(140%);
+    -webkit-backdrop-filter:blur(18px) saturate(140%);
+
+    box-shadow:
+        0 8px 35px rgba(0,0,0,.12);
+
+    transition:
+        background .35s ease,
+        backdrop-filter .35s ease,
+        box-shadow .35s ease;
+}
+
+.header.scrolled{
+    background:rgba(7,17,31,.68) !important;
+
+    backdrop-filter:blur(24px) saturate(150%);
+    -webkit-backdrop-filter:blur(24px) saturate(150%);
+
+    border-bottom:1px solid rgba(255,255,255,.11);
+
+    box-shadow:
+        0 12px 45px rgba(0,0,0,.25);
+}
+
+/* Header buttons */
+
+.header-icon,
+.menu-toggle{
+    width:42px;
+    height:42px;
+
+    border:1px solid rgba(255,255,255,.16);
+    border-radius:50%;
+
+    background:rgba(255,255,255,.06);
+
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    transition:.25s ease;
+}
+
+.header-icon:hover,
+.menu-toggle:hover{
+    background:rgba(0,207,255,.12);
+    border-color:rgba(0,207,255,.45);
+    color:#00cfff;
+    transform:translateY(-2px);
+}
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
 }
   
 </style>
