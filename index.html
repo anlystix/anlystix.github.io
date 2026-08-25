@@ -2120,7 +2120,41 @@ display:flex;
         0 18px 40px rgba(0,0,0,.35),
         0 0 35px rgba(180,108,255,.4);
 }
-  
+ const topHeadlines = [
+    'Transform Data Into Business Growth',
+    'Professional Power BI Dashboards',
+    'Excel Automation & Reporting Solutions',
+    'Business Intelligence For Better Decisions'
+];
+
+const topTyped = document.getElementById('topTyped');
+
+let topIndex = 0;
+
+if (topTyped) {
+
+    topTyped.style.transition =
+        'opacity .4s ease, transform .4s ease';
+
+    setInterval(() => {
+
+        topIndex = (topIndex + 1) % topHeadlines.length;
+
+        topTyped.style.opacity = '0';
+        topTyped.style.transform = 'translateY(15px)';
+
+        setTimeout(() => {
+
+            topTyped.textContent =
+                topHeadlines[topIndex];
+
+            topTyped.style.opacity = '1';
+            topTyped.style.transform = 'translateY(0)';
+
+        }, 400);
+
+    }, 4000);
+} 
 </style>
 </head>
 <body>
@@ -2186,11 +2220,11 @@ display:flex;
         <span></span> Analyze Smarter. Decide Faster.
     </div>
 
-    <h1>
-        <span id="topTyped">
-            Transform Data Into Business Growth
-        </span>
-    </h1>
+    <h1 class="top-slider-title">
+    <span id="topTyped">
+        Transform Data Into Business Growth
+    </span>
+</h1>
 
     <p>
         ANLYSTIX builds enterprise-grade dashboards, automated reports
