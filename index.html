@@ -2120,36 +2120,7 @@ display:flex;
         0 18px 40px rgba(0,0,0,.35),
         0 0 35px rgba(180,108,255,.4);
 }
-
-          /* TOP SLIDER HERO TITLE */
-.anx-top-slider .anx-hero-title{
-    display:block !important;
-    width:100% !important;
-    max-width:1100px !important;
-
-    margin:18px 0 24px !important;
-
-    font-size:clamp(48px, 6vw, 82px) !important;
-    line-height:1.05 !important;
-    font-weight:800 !important;
-    letter-spacing:-2.5px !important;
-
-    color:#fff !important;
-}
-
-.anx-top-slider #topTyped{
-    display:block !important;
-    max-width:1050px !important;
-}
-
-/* MOBILE */
-@media(max-width:600px){
-    .anx-top-slider .anx-hero-title{
-        font-size:44px !important;
-        line-height:1.06 !important;
-        letter-spacing:-1.5px !important;
-    }
-}
+  
 </style>
 </head>
 <body>
@@ -2209,58 +2180,30 @@ display:flex;
 
     <div class="anx-top-slider-content">
 
-       <div class="anx-top-slider-text">
+        <div class="anx-top-slider-text">
 
-    <div class="hero-eyebrow">
-        <span></span> Analyze Smarter. Decide Faster.
-    </div>
+            <span class="anx-top-slider-label">
+                ANLYSTIX
+            </span>
 
-    <h2 class="anx-hero-title">
-    <span id="topTyped">Transform Data Into Business Growth</span>
-</h2>
+            <h2>
+                Analyze Smarter.<br>
+                Decide Faster.
+            </h2>
 
-    <p>
-        ANLYSTIX builds enterprise-grade dashboards, automated reports
-        and business intelligence systems that turn raw data into
-        decisions you can act on — today.
-    </p>
+            <p>
+                Transform your data into clear,
+                actionable business insights.
+            </p>
 
-    <div class="hero-cta">
+            <a href="#services" class="anx-top-slider-btn">
+                Explore Services
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
 
-        <a href="#contact" class="btn btn-primary">
-            Get Started
-            <i class="fa-solid fa-arrow-right"></i>
-        </a>
-
-        <a href="#portfolio" class="btn btn-ghost">
-            <i class="fa-solid fa-play"></i>
-            View Portfolio
-        </a>
-
-    </div>
-
-    <div class="hero-stats">
-
-        <div class="stat">
-            <div class="stat-num">250</div>
-            <div class="stat-label">PROJECTS DELIVERED</div>
-        </div>
-
-        <div class="stat">
-            <div class="stat-num">120</div>
-            <div class="stat-label">HAPPY CLIENTS</div>
-        </div>
-
-        <div class="stat">
-            <div class="stat-num">
-                15+
-            </div>
-            <div class="stat-label">INDUSTRIES</div>
         </div>
 
     </div>
-
-</div>
 
 </section>
 <main>
@@ -5238,106 +5181,6 @@ const fallback = getAXReply(message); addAXBotMessage( fallback ); }); }
 /* CLOSE MAIN AX ASSISTANT IIFE */
 
 })();
-  (function(){
-
-    const headlines = [
-        "Transform Data Into Business Growth",
-        "Professional Power BI Dashboards",
-        "Excel Automation & Reporting Solutions",
-        "Business Intelligence For Better Decisions"
-    ];
-
-    let index = 0;
-
-    function startTopText(){
-
-        const el = document.getElementById("topTyped");
-
-        if(!el) return;
-
-        el.style.transition =
-            "opacity .45s ease, transform .45s ease";
-
-        setInterval(function(){
-
-            el.style.opacity = "0";
-            el.style.transform = "translateY(18px)";
-
-            setTimeout(function(){
-
-                index = (index + 1) % headlines.length;
-
-                el.textContent = headlines[index];
-
-                el.style.opacity = "1";
-                el.style.transform = "translateY(0)";
-
-            },450);
-
-        },4000);
-    }
-
-    if(document.readyState === "loading"){
-        document.addEventListener("DOMContentLoaded", startTopText);
-    }else{
-        startTopText();
-    }
-
-})();
-  const topTyped = document.getElementById('topTyped');
-
-const topHeadlines = [
-  'Transform Data<br>Into Business Growth',
-  'Professional<br>Power BI Dashboards',
-  'Excel Automation &<br>Reporting Solutions',
-  'Business Intelligence<br>For Better Decisions'
-];
-
-let topIdx = 0;
-
-if (topTyped) {
-
-  topTyped.style.transition =
-    'opacity .4s ease, transform .4s ease';
-
-  setInterval(() => {
-
-    topIdx = (topIdx + 1) % topHeadlines.length;
-
-    topTyped.style.opacity = '0';
-    topTyped.style.transform = 'translateY(10px)';
-
-    setTimeout(() => {
-
-      topTyped.innerHTML = topHeadlines[topIdx];
-
-      topTyped.style.opacity = '1';
-      topTyped.style.transform = 'translateY(0)';
-
-    }, 400);
-
-  }, 4000);
-
-  const topTyped = document.getElementById('topTyped');
-
-if (topTyped) {
-
-  setInterval(() => {
-
-    topTyped.style.opacity = '0';
-    topTyped.style.transform = 'translateY(10px)';
-
-    setTimeout(() => {
-
-      topTyped.textContent = typed.textContent;
-
-      topTyped.style.opacity = '1';
-      topTyped.style.transform = 'translateY(0)';
-
-    }, 400);
-
-  }, 4000);
-}
 </script>
 </body>
 </html>
