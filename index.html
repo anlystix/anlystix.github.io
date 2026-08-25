@@ -5284,6 +5284,41 @@ const fallback = getAXReply(message); addAXBotMessage( fallback ); }); }
     }
 
 })();
+  const topTyped = document.getElementById('topTyped');
+
+const topHeadlines = [
+  'Transform Data<br>Into Business Growth',
+  'Professional<br>Power BI Dashboards',
+  'Excel Automation &<br>Reporting Solutions',
+  'Business Intelligence<br>For Better Decisions'
+];
+
+let topIdx = 0;
+
+if (topTyped) {
+
+  topTyped.style.transition =
+    'opacity .4s ease, transform .4s ease';
+
+  setInterval(() => {
+
+    topIdx = (topIdx + 1) % topHeadlines.length;
+
+    topTyped.style.opacity = '0';
+    topTyped.style.transform = 'translateY(10px)';
+
+    setTimeout(() => {
+
+      topTyped.innerHTML = topHeadlines[topIdx];
+
+      topTyped.style.opacity = '1';
+      topTyped.style.transform = 'translateY(0)';
+
+    }, 400);
+
+  }, 4000);
+
+}
 </script>
 </body>
 </html>
