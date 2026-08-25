@@ -2120,41 +2120,38 @@ display:flex;
         0 18px 40px rgba(0,0,0,.35),
         0 0 35px rgba(180,108,255,.4);
 }
- const topHeadlines = [
-    'Transform Data Into Business Growth',
-    'Professional Power BI Dashboards',
-    'Excel Automation & Reporting Solutions',
-    'Business Intelligence For Better Decisions'
-];
 
-const topTyped = document.getElementById('topTyped');
+          /* TOP SLIDER HERO TITLE */
+.anx-top-slider .anx-hero-title{
+    display:block !important;
+    width:100% !important;
+    max-width:900px !important;
 
-let topIndex = 0;
+    margin:18px 0 24px !important;
 
-if (topTyped) {
+    font-size:clamp(48px, 6vw, 82px) !important;
+    line-height:1.02 !important;
+    font-weight:800 !important;
+    letter-spacing:-2.5px !important;
 
-    topTyped.style.transition =
-        'opacity .4s ease, transform .4s ease';
+    color:#fff !important;
 
-    setInterval(() => {
+    text-shadow:0 5px 30px rgba(0,0,0,.45);
+}
 
-        topIndex = (topIndex + 1) % topHeadlines.length;
+.anx-top-slider #topTyped{
+    display:block !important;
+    max-width:850px !important;
+}
 
-        topTyped.style.opacity = '0';
-        topTyped.style.transform = 'translateY(15px)';
-
-        setTimeout(() => {
-
-            topTyped.textContent =
-                topHeadlines[topIndex];
-
-            topTyped.style.opacity = '1';
-            topTyped.style.transform = 'translateY(0)';
-
-        }, 400);
-
-    }, 4000);
-} 
+/* MOBILE */
+@media(max-width:600px){
+    .anx-top-slider .anx-hero-title{
+        font-size:44px !important;
+        line-height:1.06 !important;
+        letter-spacing:-1.5px !important;
+    }
+}
 </style>
 </head>
 <body>
@@ -2220,11 +2217,9 @@ if (topTyped) {
         <span></span> Analyze Smarter. Decide Faster.
     </div>
 
-    <h1 class="top-slider-title">
-    <span id="topTyped">
-        Transform Data Into Business Growth
-    </span>
-</h1>
+    <h2 class="anx-hero-title">
+    <span id="topTyped">Transform Data Into Business Growth</span>
+</h2>
 
     <p>
         ANLYSTIX builds enterprise-grade dashboards, automated reports
@@ -5243,6 +5238,52 @@ const fallback = getAXReply(message); addAXBotMessage( fallback ); }); }
 })();
 
 /* CLOSE MAIN AX ASSISTANT IIFE */
+
+})();
+  (function(){
+
+    const headlines = [
+        "Transform Data Into Business Growth",
+        "Professional Power BI Dashboards",
+        "Excel Automation & Reporting Solutions",
+        "Business Intelligence For Better Decisions"
+    ];
+
+    let index = 0;
+
+    function startTopText(){
+
+        const el = document.getElementById("topTyped");
+
+        if(!el) return;
+
+        el.style.transition =
+            "opacity .45s ease, transform .45s ease";
+
+        setInterval(function(){
+
+            el.style.opacity = "0";
+            el.style.transform = "translateY(18px)";
+
+            setTimeout(function(){
+
+                index = (index + 1) % headlines.length;
+
+                el.textContent = headlines[index];
+
+                el.style.opacity = "1";
+                el.style.transform = "translateY(0)";
+
+            },450);
+
+        },4000);
+    }
+
+    if(document.readyState === "loading"){
+        document.addEventListener("DOMContentLoaded", startTopText);
+    }else{
+        startTopText();
+    }
 
 })();
 </script>
