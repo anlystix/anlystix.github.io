@@ -2120,6 +2120,373 @@ display:flex;
         0 18px 40px rgba(0,0,0,.35),
         0 0 35px rgba(180,108,255,.4);
 }
+/* =========================================
+   PREMIUM TEXT SLIDER
+========================================= */
+
+.premium-text-slider{
+    position:relative;
+
+    width:100%;
+    min-height:650px;
+
+    display:flex;
+    align-items:center;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 25% 35%,
+            rgba(0,207,255,.12),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 75% 65%,
+            rgba(30,115,255,.10),
+            transparent 40%
+        ),
+        #06111f;
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+
+/* subtle background glow */
+
+.premium-text-slider::before{
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    left:-180px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    background:rgba(0,207,255,.07);
+
+    filter:blur(100px);
+
+    pointer-events:none;
+}
+
+
+/* content */
+
+.premium-slider-content{
+    position:relative;
+
+    z-index:2;
+
+    width:min(900px,90%);
+
+    margin:0 auto;
+
+    padding:100px 0 70px;
+}
+
+
+/* eyebrow */
+
+.premium-eyebrow{
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:10px 16px;
+
+    margin-bottom:28px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.045);
+
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+
+    color:#00cfff;
+
+    font-size:14px;
+
+    font-weight:500;
+
+    box-shadow:
+        inset 0 1px 1px rgba(255,255,255,.08),
+        0 10px 30px rgba(0,0,0,.12);
+}
+
+
+.premium-eyebrow span{
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:#00cfff;
+
+    box-shadow:
+        0 0 12px rgba(0,207,255,.8);
+
+    animation:
+        premiumPulse 2s ease-in-out infinite;
+}
+
+
+/* heading */
+
+.premium-slider-content h1{
+    margin:0;
+
+    max-width:800px;
+
+    min-height:190px;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    font-size:clamp(48px,6vw,82px);
+
+    line-height:.98;
+
+    letter-spacing:-3px;
+
+    font-weight:800;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00cfff 0%,
+            #1e73ff 55%,
+            #5b8cff 100%
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+}
+
+
+#premiumTypedText{
+    display:block;
+
+    opacity:1;
+
+    transform:translateY(0);
+
+    transition:
+        opacity .4s ease,
+        transform .4s cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* description */
+
+.premium-slider-content p{
+    max-width:720px;
+
+    margin:28px 0 32px;
+
+    color:rgba(255,255,255,.68);
+
+    font-size:18px;
+
+    line-height:1.65;
+}
+
+
+/* buttons */
+
+.premium-slider-buttons{
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin-bottom:46px;
+}
+
+
+.premium-slider-buttons .btn{
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.premium-slider-buttons .btn:hover{
+    transform:translateY(-3px);
+}
+
+
+/* stats */
+
+.premium-slider-stats{
+    display:flex;
+
+    gap:18px;
+}
+
+
+.premium-stat{
+    min-width:160px;
+
+    padding:18px 20px;
+
+    border:1px solid rgba(255,255,255,.10);
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.025)
+        );
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+    box-shadow:
+        inset 0 1px 1px rgba(255,255,255,.08),
+        0 10px 30px rgba(0,0,0,.14);
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+
+.premium-stat:hover{
+    transform:translateY(-6px);
+
+    border-color:rgba(0,207,255,.3);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.22),
+        0 0 20px rgba(0,207,255,.08);
+}
+
+
+.premium-stat strong{
+    display:block;
+
+    color:#00cfff;
+
+    font-size:30px;
+
+    line-height:1;
+
+    margin-bottom:8px;
+}
+
+
+.premium-stat span{
+    display:block;
+
+    color:rgba(255,255,255,.55);
+
+    font-size:11px;
+
+    font-weight:600;
+
+    letter-spacing:.5px;
+}
+
+
+/* pulse */
+
+@keyframes premiumPulse{
+
+    0%,100%{
+        transform:scale(1);
+
+        opacity:.7;
+    }
+
+    50%{
+        transform:scale(1.35);
+
+        opacity:1;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:700px){
+
+    .premium-text-slider{
+        min-height:auto;
+    }
+
+    .premium-slider-content{
+        width:calc(100% - 36px);
+
+        padding:110px 0 55px;
+    }
+
+    .premium-slider-content h1{
+        min-height:170px;
+
+        font-size:
+            clamp(
+                42px,
+                11vw,
+                62px
+            );
+
+        letter-spacing:-2px;
+    }
+
+    .premium-slider-content p{
+        font-size:16px;
+
+        line-height:1.6;
+    }
+
+    .premium-slider-buttons{
+        flex-wrap:wrap;
+    }
+
+    .premium-slider-stats{
+        display:grid;
+
+        grid-template-columns:
+            repeat(3,1fr);
+
+        gap:8px;
+    }
+
+    .premium-stat{
+        min-width:0;
+
+        padding:15px 10px;
+    }
+
+    .premium-stat strong{
+        font-size:24px;
+    }
+
+    .premium-stat span{
+        font-size:9px;
+    }
+
+}
   
 </style>
 </head>
@@ -2158,6 +2525,68 @@ display:flex;
 </div>
   </div>
 </header>
+
+  <!-- =========================================
+     PREMIUM HOME TEXT SLIDER
+========================================= -->
+
+<section class="premium-text-slider" id="premiumTextSlider">
+
+    <div class="premium-slider-content">
+
+        <div class="premium-eyebrow">
+            <span></span>
+            Analyze Smarter. Decide Faster.
+        </div>
+
+        <h1>
+            <span id="premiumTypedText">
+                Transform Data Into Business Growth
+            </span>
+        </h1>
+
+        <p>
+            ANLYSTIX builds enterprise-grade dashboards, automated reports
+            and business intelligence systems that turn raw data into
+            decisions you can act on — today.
+        </p>
+
+        <div class="premium-slider-buttons">
+
+            <a href="#contact" class="btn btn-primary">
+                Get Started
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+            <a href="#portfolio" class="btn btn-ghost">
+                <i class="fa-solid fa-play"></i>
+                View Portfolio
+            </a>
+
+        </div>
+
+        <div class="premium-slider-stats">
+
+            <div class="premium-stat">
+                <strong>250</strong>
+                <span>PROJECTS DELIVERED</span>
+            </div>
+
+            <div class="premium-stat">
+                <strong>120</strong>
+                <span>HAPPY CLIENTS</span>
+            </div>
+
+            <div class="premium-stat">
+                <strong>15+</strong>
+                <span>INDUSTRIES</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 <!-- ANLYSTIX TOP SLIDER -->
 
 <section class="anx-top-slider">
@@ -5181,6 +5610,54 @@ const fallback = getAXReply(message); addAXBotMessage( fallback ); }); }
 /* CLOSE MAIN AX ASSISTANT IIFE */
 
 })();
+
+  /* =========================================
+   PREMIUM TEXT SLIDER ANIMATION
+========================================= */
+
+const premiumHeadlines = [
+    'Transform Data Into Business Growth',
+    'Professional Power BI Dashboards',
+    'Excel Automation & Reporting Solutions',
+    'Business Intelligence For Better Decisions'
+];
+
+const premiumTyped =
+    document.getElementById('premiumTypedText');
+
+let premiumIndex = 0;
+
+if(premiumTyped){
+
+    premiumTyped.style.transition =
+        'opacity .4s ease, transform .4s cubic-bezier(.2,.8,.2,1)';
+
+    setInterval(() => {
+
+        premiumIndex =
+            (premiumIndex + 1) %
+            premiumHeadlines.length;
+
+        premiumTyped.style.opacity = '0';
+
+        premiumTyped.style.transform =
+            'translateY(10px)';
+
+        setTimeout(() => {
+
+            premiumTyped.textContent =
+                premiumHeadlines[premiumIndex];
+
+            premiumTyped.style.opacity = '1';
+
+            premiumTyped.style.transform =
+                'translateY(0)';
+
+        },400);
+
+    },4000);
+
+}
 </script>
 </body>
 </html>
