@@ -5318,6 +5318,25 @@ if (topTyped) {
 
   }, 4000);
 
+  const topTyped = document.getElementById('topTyped');
+
+if (topTyped) {
+
+  setInterval(() => {
+
+    topTyped.style.opacity = '0';
+    topTyped.style.transform = 'translateY(10px)';
+
+    setTimeout(() => {
+
+      topTyped.textContent = typed.textContent;
+
+      topTyped.style.opacity = '1';
+      topTyped.style.transform = 'translateY(0)';
+
+    }, 400);
+
+  }, 4000);
 }
 </script>
 </body>
