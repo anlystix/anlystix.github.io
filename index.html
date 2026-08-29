@@ -1646,17 +1646,22 @@ display:flex;
 }
 
 .anx-top-slider-text h2{
-    margin:0 0 18px;
-
+    margin:0 0 22px;
     color:#fff;
 
-    font-size:clamp(40px, 5vw, 72px);
+    font-size:clamp(52px, 6vw, 82px);
+    line-height:1.02;
+    letter-spacing:-.04em;
 
-    line-height:1.05;
+    font-weight:800;
+    max-width:700px;
 
-    letter-spacing:-.035em;
+    min-height:2.95em;
+
+    transition:
+        opacity .4s ease,
+        transform .4s ease;
 }
-
 .anx-top-slider-text p{
     max-width:560px;
 
@@ -2328,10 +2333,13 @@ display:flex;
                 ANLYSTIX
             </span>
 
-            <h2>
-                Analyze Smarter.<br>
-                Decide Faster.
-            </h2>
+            <h2 class="anx-animated-title">
+    <span id="topTyped">
+        Transform Data<br>
+        Into Business<br>
+        Growth
+    </span>
+</h2>
 
             <p>
                 Transform your data into clear,
@@ -3538,20 +3546,40 @@ navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
   navLinks.classList.remove('open');toggle.innerHTML='<i class="fa-solid fa-bars"></i>';
 }));
 
-const headlines=[
+const headlines = [
   'Transform Data Into Business Growth',
   'Professional Power BI Dashboards',
   'Excel Automation & Reporting Solutions',
   'Business Intelligence For Better Decisions'
 ];
-let hIdx=0;const typed=document.getElementById('typed');
-typed.style.transition='all .4s';
-setInterval(()=>{
-  hIdx=(hIdx+1)%headlines.length;
-  typed.style.opacity=0;typed.style.transform='translateY(10px)';
-  setTimeout(()=>{typed.textContent=headlines[hIdx];typed.style.opacity=1;typed.style.transform='translateY(0)';},400);
-},4000);
 
+let hIdx = 0;
+const typed = document.getElementById('typed');
+
+if (typed) {
+
+    typed.style.transition =
+        'opacity .4s ease, transform .4s ease';
+
+    setInterval(() => {
+
+        typed.style.opacity = '0';
+        typed.style.transform = 'translateY(10px)';
+
+        setTimeout(() => {
+
+            hIdx = (hIdx + 1) % headlines.length;
+
+            typed.textContent = headlines[hIdx];
+
+            typed.style.opacity = '1';
+            typed.style.transform = 'translateY(0)';
+
+        }, 400);
+
+    }, 4000);
+
+}
 const slides=document.querySelectorAll('.slide');
 const dotsBox=document.getElementById('dots');
 slides.forEach((_,i)=>{const b=document.createElement('button');if(i===0)b.classList.add('active');b.addEventListener('click',()=>go(i));dotsBox.appendChild(b);});
