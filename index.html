@@ -2294,6 +2294,35 @@ display:flex;
 
     color:transparent;
 }
+  .anx-top-slider-label{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+}
+
+.anx-top-slider-label::before{
+    content:"";
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#00CFFF;
+
+    box-shadow:0 0 10px rgba(0,207,255,.8);
+
+    animation:anxDotBlink 1.5s ease-in-out infinite;
+}
+
+@keyframes anxDotBlink{
+    0%,100%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    50%{
+        opacity:.25;
+        transform:scale(.75);
+    }
+}
 </style>
 </head>
 <body>
