@@ -7567,40 +7567,22 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    function animate() {
+    const step = getStep();
+const resetPoint = step * cards.length;
 
-        position += speed;
+function animate() {
 
-        const step = getStep();
+    position += speed;
 
-        /*
-         * Move the complete track
-         */
+    slider.style.transform =
+        `translate3d(${-position}px, 0, 0)`;
 
-        slider.style.transform =
-            `translate3d(${-position}px, 0, 0)`;
-
-
-        /*
-         * After all ORIGINAL cards have passed,
-         * silently move back by exactly one set.
-         *
-         * Because identical clones are already
-         * behind them, the user sees NO jump.
-         */
-
-        const resetPoint = step * cards.length;
-
-        if (position >= resetPoint) {
-
-            position -= resetPoint;
-
-        }
-
-
-        requestAnimationFrame(animate);
-
+    if (position >= resetPoint) {
+        position -= resetPoint;
     }
+
+    requestAnimationFrame(animate);
+}
 
 
     requestAnimationFrame(animate);
