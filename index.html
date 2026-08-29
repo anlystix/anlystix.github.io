@@ -7505,8 +7505,7 @@ const fallback = getAXReply(message); addAXBotMessage( fallback ); }); }
 
 })();
  /* ==========================================
-   SERVICES — TRUE INFINITE LOOP
-   RIGHT → LEFT
+   SERVICES — SEAMLESS INFINITE SLIDER
    ========================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -7519,13 +7518,9 @@ document.addEventListener("DOMContentLoaded", function () {
         slider.querySelectorAll(".service-card")
     );
 
-    if (cards.length < 5) return;
+    if (cards.length < 2) return;
 
-
-    /* ---------------------------------------
-       Clone the complete set
-       --------------------------------------- */
-
+    /* Clone all 6 cards */
     cards.forEach(card => {
 
         const clone = card.cloneNode(true);
@@ -7537,52 +7532,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-
     let position = 0;
-
-    /*
-       Speed:
-       0.35 = very slow
-       0.50 = premium smooth
-       0.70 = normal
-       1.00 = fast
-    */
-
     const speed = 0.55;
 
-function getStep() {
+    function getStep() {
 
-    const firstCard = slider.querySelector(".service-card");
+        const card = cards[0];
 
-    if (!firstCard) return 0;
+        const gap =
+            parseFloat(
+                getComputedStyle(slider).gap
+            ) || 24;
 
-    const style = window.getComputedStyle(slider);
-
-    const gap =
-        parseFloat(style.columnGap || style.gap) || 24;
-
-    return firstCard.getBoundingClientRect().width + gap;
-}
-
-const step = getStep();
-const resetPoint = step * cards.length;
-
-function animate() {
-
-    position += speed;
-
-    if (position >= resetPoint) {
-        position -= resetPoint;
+        return card.getBoundingClientRect().width + gap;
     }
 
-    slider.style.transform =
-        `translate3d(${-position}px, 0, 0)`;
+    function animate() {
+
+        const step = getStep();
+
+        position += speed;
+
+        /*
+         * Move continuously
+         */
+        slider.style.transform =
+            `translate3d(${-position}px, 0, 0)`;
+
+        /*
+         * After exactly 6 cards,
+         * continue from the cloned 1st card.
+         */
+        if (position >= step * cards.length) {
+            position -= step * cards.length;
+        }
+
+        requestAnimationFrame(animate);
+    }
 
     requestAnimationFrame(animate);
-}
-
-requestAnimationFrame(animate);
-
 });
 </script>
 </body>
