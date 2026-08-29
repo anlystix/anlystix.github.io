@@ -4043,6 +4043,38 @@ display:flex;
     }
 
 }
+  /* ================================
+   SERVICES - RIGHT TO LEFT SLIDER
+   ================================ */
+
+#services .services-grid{
+    display:flex !important;
+    flex-wrap:nowrap !important;
+    gap:24px;
+    overflow:hidden;
+    width:100%;
+    scroll-behavior:smooth;
+}
+
+/* Existing service cards ka design same rahega */
+#services .service-card{
+    flex:0 0 calc((100% - 72px) / 4);
+    min-width:0;
+}
+
+/* Tablet */
+@media(max-width:1000px){
+    #services .service-card{
+        flex:0 0 calc((100% - 24px) / 2);
+    }
+}
+
+/* Mobile */
+@media(max-width:600px){
+    #services .service-card{
+        flex:0 0 100%;
+    }
+}
 </style>
 </head>
 <body>
@@ -7443,6 +7475,54 @@ const fallback = getAXReply(message); addAXBotMessage( fallback ); }); }
 /* CLOSE MAIN AX ASSISTANT IIFE */
 
 })();
+  /* =================================
+   SERVICES AUTO SLIDER
+   RIGHT → LEFT
+   ================================= */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    const servicesSlider = document.querySelector("#services .services-grid");
+
+    if(!servicesSlider) return;
+
+    const cards = servicesSlider.querySelectorAll(".service-card");
+
+    if(cards.length <= 4) return;
+
+    let currentIndex = 0;
+
+    function moveServices(){
+
+        const card = cards[0];
+
+        const cardWidth = card.offsetWidth;
+
+        const gap = 24;
+
+        currentIndex++;
+
+        if(currentIndex > cards.length - 4){
+
+            currentIndex = 0;
+
+            servicesSlider.scrollTo({
+                left: 0,
+                behavior: "smooth"
+            });
+
+            return;
+        }
+
+        servicesSlider.scrollTo({
+            left: currentIndex * (cardWidth + gap),
+            behavior: "smooth"
+        });
+    }
+
+    setInterval(moveServices, 3000);
+
+});
 </script>
 </body>
 </html>
