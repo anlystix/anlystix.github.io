@@ -4065,7 +4065,8 @@ display:flex;
     overflow:visible !important;
 
     transform:translate3d(0,0,0);
-    will-change:transform;
+will-change:transform;
+backface-visibility:hidden;
 }
 
 /* Exactly 4 cards visible on desktop */
@@ -7547,7 +7548,7 @@ document.addEventListener("DOMContentLoaded", function () {
        1.00 = fast
     */
 
-    const speed = 0.55;
+    const speed = 0.35;
 
 
     function getStep() {
