@@ -2267,7 +2267,13 @@ display:flex;
         font-size:12px;
     }
 }
-  
+
+  .typed{
+    display:block;
+    font-size:clamp(48px, 5vw, 76px);
+    line-height:1.08;
+    font-weight:800;
+}
 </style>
 </head>
 <body>
@@ -3547,20 +3553,17 @@ navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
 }));
 
 const headlines = [
-  'Transform Data Into Business Growth',
-  'Professional Power BI Dashboards',
-  'Excel Automation & Reporting Solutions',
-  'Business Intelligence For Better Decisions'
+  'Transform Data Into<br>Business Growth',
+  'Professional Power BI<br>Dashboards',
+  'Excel Automation &<br>Reporting Solutions',
+  'Business Intelligence<br>For Better Decisions'
 ];
 
 let hIdx = 0;
 const typed = document.getElementById('typed');
-  console.log("TYPED ELEMENT:", typed);
 
 if (typed) {
-
-    typed.style.transition =
-        'opacity .4s ease, transform .4s ease';
+    typed.style.transition = 'opacity .4s ease, transform .4s ease';
 
     setInterval(() => {
 
@@ -3571,7 +3574,7 @@ if (typed) {
 
             hIdx = (hIdx + 1) % headlines.length;
 
-            typed.textContent = headlines[hIdx];
+            typed.innerHTML = headlines[hIdx];
 
             typed.style.opacity = '1';
             typed.style.transform = 'translateY(0)';
@@ -3579,7 +3582,6 @@ if (typed) {
         }, 400);
 
     }, 4000);
-
 }
 const slides=document.querySelectorAll('.slide');
 const dotsBox=document.getElementById('dots');
