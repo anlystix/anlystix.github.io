@@ -7548,26 +7548,23 @@ document.addEventListener("DOMContentLoaded", function () {
        1.00 = fast
     */
 
-    const speed = 1.0;
+    const speed = 0.55;
 
+function getStep() {
 
-    function getStep() {
+    const firstCard = slider.querySelector(".service-card");
 
-        const firstCard = slider.querySelector(".service-card");
+    if (!firstCard) return 0;
 
-        if (!firstCard) return 0;
+    const style = window.getComputedStyle(slider);
 
-        const style = window.getComputedStyle(slider);
+    const gap =
+        parseFloat(style.columnGap || style.gap) || 24;
 
-        const gap =
-            parseFloat(style.columnGap || style.gap) || 24;
+    return firstCard.getBoundingClientRect().width + gap;
+}
 
-        return firstCard.getBoundingClientRect().width + gap;
-
-    }
-
-
-    const step = getStep();
+const step = getStep();
 const resetPoint = step * cards.length;
 
 function animate() {
@@ -7575,7 +7572,7 @@ function animate() {
     position += speed;
 
     if (position >= resetPoint) {
-        position = 0;
+        position -= resetPoint;
     }
 
     slider.style.transform =
@@ -7584,7 +7581,7 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-    requestAnimationFrame(animate);
+requestAnimationFrame(animate);
 
 });
 </script>
