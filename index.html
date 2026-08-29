@@ -4043,9 +4043,9 @@ display:flex;
     }
 
 }
-  /* ================================
-   SERVICES - RIGHT TO LEFT SLIDER
-   ================================ */
+ /* =========================================
+   SERVICES — INFINITE CONTINUOUS SLIDER
+   ========================================= */
 
 #services .services-grid{
     display:flex !important;
@@ -4053,13 +4053,11 @@ display:flex;
     gap:24px;
     overflow:hidden;
     width:100%;
-    scroll-behavior:smooth;
 }
 
-/* Existing service cards ka design same rahega */
+/* Cards same design, only slider behavior */
 #services .service-card{
     flex:0 0 calc((100% - 72px) / 4);
-    min-width:0;
 }
 
 /* Tablet */
@@ -7475,52 +7473,69 @@ const fallback = getAXReply(message); addAXBotMessage( fallback ); }); }
 /* CLOSE MAIN AX ASSISTANT IIFE */
 
 })();
-  /* =================================
-   SERVICES AUTO SLIDER
-   RIGHT → LEFT
-   ================================= */
+  /* =========================================
+   SERVICES — INFINITE CONTINUOUS SLIDER
+   ========================================= */
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
 
-    const servicesSlider = document.querySelector("#services .services-grid");
+    const slider = document.querySelector("#services .services-grid");
 
-    if(!servicesSlider) return;
+    if (!slider) return;
 
-    const cards = servicesSlider.querySelectorAll(".service-card");
+    const originalCards = Array.from(
+        slider.querySelectorAll(".service-card")
+    );
 
-    if(cards.length <= 4) return;
+    if (originalCards.length < 2) return;
 
-    let currentIndex = 0;
+    /* Clone all cards */
+    originalCards.forEach(card => {
+        const clone = card.cloneNode(true);
+        clone.setAttribute("aria-hidden", "true");
+        slider.appendChild(clone);
+    });
 
-    function moveServices(){
+    let position = 0;
 
-        const card = cards[0];
+    const speed = 0.6; // slider speed
 
-        const cardWidth = card.offsetWidth;
+    function animateServices() {
 
-        const gap = 24;
+        position += speed;
 
-        currentIndex++;
+        slider.style.transform =
+            `translate3d(${-position}px, 0, 0)`;
 
-        if(currentIndex > cards.length - 4){
+        /*
+         * Jab original 6 cards ka pura group
+         * left side nikal jaye,
+         * position ko silently reset kar do.
+         *
+         * Kyunki same cards immediately
+         * clone mein continue ho rahe hain,
+         * user ko reset bilkul nazar nahi aayega.
+         */
 
-            currentIndex = 0;
+        const firstCard = originalCards[0];
 
-            servicesSlider.scrollTo({
-                left: 0,
-                behavior: "smooth"
-            });
+        if (firstCard) {
 
-            return;
+            const cardWidth =
+                firstCard.offsetWidth + 24;
+
+            const resetPoint =
+                cardWidth * originalCards.length;
+
+            if (position >= resetPoint) {
+                position -= resetPoint;
+            }
         }
 
-        servicesSlider.scrollTo({
-            left: currentIndex * (cardWidth + gap),
-            behavior: "smooth"
-        });
+        requestAnimationFrame(animateServices);
     }
 
-    setInterval(moveServices, 3000);
+    requestAnimationFrame(animateServices);
 
 });
 </script>
