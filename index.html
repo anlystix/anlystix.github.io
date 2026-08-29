@@ -7505,7 +7505,8 @@ const fallback = getAXReply(message); addAXBotMessage( fallback ); }); }
 
 })();
  /* ==========================================
-   SERVICES — SEAMLESS INFINITE SLIDER
+   SERVICES — TRUE INFINITE LOOP
+   RIGHT → LEFT
    ========================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -7518,9 +7519,13 @@ document.addEventListener("DOMContentLoaded", function () {
         slider.querySelectorAll(".service-card")
     );
 
-    if (cards.length < 2) return;
+    if (cards.length < 5) return;
 
-    /* Clone all 6 cards */
+
+    /* ---------------------------------------
+       Clone the complete set
+       --------------------------------------- */
+
     cards.forEach(card => {
 
         const clone = card.cloneNode(true);
@@ -7532,45 +7537,74 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
+
     let position = 0;
-    const speed = 0.55;
+
+    /*
+       Speed:
+       0.35 = very slow
+       0.50 = premium smooth
+       0.70 = normal
+       1.00 = fast
+    */
+
+    const speed = 0.35;
+
 
     function getStep() {
 
-        const card = cards[0];
+        const firstCard = slider.querySelector(".service-card");
+
+        if (!firstCard) return 0;
+
+        const style = window.getComputedStyle(slider);
 
         const gap =
-            parseFloat(
-                getComputedStyle(slider).gap
-            ) || 24;
+            parseFloat(style.columnGap || style.gap) || 24;
 
-        return card.getBoundingClientRect().width + gap;
+        return firstCard.getBoundingClientRect().width + gap;
+
     }
+
 
     function animate() {
 
-        const step = getStep();
-
         position += speed;
 
+        const step = getStep();
+
         /*
-         * Move continuously
+         * Move the complete track
          */
+
         slider.style.transform =
             `translate3d(${-position}px, 0, 0)`;
 
+
         /*
-         * After exactly 6 cards,
-         * continue from the cloned 1st card.
+         * After all ORIGINAL cards have passed,
+         * silently move back by exactly one set.
+         *
+         * Because identical clones are already
+         * behind them, the user sees NO jump.
          */
-        if (position >= step * cards.length) {
-            position -= step * cards.length;
+
+        const resetPoint = step * cards.length;
+
+        if (position >= resetPoint) {
+
+            position -= resetPoint;
+
         }
 
+
         requestAnimationFrame(animate);
+
     }
 
+
     requestAnimationFrame(animate);
+
 });
 </script>
 </body>
