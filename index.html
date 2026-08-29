@@ -2145,6 +2145,45 @@ display:flex;
     white-space: nowrap;
   }
 }
+/* ===== HEADER ZOOM / SMALL SCREEN FIX ===== */
+
+@media (max-width: 1250px) {
+
+  .navbar,
+  header,
+  .header {
+    width: calc(100% - 32px) !important;
+    max-width: none !important;
+  }
+
+  .navbar {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .navbar img,
+  .navbar .logo,
+  header img,
+  header .logo {
+    max-width: 180px !important;
+  }
+
+  .nav-links,
+  .navbar-nav,
+  nav {
+    gap: 14px !important;
+  }
+
+  nav a {
+    font-size: 13px !important;
+  }
+
+  .navbar .btn,
+  header .btn {
+    padding: 10px 16px !important;
+    font-size: 13px !important;
+  }
+}
   
 </style>
 </head>
