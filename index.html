@@ -7574,16 +7574,15 @@ function animate() {
 
     position += speed;
 
+    if (position >= resetPoint) {
+        position = 0;
+    }
+
     slider.style.transform =
         `translate3d(${-position}px, 0, 0)`;
 
-    if (position >= resetPoint) {
-        position -= resetPoint;
-    }
-
     requestAnimationFrame(animate);
 }
-
 
     requestAnimationFrame(animate);
 
