@@ -4043,34 +4043,64 @@ display:flex;
     }
 
 }
- /* =========================================
-   SERVICES — INFINITE CONTINUOUS SLIDER
-   ========================================= */
+/* ==========================================
+   SERVICES — TRUE INFINITE LOOP SLIDER
+   ========================================== */
 
+/* Container acts as the viewport */
+#services .container{
+    overflow:hidden;
+}
+
+/* The actual moving track */
 #services .services-grid{
     display:flex !important;
     flex-wrap:nowrap !important;
+
+    width:max-content !important;
+    max-width:none !important;
+
     gap:24px;
-    overflow:hidden;
-    width:100%;
+
+    overflow:visible !important;
+
+    transform:translate3d(0,0,0);
+    will-change:transform;
 }
 
-/* Cards same design, only slider behavior */
+/* Exactly 4 cards visible on desktop */
 #services .service-card{
-    flex:0 0 calc((100% - 72px) / 4);
+    flex:0 0 calc(
+        (min(1200px, 100vw - 48px) - 72px) / 4
+    );
+
+    width:calc(
+        (min(1200px, 100vw - 48px) - 72px) / 4
+    );
+
+    min-width:0;
 }
 
-/* Tablet */
+/* Tablet — 2 cards */
 @media(max-width:1000px){
+
     #services .service-card{
-        flex:0 0 calc((100% - 24px) / 2);
+        flex:0 0 calc(
+            (100vw - 40px - 24px) / 2
+        );
+
+        width:calc(
+            (100vw - 40px - 24px) / 2
+        );
     }
 }
 
-/* Mobile */
+/* Mobile — 1 card */
 @media(max-width:600px){
+
     #services .service-card{
-        flex:0 0 100%;
+        flex:0 0 calc(100vw - 40px);
+        width:calc(100vw - 40px);
     }
 }
 </style>
@@ -7473,9 +7503,10 @@ const fallback = getAXReply(message); addAXBotMessage( fallback ); }); }
 /* CLOSE MAIN AX ASSISTANT IIFE */
 
 })();
-  /* =========================================
-   SERVICES — INFINITE CONTINUOUS SLIDER
-   ========================================= */
+ /* ==========================================
+   SERVICES — TRUE INFINITE LOOP
+   RIGHT → LEFT
+   ========================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -7483,59 +7514,95 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!slider) return;
 
-    const originalCards = Array.from(
+    const cards = Array.from(
         slider.querySelectorAll(".service-card")
     );
 
-    if (originalCards.length < 2) return;
+    if (cards.length < 5) return;
 
-    /* Clone all cards */
-    originalCards.forEach(card => {
+
+    /* ---------------------------------------
+       Clone the complete set
+       --------------------------------------- */
+
+    cards.forEach(card => {
+
         const clone = card.cloneNode(true);
+
+        clone.classList.add("service-clone");
         clone.setAttribute("aria-hidden", "true");
+
         slider.appendChild(clone);
+
     });
+
 
     let position = 0;
 
-    const speed = 0.6; // slider speed
+    /*
+       Speed:
+       0.35 = very slow
+       0.50 = premium smooth
+       0.70 = normal
+       1.00 = fast
+    */
 
-    function animateServices() {
+    const speed = 0.55;
+
+
+    function getStep() {
+
+        const firstCard = slider.querySelector(".service-card");
+
+        if (!firstCard) return 0;
+
+        const style = window.getComputedStyle(slider);
+
+        const gap =
+            parseFloat(style.columnGap || style.gap) || 24;
+
+        return firstCard.getBoundingClientRect().width + gap;
+
+    }
+
+
+    function animate() {
 
         position += speed;
+
+        const step = getStep();
+
+        /*
+         * Move the complete track
+         */
 
         slider.style.transform =
             `translate3d(${-position}px, 0, 0)`;
 
+
         /*
-         * Jab original 6 cards ka pura group
-         * left side nikal jaye,
-         * position ko silently reset kar do.
+         * After all ORIGINAL cards have passed,
+         * silently move back by exactly one set.
          *
-         * Kyunki same cards immediately
-         * clone mein continue ho rahe hain,
-         * user ko reset bilkul nazar nahi aayega.
+         * Because identical clones are already
+         * behind them, the user sees NO jump.
          */
 
-        const firstCard = originalCards[0];
+        const resetPoint = step * cards.length;
 
-        if (firstCard) {
+        if (position >= resetPoint) {
 
-            const cardWidth =
-                firstCard.offsetWidth + 24;
+            position -= resetPoint;
 
-            const resetPoint =
-                cardWidth * originalCards.length;
-
-            if (position >= resetPoint) {
-                position -= resetPoint;
-            }
         }
 
-        requestAnimationFrame(animateServices);
+
+        requestAnimationFrame(animate);
+
     }
 
-    requestAnimationFrame(animateServices);
+
+    requestAnimationFrame(animate);
 
 });
 </script>
