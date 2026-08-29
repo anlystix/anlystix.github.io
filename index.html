@@ -3001,6 +3001,735 @@ display:flex;
     }
 
 }
+  /* =========================================================
+   ANLYSTIX — PREMIUM INDUSTRIES DATA NETWORK
+   ========================================================= */
+
+.anx-industries{
+    position:relative;
+    min-height:850px;
+    padding:120px 0 140px;
+    overflow:hidden;
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(0,207,255,.09),
+            transparent 34%
+        ),
+        #06111f;
+}
+
+
+/* BACKGROUND GRID */
+
+.anx-ind-bg-grid{
+    position:absolute;
+    inset:0;
+    opacity:.22;
+    pointer-events:none;
+
+    background-image:
+        linear-gradient(
+            rgba(0,207,255,.08) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0,207,255,.08) 1px,
+            transparent 1px
+        );
+
+    background-size:50px 50px;
+
+    mask-image:
+        radial-gradient(
+            ellipse at center,
+            black 0%,
+            transparent 75%
+        );
+
+    animation:anxGridMove 18s linear infinite;
+}
+
+@keyframes anxGridMove{
+
+    from{
+        transform:translate3d(0,0,0);
+    }
+
+    to{
+        transform:translate3d(50px,50px,0);
+    }
+
+}
+
+
+/* BACKGROUND GLOWS */
+
+.anx-ind-glow{
+    position:absolute;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    pointer-events:none;
+    filter:blur(100px);
+    opacity:.12;
+}
+
+.anx-ind-glow-1{
+    top:10%;
+    left:-250px;
+    background:#00cfff;
+}
+
+.anx-ind-glow-2{
+    right:-250px;
+    bottom:0;
+    background:#1e73ff;
+}
+
+
+/* HEADING */
+
+.anx-ind-heading{
+    position:relative;
+    z-index:5;
+    text-align:center;
+    max-width:850px;
+    margin:0 auto 30px;
+}
+
+.anx-ind-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+
+    color:#00cfff;
+
+    font-size:12px;
+    font-weight:700;
+
+    letter-spacing:.2em;
+
+    margin-bottom:22px;
+}
+
+.anx-ind-dot{
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#00cfff;
+
+    box-shadow:
+        0 0 0 5px rgba(0,207,255,.08),
+        0 0 18px rgba(0,207,255,.8);
+
+    animation:anxPulse 1.8s infinite;
+}
+
+@keyframes anxPulse{
+
+    0%,100%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+    50%{
+        transform:scale(.65);
+        opacity:.55;
+    }
+
+}
+
+
+.anx-ind-heading h2{
+    margin:0;
+
+    font-size:clamp(38px,5vw,68px);
+
+    line-height:1.05;
+
+    letter-spacing:-.045em;
+
+    font-weight:800;
+
+    color:#fff;
+}
+
+.anx-ind-heading h2 span{
+    background:linear-gradient(
+        90deg,
+        #00cfff,
+        #1e73ff
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+}
+
+.anx-ind-heading p{
+    max-width:650px;
+
+    margin:22px auto 0;
+
+    color:rgba(255,255,255,.62);
+
+    font-size:16px;
+    line-height:1.7;
+}
+
+
+/* SYSTEM */
+
+.anx-ind-system{
+    position:relative;
+
+    width:min(100%,1050px);
+
+    height:620px;
+
+    margin:0 auto;
+}
+
+
+/* SVG DATA NETWORK */
+
+.anx-data-flow{
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    overflow:visible;
+
+    pointer-events:none;
+
+    z-index:1;
+}
+
+
+/* CONNECTION LINES */
+
+.anx-flow-line{
+    fill:none;
+
+    stroke:
+        rgba(0,207,255,.16);
+
+    stroke-width:1.5;
+
+    stroke-dasharray:6 9;
+
+    animation:
+        anxFlowDash 8s linear infinite;
+}
+
+@keyframes anxFlowDash{
+
+    to{
+        stroke-dashoffset:-120;
+    }
+
+}
+
+
+/* DATA PARTICLES */
+
+.anx-data-particle{
+
+    r:5;
+
+    fill:#00cfff;
+
+    filter:url(#anxFlowGlow);
+
+}
+
+
+/* CENTRAL CORE */
+
+.anx-ind-core{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:190px;
+    height:190px;
+
+    transform:translate(-50%,-50%);
+
+    z-index:5;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+
+/* RINGS */
+
+.anx-core-ring{
+    position:absolute;
+
+    inset:0;
+
+    border-radius:50%;
+
+    border:1px solid rgba(0,207,255,.28);
+
+    box-shadow:
+        0 0 40px rgba(0,207,255,.08);
+
+}
+
+.anx-core-ring-1{
+    animation:anxCoreRotate 12s linear infinite;
+}
+
+.anx-core-ring-2{
+    inset:12px;
+
+    border-color:rgba(30,115,255,.35);
+
+    animation:
+        anxCoreRotateReverse 9s linear infinite;
+}
+
+.anx-core-ring-3{
+    inset:25px;
+
+    border-style:dashed;
+
+    border-color:rgba(0,207,255,.4);
+
+    animation:anxCoreRotate 6s linear infinite;
+}
+
+@keyframes anxCoreRotate{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+@keyframes anxCoreRotateReverse{
+
+    to{
+        transform:rotate(-360deg);
+    }
+
+}
+
+
+/* CORE INNER */
+
+.anx-core-inner{
+
+    position:relative;
+
+    width:115px;
+    height:115px;
+
+    border-radius:50%;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(
+            circle at 35% 25%,
+            rgba(0,207,255,.24),
+            rgba(5,20,38,.96) 70%
+        );
+
+    border:1px solid rgba(0,207,255,.4);
+
+    box-shadow:
+        0 0 35px rgba(0,207,255,.18),
+        inset 0 0 25px rgba(0,207,255,.08);
+
+    animation:anxCoreFloat 3s ease-in-out infinite;
+}
+
+@keyframes anxCoreFloat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.04);
+    }
+
+}
+
+.anx-core-icon{
+    font-size:24px;
+    color:#00cfff;
+
+    margin-bottom:5px;
+
+    filter:
+        drop-shadow(
+            0 0 10px rgba(0,207,255,.7)
+        );
+}
+
+.anx-core-inner strong{
+    color:#fff;
+    font-size:13px;
+    letter-spacing:.08em;
+}
+
+.anx-core-inner span{
+    color:rgba(255,255,255,.45);
+    font-size:7px;
+    letter-spacing:.15em;
+    margin-top:4px;
+}
+
+
+/* INDUSTRY NODES */
+
+.anx-ind-node{
+
+    position:absolute;
+
+    width:185px;
+
+    padding:18px 20px;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20,39,62,.88),
+            rgba(8,20,35,.72)
+        );
+
+    border:1px solid rgba(255,255,255,.09);
+
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.22);
+
+    z-index:4;
+
+    transition:
+        transform .4s cubic-bezier(.2,.8,.2,1),
+        border-color .4s ease,
+        box-shadow .4s ease;
+
+    cursor:pointer;
+}
+
+
+/* HOVER */
+
+.anx-ind-node:hover{
+
+    transform:
+        translateY(-8px)
+        scale(1.035);
+
+    border-color:
+        rgba(0,207,255,.55);
+
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.35),
+        0 0 35px rgba(0,207,255,.13);
+}
+
+
+/* NODE ICON */
+
+.anx-node-icon{
+
+    width:42px;
+    height:42px;
+
+    border-radius:12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:12px;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00cfff,
+            #1e73ff
+        );
+
+    box-shadow:
+        0 8px 25px rgba(0,207,255,.2);
+
+    transition:.4s ease;
+}
+
+.anx-ind-node:hover .anx-node-icon{
+
+    transform:
+        rotate(-6deg)
+        scale(1.1);
+
+    box-shadow:
+        0 0 30px rgba(0,207,255,.45);
+}
+
+
+.anx-ind-node strong{
+
+    display:block;
+
+    color:#fff;
+
+    font-size:15px;
+
+    margin-bottom:4px;
+}
+
+.anx-ind-node span{
+
+    display:block;
+
+    color:rgba(255,255,255,.48);
+
+    font-size:11px;
+}
+
+
+/* NODE POSITIONS */
+
+.node-1{
+    top:15px;
+    left:4%;
+}
+
+.node-2{
+    top:15px;
+    right:4%;
+}
+
+.node-3{
+    top:240px;
+    left:-1%;
+}
+
+.node-4{
+    top:240px;
+    right:-1%;
+}
+
+.node-5{
+    bottom:15px;
+    left:7%;
+}
+
+.node-6{
+    bottom:15px;
+    right:7%;
+}
+
+
+/* LIVE NETWORK STATUS */
+
+.anx-ind-live{
+
+    position:absolute;
+
+    left:50%;
+    bottom:8px;
+
+    transform:translateX(-50%);
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    background:rgba(5,17,31,.72);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:rgba(255,255,255,.5);
+
+    font-size:10px;
+
+    letter-spacing:.04em;
+
+    white-space:nowrap;
+
+    backdrop-filter:blur(12px);
+}
+
+.anx-live-dot{
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:#00cfff;
+
+    box-shadow:
+        0 0 12px #00cfff;
+
+    animation:anxPulse 1.5s infinite;
+}
+
+.anx-ind-live b{
+
+    width:1px;
+    height:12px;
+
+    background:rgba(255,255,255,.15);
+
+    margin:0 3px;
+}
+
+.anx-ind-live strong{
+
+    color:#00cfff;
+}
+
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .anx-industries{
+        min-height:auto;
+        padding:90px 0 100px;
+    }
+
+    .anx-ind-heading{
+        padding:0 20px;
+    }
+
+    .anx-ind-heading h2{
+        font-size:40px;
+    }
+
+    .anx-ind-system{
+
+        height:auto;
+
+        display:grid;
+
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+
+        gap:14px;
+
+        padding:30px 18px 0;
+    }
+
+    .anx-data-flow{
+        display:none;
+    }
+
+    .anx-ind-core{
+        position:relative;
+
+        left:auto;
+        top:auto;
+
+        transform:none;
+
+        grid-column:1 / -1;
+
+        width:150px;
+        height:150px;
+
+        margin:10px auto 20px;
+    }
+
+    .anx-core-inner{
+        width:92px;
+        height:92px;
+    }
+
+    .anx-core-icon{
+        font-size:20px;
+    }
+
+    .anx-ind-node{
+
+        position:relative;
+
+        inset:auto !important;
+
+        width:auto;
+
+        padding:16px;
+    }
+
+    .anx-ind-live{
+
+        position:relative;
+
+        left:auto;
+        bottom:auto;
+
+        transform:none;
+
+        grid-column:1 / -1;
+
+        justify-content:center;
+
+        margin:10px auto 0;
+
+    }
+
+}
+
+
+@media(max-width:500px){
+
+    .anx-ind-heading h2{
+        font-size:34px;
+    }
+
+    .anx-ind-heading p{
+        font-size:14px;
+    }
+
+    .anx-ind-system{
+        grid-template-columns:1fr;
+    }
+
+    .anx-ind-node{
+        width:100%;
+    }
+
+    .anx-ind-live{
+        font-size:9px;
+    }
+
+}
 </style>
 </head>
 <body>
@@ -3363,24 +4092,246 @@ display:flex;
     </div>
 
 </section>
+<section class="anx-industries" id="industries">
 
-<section class="section" id="industries">
-  <div class="container">
-    <div class="text-center reveal">
-      <div class="section-tag">Industries We Serve</div>
-      <h2 class="section-title">Specialized Across <span class="gradient-text">Sectors</span></h2>
-      <p class="section-subtitle">Tailored analytics frameworks built for the operational realities of each industry we serve.</p>
+    <div class="anx-ind-bg-grid"></div>
+    <div class="anx-ind-glow anx-ind-glow-1"></div>
+    <div class="anx-ind-glow anx-ind-glow-2"></div>
+
+    <div class="container">
+
+        <div class="anx-ind-heading">
+            <span class="anx-ind-tag">
+                <span class="anx-ind-dot"></span>
+                INDUSTRIES WE POWER
+            </span>
+
+            <h2>
+                Intelligence Built For
+                <span>Every Industry.</span>
+            </h2>
+
+            <p>
+                Transform complex operational data into real-time
+                intelligence, automation and measurable business growth.
+            </p>
+        </div>
+
+
+        <div class="anx-ind-system">
+
+            <!-- DATA FLOW SVG -->
+
+            <svg class="anx-data-flow"
+                 viewBox="0 0 1000 620"
+                 preserveAspectRatio="none">
+
+                <defs>
+
+                    <linearGradient id="anxFlowGradient"
+                        x1="0%" y1="0%"
+                        x2="100%" y2="0%">
+
+                        <stop offset="0%" stop-color="#00cfff"
+                              stop-opacity="0"/>
+
+                        <stop offset="40%" stop-color="#00cfff"
+                              stop-opacity="1"/>
+
+                        <stop offset="100%" stop-color="#1e73ff"
+                              stop-opacity="0"/>
+
+                    </linearGradient>
+
+                    <filter id="anxFlowGlow">
+
+                        <feGaussianBlur
+                            stdDeviation="3"
+                            result="blur"/>
+
+                        <feMerge>
+                            <feMergeNode in="blur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+
+                    </filter>
+
+                </defs>
+
+
+                <!-- CONNECTION LINES -->
+
+                <path class="anx-flow-line"
+                      d="M500 310 C380 220 250 150 120 100"/>
+
+                <path class="anx-flow-line"
+                      d="M500 310 C620 220 750 150 880 100"/>
+
+                <path class="anx-flow-line"
+                      d="M500 310 C350 330 220 330 90 310"/>
+
+                <path class="anx-flow-line"
+                      d="M500 310 C650 330 780 330 910 310"/>
+
+                <path class="anx-flow-line"
+                      d="M500 310 C400 430 270 500 150 540"/>
+
+                <path class="anx-flow-line"
+                      d="M500 310 C600 430 730 500 850 540"/>
+
+
+                <!-- MOVING DATA -->
+
+                <circle class="anx-data-particle">
+                    <animateMotion
+                        dur="3s"
+                        repeatCount="indefinite"
+                        path="M500 310 C380 220 250 150 120 100"/>
+                </circle>
+
+                <circle class="anx-data-particle">
+                    <animateMotion
+                        dur="3.5s"
+                        begin=".6s"
+                        repeatCount="indefinite"
+                        path="M500 310 C620 220 750 150 880 100"/>
+                </circle>
+
+                <circle class="anx-data-particle">
+                    <animateMotion
+                        dur="3.2s"
+                        begin="1s"
+                        repeatCount="indefinite"
+                        path="M500 310 C350 330 220 330 90 310"/>
+                </circle>
+
+                <circle class="anx-data-particle">
+                    <animateMotion
+                        dur="3.8s"
+                        begin=".4s"
+                        repeatCount="indefinite"
+                        path="M500 310 C650 330 780 330 910 310"/>
+                </circle>
+
+                <circle class="anx-data-particle">
+                    <animateMotion
+                        dur="4s"
+                        begin="1.3s"
+                        repeatCount="indefinite"
+                        path="M500 310 C400 430 270 500 150 540"/>
+                </circle>
+
+                <circle class="anx-data-particle">
+                    <animateMotion
+                        dur="3.6s"
+                        begin=".8s"
+                        repeatCount="indefinite"
+                        path="M500 310 C600 430 730 500 850 540"/>
+                </circle>
+
+            </svg>
+
+
+            <!-- CENTRAL CORE -->
+
+            <div class="anx-ind-core">
+
+                <div class="anx-core-ring anx-core-ring-1"></div>
+                <div class="anx-core-ring anx-core-ring-2"></div>
+                <div class="anx-core-ring anx-core-ring-3"></div>
+
+                <div class="anx-core-inner">
+
+                    <div class="anx-core-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+
+                    <strong>ANLYSTIX</strong>
+
+                    <span>DATA INTELLIGENCE</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- INDUSTRY NODES -->
+
+            <div class="anx-ind-node node-1">
+                <div class="anx-node-icon">
+                    <i class="fa-solid fa-store"></i>
+                </div>
+                <strong>Retail</strong>
+                <span>Customer Intelligence</span>
+            </div>
+
+
+            <div class="anx-ind-node node-2">
+                <div class="anx-node-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+                <strong>E-Commerce</strong>
+                <span>Sales Analytics</span>
+            </div>
+
+
+            <div class="anx-ind-node node-3">
+                <div class="anx-node-icon">
+                    <i class="fa-solid fa-building"></i>
+                </div>
+                <strong>Construction</strong>
+                <span>Project Intelligence</span>
+            </div>
+
+
+            <div class="anx-ind-node node-4">
+                <div class="anx-node-icon">
+                    <i class="fa-solid fa-industry"></i>
+                </div>
+                <strong>Manufacturing</strong>
+                <span>Operational Analytics</span>
+            </div>
+
+
+            <div class="anx-ind-node node-5">
+                <div class="anx-node-icon">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </div>
+                <strong>Logistics</strong>
+                <span>Supply Chain Data</span>
+            </div>
+
+
+            <div class="anx-ind-node node-6">
+                <div class="anx-node-icon">
+                    <i class="fa-solid fa-chart-pie"></i>
+                </div>
+                <strong>Finance</strong>
+                <span>Financial Intelligence</span>
+            </div>
+
+
+            <!-- LIVE STATUS -->
+
+            <div class="anx-ind-live">
+
+                <span class="anx-live-dot"></span>
+
+                LIVE DATA NETWORK
+
+                <b></b>
+
+                Processing
+                <strong>2.4M+</strong>
+                data points
+
+            </div>
+
+        </div>
+
     </div>
-    <div class="industries-grid">
-      <div class="industry-card reveal"><div class="industry-icon"><i class="fa-solid fa-store"></i></div><h4>Retail</h4></div>
-      <div class="industry-card reveal"><div class="industry-icon"><i class="fa-solid fa-cart-shopping"></i></div><h4>E-Commerce</h4></div>
-      <div class="industry-card reveal"><div class="industry-icon"><i class="fa-solid fa-helmet-safety"></i></div><h4>Construction</h4></div>
-      <div class="industry-card reveal"><div class="industry-icon"><i class="fa-solid fa-industry"></i></div><h4>Manufacturing</h4></div>
-      <div class="industry-card reveal"><div class="industry-icon"><i class="fa-solid fa-truck-fast"></i></div><h4>Logistics</h4></div>
-    </div>
-  </div>
+
 </section>
-
 <section class="section" id="services">
   <div class="container">
     <div class="text-center reveal">
