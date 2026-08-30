@@ -4412,6 +4412,109 @@ backface-visibility:hidden;
         transparent
     );
 }
+  /* ==========================================
+   TOP VIDEO — MANUAL 2 VIDEO SLIDER
+   ========================================== */
+
+.anx-top-slider-video-track{
+    position:absolute;
+    inset:0;
+
+    width:200%;
+    height:100%;
+
+    display:flex;
+
+    transform:translate3d(0,0,0);
+
+    transition:transform .55s cubic-bezier(.22,.61,.36,1);
+
+    z-index:0;
+
+    cursor:grab;
+
+    user-select:none;
+    touch-action:pan-y;
+}
+
+.anx-top-slider-video-track.dragging{
+    cursor:grabbing;
+    transition:none;
+}
+
+.anx-top-slider-video-track .anx-top-slider-video{
+    position:relative;
+    inset:auto;
+
+    flex:0 0 50%;
+
+    width:50%;
+    height:100%;
+
+    object-fit:cover;
+    object-position:center;
+
+    pointer-events:none;
+}
+
+
+/* ==========================================
+   VIDEO DOTS
+   ========================================== */
+
+.anx-top-slider-dots{
+    position:absolute;
+
+    left:50%;
+    bottom:28px;
+
+    transform:translateX(-50%);
+
+    z-index:5;
+
+    display:flex;
+    align-items:center;
+
+    gap:8px;
+}
+
+.anx-top-slider-dot{
+    width:8px;
+    height:8px;
+
+    padding:0;
+
+    border:0;
+    border-radius:50%;
+
+    background:rgba(255,255,255,.45);
+
+    cursor:pointer;
+
+    transition:
+        width .3s ease,
+        background .3s ease,
+        transform .3s ease;
+}
+
+.anx-top-slider-dot.active{
+    width:26px;
+
+    border-radius:10px;
+
+    background:#fff;
+}
+
+
+/* MOBILE */
+
+@media(max-width:520px){
+
+    .anx-top-slider-dots{
+        bottom:20px;
+    }
+
+}
 </style>
 </head>
 <body>
@@ -4453,11 +4556,13 @@ backface-visibility:hidden;
 
 <section class="anx-top-slider" id="home">
 
+    <!-- VIDEO SLIDER -->
+<div class="anx-top-slider-video-track">
+
+    <!-- VIDEO 1 -->
     <video
         class="anx-top-slider-video"
-        autoplay
         muted
-        loop
         playsinline
         preload="auto">
 
@@ -4467,8 +4572,38 @@ backface-visibility:hidden;
 
     </video>
 
-    <div class="anx-top-slider-overlay"></div>
 
+    <!-- VIDEO 2 -->
+    <video
+        class="anx-top-slider-video"
+        muted
+        playsinline
+        preload="metadata">
+
+        <source
+            src="https://s7d1.scene7.com/is/content/kyndryl/slide-2?dpr=on,2"
+            type="video/mp4">
+
+    </video>
+
+</div>
+
+    <div class="anx-top-slider-overlay"></div>
+<div class="anx-top-slider-dots">
+
+    <button
+        class="anx-top-slider-dot active"
+        type="button"
+        aria-label="Video 1">
+    </button>
+
+    <button
+        class="anx-top-slider-dot"
+        type="button"
+        aria-label="Video 2">
+    </button>
+
+</div>
     <div class="anx-top-slider-content">
 
         <div class="anx-top-slider-text">
@@ -8441,7 +8576,173 @@ document.addEventListener("DOMContentLoaded", () => {
     track.classList.add("why-marquee-active");
 
 });
- 
+ /* ==========================================
+   TOP VIDEO — MANUAL SLIDER
+   ========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const slider = document.querySelector("#home");
+
+    if (!slider) return;
+
+    const track =
+        slider.querySelector(".anx-top-slider-video-track");
+
+    const videos =
+        track.querySelectorAll(".anx-top-slider-video");
+
+    const dots =
+        slider.querySelectorAll(".anx-top-slider-dot");
+
+    if (videos.length < 2) return;
+
+
+    let current = 0;
+
+    let startX = 0;
+    let dragging = false;
+
+
+    function showSlide(index){
+
+        if(index < 0) index = 0;
+
+        if(index >= videos.length)
+            index = videos.length - 1;
+
+        current = index;
+
+
+        track.style.transform =
+            `translate3d(-${current * 50}%,0,0)`;
+
+
+        dots.forEach((dot, i) => {
+
+            dot.classList.toggle(
+                "active",
+                i === current
+            );
+
+        });
+
+
+        videos.forEach((video, i) => {
+
+            if(i !== current){
+                video.pause();
+                video.currentTime = 0;
+            }
+
+        });
+
+    }
+
+
+    /* DOT CLICK */
+
+    dots.forEach((dot, index) => {
+
+        dot.addEventListener("click", () => {
+
+            showSlide(index);
+
+        });
+
+    });
+
+
+    /* MOUSE DRAG */
+
+    track.addEventListener("mousedown", e => {
+
+        dragging = true;
+
+        startX = e.clientX;
+
+        track.classList.add("dragging");
+
+    });
+
+
+    document.addEventListener("mouseup", e => {
+
+        if(!dragging) return;
+
+        dragging = false;
+
+        track.classList.remove("dragging");
+
+        const distance =
+            e.clientX - startX;
+
+
+        if(distance < -60){
+
+            showSlide(current + 1);
+
+        }
+        else if(distance > 60){
+
+            showSlide(current - 1);
+
+        }
+        else{
+
+            showSlide(current);
+
+        }
+
+    });
+
+
+    /* TOUCH SWIPE */
+
+    track.addEventListener(
+        "touchstart",
+        e => {
+
+            startX =
+                e.touches[0].clientX;
+
+        },
+        { passive:true }
+    );
+
+
+    track.addEventListener(
+        "touchend",
+        e => {
+
+            const endX =
+                e.changedTouches[0].clientX;
+
+            const distance =
+                endX - startX;
+
+
+            if(distance < -60){
+
+                showSlide(current + 1);
+
+            }
+            else if(distance > 60){
+
+                showSlide(current - 1);
+
+            }
+
+        },
+        { passive:true }
+    );
+
+
+    /* START */
+
+    showSlide(0);
+
+});
 </script>
 </body>
 </html>
