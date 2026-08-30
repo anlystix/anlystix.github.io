@@ -7608,12 +7608,14 @@ document.addEventListener("DOMContentLoaded", function () {
     function animate() {
 
         const step = getStep();
-
+const resetPoint = step * cards.length;
         position += speed;
 
         slider.style.transform =
             `translate3d(${-position}px,0,0)`;
-
+if (position >= resetPoint) {
+    position -= resetPoint;
+}
 
         /*
          * After exactly one complete set
