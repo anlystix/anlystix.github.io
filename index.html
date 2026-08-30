@@ -4561,10 +4561,11 @@ backface-visibility:hidden;
 
     <!-- VIDEO 1 -->
     <video
-        class="anx-top-slider-video"
-        muted
-        playsinline
-        preload="auto">
+    class="anx-top-slider-video"
+    autoplay
+    muted
+    playsinline
+    preload="auto">
 
         <source
             src="https://s7d1.scene7.com/is/content/kyndryl/prr-animated-main-image-16x9-0x720-3000k"
@@ -4575,10 +4576,11 @@ backface-visibility:hidden;
 
     <!-- VIDEO 2 -->
     <video
-        class="anx-top-slider-video"
-        muted
-        playsinline
-        preload="metadata">
+    class="anx-top-slider-video"
+    autoplay
+    muted
+    playsinline
+    preload="auto">
 
         <source
             src="https://s7d1.scene7.com/is/content/kyndryl/slide-2?dpr=on,2"
@@ -8630,12 +8632,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         videos.forEach((video, i) => {
 
-            if(i !== current){
-                video.pause();
-                video.currentTime = 0;
-            }
+    if(i === current){
+        video.play().catch(() => {});
+    } else {
+        video.pause();
+        video.currentTime = 0;
+    }
 
-        });
+});
 
     }
 
