@@ -8030,10 +8030,10 @@ document.addEventListener("DOMContentLoaded", () => {
         track.querySelectorAll(".service-card")
     );
 
-    if (cards.length === 0) return;
+    if (!cards.length) return;
 
 
-    /* Duplicate all 6 cards */
+    /* Clone all services */
 
     cards.forEach(card => {
 
@@ -8048,21 +8048,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     let position = 0;
-
-    const speed = 0.55;
+    const speed = 0.70;
 
 
     function getSetWidth() {
 
-        const card = cards[0];
-
         const cardWidth =
-            card.getBoundingClientRect().width;
+            cards[0].getBoundingClientRect().width;
 
         const gap =
-            parseFloat(
-                getComputedStyle(track).gap
-            ) || 24;
+            parseFloat(getComputedStyle(track).gap) || 24;
 
         return (cardWidth + gap) * cards.length;
     }
@@ -8074,12 +8069,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         position += speed;
 
+
+        /* IMPORTANT:
+           Reset BEFORE applying transform
+        */
+
         if (position >= setWidth) {
             position -= setWidth;
         }
 
+
         track.style.transform =
             `translate3d(${-position}px, 0, 0)`;
+
 
         requestAnimationFrame(animate);
     }
