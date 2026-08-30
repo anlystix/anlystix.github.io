@@ -4332,6 +4332,71 @@ backface-visibility:hidden;
     }
 
 }
+  /* SERVICES — 4 CARDS + CONTINUOUS MARQUEE */
+
+#services .services-marquee {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-top: 55px;
+}
+
+#services .services-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    width: max-content !important;
+    max-width: none !important;
+    gap: 24px;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+#services .service-card {
+    flex: 0 0 calc(
+        (min(1200px, 100vw - 48px) - 72px) / 4
+    ) !important;
+
+    width: calc(
+        (min(1200px, 100vw - 48px) - 72px) / 4
+    ) !important;
+
+    min-width: 0 !important;
+    margin: 0 !important;
+}
+
+/* Soft fade at both edges */
+#services .services-marquee::before,
+#services .services-marquee::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 70px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+#services .services-marquee::before {
+    left: 0;
+    background: linear-gradient(
+        to right,
+        #06111f,
+        transparent
+    );
+}
+
+#services .services-marquee::after {
+    right: 0;
+    background: linear-gradient(
+        to left,
+        #06111f,
+        transparent
+    );
+}
 </style>
 </head>
 <body>
@@ -4889,6 +4954,7 @@ backface-visibility:hidden;
       <h2 class="section-title">End-to-End <span class="gradient-text">Analytics Solutions</span></h2>
       <p class="section-subtitle">From data engineering to executive dashboards — a complete analytics stack delivered by specialists.</p>
     </div>
+    <div class="services-marquee">
 <div class="services-grid">
 
     <!-- DATA ANALYTICS -->
@@ -7950,6 +8016,76 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* Start animation */
     track.classList.add("why-marquee-active");
+
+});
+  /* SERVICES — AUTO INFINITE MARQUEE */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const track = document.querySelector("#services .services-grid");
+
+    if (!track) return;
+
+    const cards = Array.from(
+        track.querySelectorAll(".service-card")
+    );
+
+    if (cards.length === 0) return;
+
+
+    /* Duplicate all 6 cards */
+
+    cards.forEach(card => {
+
+        const clone = card.cloneNode(true);
+
+        clone.classList.add("service-clone");
+        clone.setAttribute("aria-hidden", "true");
+
+        track.appendChild(clone);
+
+    });
+
+
+    let position = 0;
+
+    const speed = 0.55;
+
+
+    function getSetWidth() {
+
+        const card = cards[0];
+
+        const cardWidth =
+            card.getBoundingClientRect().width;
+
+        const gap =
+            parseFloat(
+                getComputedStyle(track).gap
+            ) || 24;
+
+        return (cardWidth + gap) * cards.length;
+    }
+
+
+    function animate() {
+
+        const setWidth = getSetWidth();
+
+        position += speed;
+
+        if (position >= setWidth) {
+            position -= setWidth;
+        }
+
+        track.style.transform =
+            `translate3d(${-position}px, 0, 0)`;
+
+        requestAnimationFrame(animate);
+    }
+
+
+    requestAnimationFrame(animate);
 
 });
 </script>
