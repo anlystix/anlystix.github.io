@@ -4052,50 +4052,21 @@ display:flex;
     overflow:hidden;
 }
 
-/* ==========================================
-   SERVICES SLIDER VIEWPORT
-   ========================================== */
-
-#services .services-slider-viewport{
-    width:100%;
-    overflow:hidden;
-    position:relative;
-}
-
-
-/* ==========================================
-   MOVING TRACK
-   ========================================== */
-
+/* The actual moving track */
 #services .services-grid{
     display:flex !important;
     flex-wrap:nowrap !important;
-    gap:24px;
 
     width:max-content !important;
     max-width:none !important;
 
-    position:relative;
+    gap:24px;
 
-    will-change:transform;
+    overflow:visible !important;
+
     transform:translate3d(0,0,0);
-}
-
-
-/* ==========================================
-   EXACTLY 4 CARDS
-   ========================================== */
-
-#services .service-card{
-    flex:0 0 calc(
-        (min(1200px, 100vw - 48px) - 72px) / 4
-    );
-
-    width:calc(
-        (min(1200px, 100vw - 48px) - 72px) / 4
-    );
-
-    min-width:0;
+will-change:transform;
+backface-visibility:hidden;
 }
 
 /* Exactly 4 cards visible on desktop */
@@ -4690,8 +4661,6 @@ display:flex;
       <h2 class="section-title">End-to-End <span class="gradient-text">Analytics Solutions</span></h2>
       <p class="section-subtitle">From data engineering to executive dashboards — a complete analytics stack delivered by specialists.</p>
     </div>
-<div class="services-slider-viewport">
-
 <div class="services-grid">
 
     <!-- DATA ANALYTICS -->
@@ -4795,7 +4764,7 @@ display:flex;
             End-to-end BI strategy, data warehousing and KPI architecture
             aligned with your goals.
         </p>
-   </div>
+    </div>
 
 </div>
 </div>
@@ -7535,128 +7504,106 @@ const fallback = getAXReply(message); addAXBotMessage( fallback ); }); }
 /* CLOSE MAIN AX ASSISTANT IIFE */
 
 })();
+ /* ==========================================
+   SERVICES — TRUE INFINITE LOOP
+   RIGHT → LEFT
+   ========================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const slider = document.querySelector("#services .services-grid");
+
+    if (!slider) return;
+
+    const cards = Array.from(
+        slider.querySelectorAll(".service-card")
+    );
+
+    if (cards.length < 5) return;
 
 
-    /* ------------------------------------------
-       Start
-       ------------------------------------------ */
+    /* ---------------------------------------
+       Clone the complete set
+       --------------------------------------- */
 
-    requestAnimationFrame(animate);
+    cards.forEach(card => {
 
-});
-  document.addEventListener("DOMContentLoaded", () => {
+        const clone = card.cloneNode(true);
 
-    const track = document.querySelector("#services .services-grid");
+        clone.classList.add("service-clone");
+        clone.setAttribute("aria-hidden", "true");
 
-    if (!track) return;
-
-    let startX = 0;
-    let currentX = 0;
-    let startPosition = 0;
-    let dragging = false;
-
-    const getStep = () => {
-        const card = track.querySelector(".service-card");
-        if (!card) return 0;
-
-        const gap = parseFloat(getComputedStyle(track).gap) || 24;
-
-        return card.getBoundingClientRect().width + gap;
-    };
-
-    /* Mouse start */
-    track.addEventListener("mousedown", e => {
-
-        dragging = true;
-        startX = e.clientX;
-        startPosition = currentX;
-
-        track.style.transition = "none";
-        track.style.cursor = "grabbing";
-
-    });
-
-    /* Mouse move */
-    document.addEventListener("mousemove", e => {
-
-        if (!dragging) return;
-
-        const distance = e.clientX - startX;
-
-        currentX = startPosition + distance;
-
-        track.style.transform =
-            `translate3d(${currentX}px,0,0)`;
-
-    });
-
-    /* Mouse release */
-    document.addEventListener("mouseup", () => {
-
-        if (!dragging) return;
-
-        dragging = false;
-
-        track.style.cursor = "grab";
-
-        snap();
+        slider.appendChild(clone);
 
     });
 
 
-    /* Mobile swipe */
+    let position = 0;
 
-    track.addEventListener("touchstart", e => {
+    /*
+       Speed:
+       0.35 = very slow
+       0.50 = premium smooth
+       0.70 = normal
+       1.00 = fast
+    */
 
-        startX = e.touches[0].clientX;
-        startPosition = currentX;
-
-        track.style.transition = "none";
-
-    }, { passive: true });
-
-
-    track.addEventListener("touchmove", e => {
-
-        const distance =
-            e.touches[0].clientX - startX;
-
-        currentX = startPosition + distance;
-
-        track.style.transform =
-            `translate3d(${currentX}px,0,0)`;
-
-    }, { passive: true });
+    const speed = 0.35;
 
 
-    track.addEventListener("touchend", () => {
+    function getStep() {
 
-        snap();
+        const firstCard = slider.querySelector(".service-card");
 
-    });
+        if (!firstCard) return 0;
 
+        const style = window.getComputedStyle(slider);
 
-    function snap() {
+        const gap =
+            parseFloat(style.columnGap || style.gap) || 24;
 
-        const step = getStep();
-
-        if (!step) return;
-
-        const index =
-            Math.round(-currentX / step);
-
-        currentX = -(index * step);
-
-        track.style.transition =
-            "transform .5s cubic-bezier(.22,1,.36,1)";
-
-        track.style.transform =
-            `translate3d(${currentX}px,0,0)`;
+        return firstCard.getBoundingClientRect().width + gap;
 
     }
 
 
-    track.style.cursor = "grab";
+    function animate() {
+
+        position += speed;
+
+        const step = getStep();
+
+        /*
+         * Move the complete track
+         */
+
+        slider.style.transform =
+            `translate3d(${-position}px, 0, 0)`;
+
+
+        /*
+         * After all ORIGINAL cards have passed,
+         * silently move back by exactly one set.
+         *
+         * Because identical clones are already
+         * behind them, the user sees NO jump.
+         */
+
+        const resetPoint = step * cards.length;
+
+        if (position >= resetPoint) {
+
+            position -= resetPoint;
+
+        }
+
+
+        requestAnimationFrame(animate);
+
+    }
+
+
+    requestAnimationFrame(animate);
 
 });
 </script>
