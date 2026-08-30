@@ -7535,104 +7535,6 @@ const fallback = getAXReply(message); addAXBotMessage( fallback ); }); }
 /* CLOSE MAIN AX ASSISTANT IIFE */
 
 })();
- /* ==========================================
-   SERVICES — PREMIUM INFINITE SLIDER
-   4 CARDS VISIBLE
-   ZOOM + GLOW ENTRY
-   ========================================== */
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const viewport = document.querySelector(
-        "#services .services-slider-viewport"
-    );
-
-    const slider = document.querySelector(
-        "#services .services-grid"
-    );
-
-    if (!viewport || !slider) return;
-
-    const originalCards = Array.from(
-        slider.querySelectorAll(".service-card")
-    );
-
-    if (originalCards.length < 5) return;
-
-
-    /* ------------------------------------------
-       Clone cards for seamless loop
-       ------------------------------------------ */
-
-    originalCards.forEach(card => {
-
-        const clone = card.cloneNode(true);
-
-        clone.classList.add("service-clone");
-        clone.setAttribute("aria-hidden", "true");
-
-        slider.appendChild(clone);
-
-    });
-
-
-    let position = 0;
-
-    const speed = 0.55;
-
-
-    /* ------------------------------------------
-       Card width + gap
-       ------------------------------------------ */
-
-    function getStep() {
-
-        const card = originalCards[0];
-
-        const cardWidth =
-            card.getBoundingClientRect().width;
-
-        const gap =
-            parseFloat(
-                getComputedStyle(slider).gap
-            ) || 24;
-
-        return cardWidth + gap;
-    }
-
-
-    /* ------------------------------------------
-       Infinite movement
-       ------------------------------------------ */
-
-    function animate() {
-
-        const step = getStep();
-const resetPoint = step * cards.length;
-        position += speed;
-
-        slider.style.transform =
-            `translate3d(${-position}px,0,0)`;
-if (position >= resetPoint) {
-    position -= resetPoint;
-}
-
-        /*
-         * After exactly one complete set
-         * silently reset.
-         */
-
-        if (position >= step * originalCards.length) {
-
-            position -=
-                step * originalCards.length;
-
-        }
-
-
-        requestAnimationFrame(animate);
-
-    }
 
 
     /* ------------------------------------------
@@ -7640,6 +7542,121 @@ if (position >= resetPoint) {
        ------------------------------------------ */
 
     requestAnimationFrame(animate);
+
+});
+  document.addEventListener("DOMContentLoaded", () => {
+
+    const track = document.querySelector("#services .services-grid");
+
+    if (!track) return;
+
+    let startX = 0;
+    let currentX = 0;
+    let startPosition = 0;
+    let dragging = false;
+
+    const getStep = () => {
+        const card = track.querySelector(".service-card");
+        if (!card) return 0;
+
+        const gap = parseFloat(getComputedStyle(track).gap) || 24;
+
+        return card.getBoundingClientRect().width + gap;
+    };
+
+    /* Mouse start */
+    track.addEventListener("mousedown", e => {
+
+        dragging = true;
+        startX = e.clientX;
+        startPosition = currentX;
+
+        track.style.transition = "none";
+        track.style.cursor = "grabbing";
+
+    });
+
+    /* Mouse move */
+    document.addEventListener("mousemove", e => {
+
+        if (!dragging) return;
+
+        const distance = e.clientX - startX;
+
+        currentX = startPosition + distance;
+
+        track.style.transform =
+            `translate3d(${currentX}px,0,0)`;
+
+    });
+
+    /* Mouse release */
+    document.addEventListener("mouseup", () => {
+
+        if (!dragging) return;
+
+        dragging = false;
+
+        track.style.cursor = "grab";
+
+        snap();
+
+    });
+
+
+    /* Mobile swipe */
+
+    track.addEventListener("touchstart", e => {
+
+        startX = e.touches[0].clientX;
+        startPosition = currentX;
+
+        track.style.transition = "none";
+
+    }, { passive: true });
+
+
+    track.addEventListener("touchmove", e => {
+
+        const distance =
+            e.touches[0].clientX - startX;
+
+        currentX = startPosition + distance;
+
+        track.style.transform =
+            `translate3d(${currentX}px,0,0)`;
+
+    }, { passive: true });
+
+
+    track.addEventListener("touchend", () => {
+
+        snap();
+
+    });
+
+
+    function snap() {
+
+        const step = getStep();
+
+        if (!step) return;
+
+        const index =
+            Math.round(-currentX / step);
+
+        currentX = -(index * step);
+
+        track.style.transition =
+            "transform .5s cubic-bezier(.22,1,.36,1)";
+
+        track.style.transform =
+            `translate3d(${currentX}px,0,0)`;
+
+    }
+
+
+    track.style.cursor = "grab";
 
 });
 </script>
