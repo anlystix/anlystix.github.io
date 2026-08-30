@@ -4104,6 +4104,234 @@ backface-visibility:hidden;
         width:calc(100vw - 40px);
     }
 }
+  /* ==========================================
+   WHY ANLYSTIX — PREMIUM ANIMATED MARQUEE
+   ========================================== */
+
+.why-marquee {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 65px;
+    padding: 28px 0;
+
+    border-top: 1px solid rgba(0,207,255,.12);
+    border-bottom: 1px solid rgba(0,207,255,.12);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,207,255,.03),
+            rgba(30,115,255,.08),
+            rgba(0,207,255,.03)
+        );
+}
+
+
+/* Fade edges */
+
+.why-marquee::before,
+.why-marquee::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 180px;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.why-marquee::before {
+    left: 0;
+    background: linear-gradient(
+        90deg,
+        #071321,
+        transparent
+    );
+}
+
+.why-marquee::after {
+    right: 0;
+    background: linear-gradient(
+        270deg,
+        #071321,
+        transparent
+    );
+}
+
+
+/* Moving track */
+
+.why-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 32px;
+
+    animation:
+        whyInfiniteMove 28s linear infinite;
+
+    will-change: transform;
+    transform: translate3d(0,0,0);
+}
+
+
+/* Individual item */
+
+.why-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    white-space: nowrap;
+
+    padding: 16px 25px;
+
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.06),
+            rgba(0,207,255,.025)
+        );
+
+    box-shadow:
+        0 0 0 rgba(0,207,255,0);
+
+    transition:
+        transform .4s ease,
+        border-color .4s ease,
+        box-shadow .4s ease;
+}
+
+
+/* Icon */
+
+.why-icon {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    font-size: 19px;
+    font-weight: 800;
+
+    color: #fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00CFFF,
+            #1E73FF
+        );
+
+    box-shadow:
+        0 0 18px rgba(0,207,255,.35);
+}
+
+
+/* Text */
+
+.why-item strong {
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: .2px;
+}
+
+
+/* Separator */
+
+.why-dot {
+    color: #00CFFF;
+    font-size: 20px;
+
+    text-shadow:
+        0 0 12px rgba(0,207,255,.8);
+
+    animation: whyPulse 1.8s ease-in-out infinite;
+}
+
+
+/* Hover */
+
+.why-item:hover {
+    transform: scale(1.06);
+
+    border-color:
+        rgba(0,207,255,.45);
+
+    box-shadow:
+        0 0 30px rgba(0,207,255,.12);
+}
+
+
+/* Infinite animation */
+
+@keyframes whyInfiniteMove {
+
+    from {
+        transform: translate3d(0,0,0);
+    }
+
+    to {
+        transform: translate3d(-50%,0,0);
+    }
+
+}
+
+
+/* Glowing separators */
+
+@keyframes whyPulse {
+
+    0%,100% {
+        opacity: .35;
+        transform: scale(.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    .why-marquee {
+        margin-top: 40px;
+    }
+
+    .why-track {
+        gap: 20px;
+        animation-duration: 22s;
+    }
+
+    .why-item {
+        padding: 13px 19px;
+    }
+
+    .why-item strong {
+        font-size: 14px;
+    }
+
+    .why-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+
+}
 </style>
 </head>
 <body>
@@ -5341,22 +5569,114 @@ VIP STORE
   </div>
 </section>
 
-<section class="section" id="why">
-  <div class="container">
-    <div class="text-center reveal">
-      <div class="section-tag">Why ANLYSTIX</div>
-      <h2 class="section-title">Built For <span class="gradient-text">Serious Decisions</span></h2>
-      <p class="section-subtitle">What makes our clients stay — and recommend us.</p>
+<section class="section why-section" id="why">
+    <div class="container">
+
+        <div class="text-center reveal">
+            <div class="section-tag">WHY ANLYSTIX</div>
+
+            <h2 class="section-title">
+                Built For <span class="gradient-text">Serious Decisions</span>
+            </h2>
+
+            <p class="section-subtitle">
+                What makes our clients stay — and recommend us.
+            </p>
+        </div>
+
+        <div class="why-marquee">
+
+            <div class="why-track">
+
+                <div class="why-item">
+                    <span class="why-icon">◎</span>
+                    <strong>Accurate Insights</strong>
+                </div>
+
+                <div class="why-dot">✦</div>
+
+                <div class="why-item">
+                    <span class="why-icon">ϟ</span>
+                    <strong>Fast Delivery</strong>
+                </div>
+
+                <div class="why-dot">✦</div>
+
+                <div class="why-item">
+                    <span class="why-icon">▣</span>
+                    <strong>Professional Reporting</strong>
+                </div>
+
+                <div class="why-dot">✦</div>
+
+                <div class="why-item">
+                    <span class="why-icon">◉</span>
+                    <strong>Data-Driven Decisions</strong>
+                </div>
+
+                <div class="why-dot">✦</div>
+
+                <div class="why-item">
+                    <span class="why-icon">☷</span>
+                    <strong>Custom Solutions</strong>
+                </div>
+
+                <div class="why-dot">✦</div>
+
+                <div class="why-item">
+                    <span class="why-icon">⌁</span>
+                    <strong>Scalable Systems</strong>
+                </div>
+
+                <!-- Duplicate for seamless loop -->
+
+                <div class="why-dot">✦</div>
+
+                <div class="why-item">
+                    <span class="why-icon">◎</span>
+                    <strong>Accurate Insights</strong>
+                </div>
+
+                <div class="why-dot">✦</div>
+
+                <div class="why-item">
+                    <span class="why-icon">ϟ</span>
+                    <strong>Fast Delivery</strong>
+                </div>
+
+                <div class="why-dot">✦</div>
+
+                <div class="why-item">
+                    <span class="why-icon">▣</span>
+                    <strong>Professional Reporting</strong>
+                </div>
+
+                <div class="why-dot">✦</div>
+
+                <div class="why-item">
+                    <span class="why-icon">◉</span>
+                    <strong>Data-Driven Decisions</strong>
+                </div>
+
+                <div class="why-dot">✦</div>
+
+                <div class="why-item">
+                    <span class="why-icon">☷</span>
+                    <strong>Custom Solutions</strong>
+                </div>
+
+                <div class="why-dot">✦</div>
+
+                <div class="why-item">
+                    <span class="why-icon">⌁</span>
+                    <strong>Scalable Systems</strong>
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
-    <div class="why-grid">
-      <div class="why-card reveal"><div class="why-icon"><i class="fa-solid fa-bullseye"></i></div><div><h4>Accurate Insights</h4><p>Validated data pipelines and rigorous QA on every metric we ship.</p></div></div>
-      <div class="why-card reveal"><div class="why-icon"><i class="fa-solid fa-bolt"></i></div><div><h4>Fast Delivery</h4><p>Sprint-based engagements with first dashboards live within days.</p></div></div>
-      <div class="why-card reveal"><div class="why-icon"><i class="fa-solid fa-file-lines"></i></div><div><h4>Professional Reporting</h4><p>Boardroom-grade design language across every deliverable.</p></div></div>
-      <div class="why-card reveal"><div class="why-icon"><i class="fa-solid fa-lightbulb"></i></div><div><h4>Data-Driven Decisions</h4><p>We translate metrics into the next action, not just charts on a screen.</p></div></div>
-      <div class="why-card reveal"><div class="why-icon"><i class="fa-solid fa-sliders"></i></div><div><h4>Custom Solutions</h4><p>Every engagement is shaped to your stack, data model and KPIs.</p></div></div>
-      <div class="why-card reveal"><div class="why-icon"><i class="fa-solid fa-tower-broadcast"></i></div><div><h4>Scalable Systems</h4><p>Analytics architecture designed to grow from 10K to 10M rows.</p></div></div>
-    </div>
-  </div>
 </section>
 
 <section class="section" id="process">
@@ -7604,6 +7924,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     requestAnimationFrame(animate);
+
+});
+  /* ==========================================
+   WHY ANLYSTIX — INFINITE PREMIUM MARQUEE
+   ========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const track = document.querySelector("#why .why-grid");
+
+    if (!track) return;
+
+    const cards = Array.from(track.querySelectorAll(".why-card"));
+
+    if (!cards.length) return;
+
+    /* Duplicate cards for seamless loop */
+    cards.forEach(card => {
+        const clone = card.cloneNode(true);
+        clone.classList.add("why-clone");
+        clone.setAttribute("aria-hidden", "true");
+        track.appendChild(clone);
+    });
+
+    /* Start animation */
+    track.classList.add("why-marquee-active");
 
 });
 </script>
