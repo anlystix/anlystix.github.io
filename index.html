@@ -11429,13 +11429,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     searchOverlay.addEventListener("click", (e) => {
 
-        if(e.target === searchOverlay){
+    if(!e.target.closest(".anx-search-box")){
 
-            closeSearch();
+        closeSearch();
 
-        }
+    }
 
-    });
+});
 
 
     /* ESC KEY */
