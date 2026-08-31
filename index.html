@@ -11427,16 +11427,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* CLICK OUTSIDE */
 
-    searchOverlay.addEventListener("click", (e) => {
+   document.addEventListener("mousedown", (e) => {
 
-    if(!e.target.closest(".anx-search-box")){
+    if (!searchOverlay.classList.contains("active")) {
+        return;
+    }
+
+    const searchBox =
+        document.querySelector(".anx-search-box");
+
+    if (!searchBox) {
+        return;
+    }
+
+    /* Search box ke bahar click hua */
+    if (!searchBox.contains(e.target)) {
 
         closeSearch();
 
     }
 
 });
-
 
     /* ESC KEY */
 
