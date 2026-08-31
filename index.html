@@ -6308,6 +6308,239 @@ transform:translateY(0);
     }
 
 }
+  /* ==========================================
+   SEARCH POPUP — FINAL POSITION FIX
+   ========================================== */
+
+.anx-search-overlay{
+    position:fixed !important;
+    inset:0 !important;
+
+    display:block !important;
+
+    padding:0 !important;
+    margin:0 !important;
+
+    background:rgba(3,10,20,.72) !important;
+
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:
+        opacity .25s ease,
+        visibility .25s ease;
+
+    z-index:99999 !important;
+}
+
+.anx-search-overlay.active{
+    opacity:1 !important;
+    visibility:visible !important;
+}
+
+
+/* SEARCH BOX */
+
+.anx-search-box{
+    position:absolute !important;
+
+    top:110px !important;
+    left:50% !important;
+
+    width:680px !important;
+    max-width:calc(100vw - 40px) !important;
+
+    margin:0 !important;
+
+    padding:0 !important;
+
+    transform:translateX(-50%) translateY(-15px) !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10,27,48,.97),
+            rgba(4,15,29,.97)
+        ) !important;
+
+    border:1px solid rgba(255,255,255,.12) !important;
+
+    border-radius:24px !important;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.55),
+        0 0 40px rgba(0,207,255,.08) !important;
+
+    overflow:visible !important;
+
+    transition:
+        transform .3s ease !important;
+}
+
+.anx-search-overlay.active .anx-search-box{
+    transform:translateX(-50%) translateY(0) !important;
+}
+
+
+/* SEARCH INPUT */
+
+.anx-search-input-wrap{
+    position:relative !important;
+
+    width:100% !important;
+    height:70px !important;
+
+    display:flex !important;
+    align-items:center !important;
+
+    box-sizing:border-box !important;
+
+    padding:
+        0 70px 0 22px !important;
+
+    margin:0 !important;
+
+    border:0 !important;
+
+    background:transparent !important;
+}
+
+
+/* SEARCH ICON */
+
+.anx-search-input-wrap > i{
+    flex:0 0 auto !important;
+
+    margin-right:14px !important;
+
+    color:#00cfff !important;
+
+    font-size:18px !important;
+}
+
+
+/* INPUT */
+
+.anx-search-input-wrap input{
+    flex:1 !important;
+
+    width:100% !important;
+    height:100% !important;
+
+    padding:0 !important;
+    margin:0 !important;
+
+    border:0 !important;
+    outline:0 !important;
+
+    background:transparent !important;
+
+    color:#fff !important;
+
+    font-size:16px !important;
+}
+
+
+/* ==========================================
+   X BUTTON — FIXED INSIDE TOP RIGHT
+   ========================================== */
+
+.anx-search-close{
+    position:absolute !important;
+
+    top:14px !important;
+    right:14px !important;
+
+    left:auto !important;
+    bottom:auto !important;
+
+    margin:0 !important;
+
+    width:40px !important;
+    height:40px !important;
+
+    padding:0 !important;
+
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+
+    box-sizing:border-box !important;
+
+    transform:none !important;
+
+    border-radius:50% !important;
+
+    border:1px solid rgba(255,255,255,.18) !important;
+
+    background:rgba(255,255,255,.07) !important;
+
+    color:#fff !important;
+
+    cursor:pointer !important;
+
+    z-index:100 !important;
+}
+
+.anx-search-close:hover{
+    transform:rotate(90deg) !important;
+
+    color:#00cfff !important;
+
+    background:rgba(0,207,255,.10) !important;
+
+    border-color:rgba(0,207,255,.35) !important;
+}
+
+
+/* RESULTS */
+
+.anx-search-results{
+    margin:0 18px 18px !important;
+
+    max-height:420px !important;
+
+    overflow-y:auto !important;
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .anx-search-box{
+        top:75px !important;
+
+        width:calc(100vw - 20px) !important;
+
+        max-width:none !important;
+
+        border-radius:20px !important;
+    }
+
+    .anx-search-input-wrap{
+        height:60px !important;
+
+        padding:
+            0 58px 0 16px !important;
+    }
+
+    .anx-search-input-wrap input{
+        font-size:14px !important;
+    }
+
+    .anx-search-close{
+        top:10px !important;
+        right:10px !important;
+
+        width:36px !important;
+        height:36px !important;
+    }
+
+}
 </style>
 </head>
 <body>
