@@ -6049,6 +6049,264 @@ backface-visibility:hidden;
     }
 
 }
+  /* ==========================================
+   ANLYSTIX — ADVANCED WEBSITE SEARCH
+   ========================================== */
+
+.anx-search-overlay{
+    position:fixed;
+    inset:0;
+
+    background:rgba(3,10,20,.72);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+
+    padding-top:120px;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease;
+
+    z-index:99999;
+}
+
+.anx-search-overlay.active{
+    opacity:1;
+    visibility:visible;
+}
+
+
+.anx-search-box{
+    width:min(680px, calc(100% - 32px));
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(16,30,52,.96),
+            rgba(5,15,29,.96)
+        );
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:24px;
+
+    padding:22px;
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.55),
+        0 0 50px rgba(0,207,255,.08);
+
+    transform:translateY(-20px) scale(.98);
+
+    transition:
+        transform .35s cubic-bezier(.2,.8,.2,1);
+}
+
+.anx-search-overlay.active .anx-search-box{
+    transform:translateY(0) scale(1);
+}
+
+
+/* CLOSE */
+
+.anx-search-close{
+    position:absolute;
+
+    margin-top:-10px;
+    margin-left:calc(min(680px, calc(100vw - 32px)) - 62px);
+
+    width:38px;
+    height:38px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    background:rgba(255,255,255,.06);
+
+    color:#fff;
+
+    cursor:pointer;
+
+    transition:.25s ease;
+}
+
+.anx-search-close:hover{
+    transform:rotate(90deg);
+    background:rgba(255,255,255,.12);
+}
+
+
+/* INPUT */
+
+.anx-search-input-wrap{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    padding:5px 8px 5px 18px;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    transition:.25s ease;
+}
+
+.anx-search-input-wrap:focus-within{
+    border-color:rgba(0,207,255,.55);
+
+    box-shadow:
+        0 0 0 4px rgba(0,207,255,.08),
+        0 0 30px rgba(0,207,255,.08);
+}
+
+.anx-search-input-wrap > i{
+    color:#00cfff;
+    font-size:18px;
+}
+
+.anx-search-input-wrap input{
+    flex:1;
+
+    width:100%;
+
+    padding:15px 0;
+
+    border:0;
+    outline:0;
+
+    background:transparent;
+
+    color:#fff;
+
+    font-size:16px;
+}
+
+.anx-search-input-wrap input::placeholder{
+    color:rgba(255,255,255,.45);
+}
+
+
+/* RESULTS */
+
+.anx-search-results{
+    margin-top:16px;
+
+    max-height:420px;
+
+    overflow-y:auto;
+}
+
+.anx-search-result{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:15px 16px;
+
+    margin-bottom:8px;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.035);
+
+    border:1px solid transparent;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    transition:.22s ease;
+}
+
+.anx-search-result:hover{
+    background:rgba(0,207,255,.08);
+
+    border-color:rgba(0,207,255,.22);
+
+    transform:translateX(4px);
+}
+
+.anx-search-result-content{
+    min-width:0;
+}
+
+.anx-search-result-title{
+    font-size:15px;
+    font-weight:600;
+
+    margin-bottom:4px;
+}
+
+.anx-search-result-text{
+    font-size:12px;
+
+    color:rgba(255,255,255,.55);
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+
+    max-width:520px;
+}
+
+.anx-search-result i{
+    color:#00cfff;
+    font-size:13px;
+}
+
+
+/* EMPTY */
+
+.anx-search-empty{
+    text-align:center;
+
+    padding:35px 20px;
+
+    color:rgba(255,255,255,.5);
+
+    font-size:14px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .anx-search-overlay{
+        padding-top:80px;
+    }
+
+    .anx-search-box{
+        width:calc(100% - 20px);
+        padding:16px;
+        border-radius:20px;
+    }
+
+    .anx-search-close{
+        margin-left:calc(100vw - 82px);
+    }
+
+    .anx-search-input-wrap input{
+        font-size:14px;
+    }
+
+    .anx-search-result{
+        padding:13px;
+    }
+
+}
 </style>
 </head>
 <body>
@@ -6074,6 +6332,40 @@ backface-visibility:hidden;
         aria-label="Search">
         <i class="fa-solid fa-magnifying-glass"></i>
     </button>
+      <!-- SEARCH OVERLAY -->
+
+<div class="anx-search-overlay" id="searchOverlay">
+
+    <div class="anx-search-box">
+
+        <button
+            class="anx-search-close"
+            id="searchClose"
+            type="button"
+            aria-label="Close Search">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="anx-search-input-wrap">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="anxSearchInput"
+                placeholder="Search anything..."
+                autocomplete="off">
+
+        </div>
+
+        <div
+            class="anx-search-results"
+            id="anxSearchResults">
+        </div>
+
+    </div>
+
+</div>
    <button
         class="menu-toggle"
         id="menuToggle"
@@ -10789,6 +11081,280 @@ document.addEventListener("DOMContentLoaded", () => {
     viewport.style.cursor = "grab";
 
     updateSlider(false);
+
+});
+  /* ==========================================
+   ANLYSTIX — WEBSITE SEARCH
+   ========================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const searchToggle =
+        document.getElementById("searchToggle");
+
+    const searchOverlay =
+        document.getElementById("searchOverlay");
+
+    const searchClose =
+        document.getElementById("searchClose");
+
+    const searchInput =
+        document.getElementById("anxSearchInput");
+
+    const searchResults =
+        document.getElementById("anxSearchResults");
+
+
+    if (
+        !searchToggle ||
+        !searchOverlay ||
+        !searchClose ||
+        !searchInput ||
+        !searchResults
+    ) return;
+
+
+    /* SEARCHABLE WEBSITE CONTENT */
+
+    const searchableSections = [
+
+        {
+            name: "Home",
+            selector: "#home",
+            keywords: "home anlystix analytics data business growth"
+        },
+
+        {
+            name: "Services",
+            selector: "#services",
+            keywords:
+                "services data analytics power bi dashboards excel reporting excel automation sql business intelligence"
+        },
+
+        {
+            name: "Portfolio",
+            selector: "#portfolio",
+            keywords:
+                "portfolio dashboards power bi kpi excel bi sql case study analytics"
+        },
+
+        {
+            name: "Industries",
+            selector: "#industries",
+            keywords:
+                "industries retail manufacturing logistics ecommerce construction business"
+        },
+
+        {
+            name: "Contact",
+            selector: "#contact",
+            keywords:
+                "contact get started email phone consultation"
+        }
+
+    ];
+
+
+    /* OPEN SEARCH */
+
+    searchToggle.addEventListener("click", () => {
+
+        searchOverlay.classList.add("active");
+
+        document.body.style.overflow = "hidden";
+
+        setTimeout(() => {
+            searchInput.focus();
+        }, 250);
+
+    });
+
+
+    /* CLOSE SEARCH */
+
+    function closeSearch(){
+
+        searchOverlay.classList.remove("active");
+
+        document.body.style.overflow = "";
+
+        searchInput.value = "";
+
+        searchResults.innerHTML = "";
+
+    }
+
+
+    searchClose.addEventListener(
+        "click",
+        closeSearch
+    );
+
+
+    /* CLICK OUTSIDE */
+
+    searchOverlay.addEventListener("click", (e) => {
+
+        if(e.target === searchOverlay){
+
+            closeSearch();
+
+        }
+
+    });
+
+
+    /* ESC KEY */
+
+    document.addEventListener("keydown", (e) => {
+
+        if(
+            e.key === "Escape" &&
+            searchOverlay.classList.contains("active")
+        ){
+
+            closeSearch();
+
+        }
+
+    });
+
+
+    /* SEARCH */
+
+    searchInput.addEventListener("input", () => {
+
+        const query =
+            searchInput.value
+                .trim()
+                .toLowerCase();
+
+
+        searchResults.innerHTML = "";
+
+
+        if(!query){
+
+            return;
+
+        }
+
+
+        const matches =
+            searchableSections.filter(section => {
+
+                const element =
+                    document.querySelector(
+                        section.selector
+                    );
+
+                if(!element) return false;
+
+
+                const content =
+                    (
+                        element.innerText +
+                        " " +
+                        section.keywords
+                    ).toLowerCase();
+
+
+                return content.includes(query);
+
+            });
+
+
+        if(!matches.length){
+
+            searchResults.innerHTML = `
+                <div class="anx-search-empty">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <br><br>
+                    No results found for
+                    "<strong>${escapeHtml(query)}</strong>"
+                </div>
+            `;
+
+            return;
+
+        }
+
+
+        matches.forEach(section => {
+
+            const element =
+                document.querySelector(
+                    section.selector
+                );
+
+            const text =
+                element.innerText
+                    .replace(/\s+/g, " ")
+                    .trim()
+                    .substring(0, 100);
+
+
+            const result =
+                document.createElement("div");
+
+            result.className =
+                "anx-search-result";
+
+
+            result.innerHTML = `
+
+                <div class="anx-search-result-content">
+
+                    <div class="anx-search-result-title">
+                        ${section.name}
+                    </div>
+
+                    <div class="anx-search-result-text">
+                        ${escapeHtml(text)}...
+                    </div>
+
+                </div>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            `;
+
+
+            result.addEventListener("click", () => {
+
+                closeSearch();
+
+                setTimeout(() => {
+
+                    element.scrollIntoView({
+                        behavior:"smooth",
+                        block:"start"
+                    });
+
+                }, 100);
+
+            });
+
+
+            searchResults.appendChild(result);
+
+        });
+
+    });
+
+
+    /* SAFE HTML */
+
+    function escapeHtml(text){
+
+        return text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+
+    }
 
 });
 </script>
