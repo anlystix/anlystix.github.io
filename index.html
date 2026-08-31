@@ -6049,6 +6049,726 @@ backface-visibility:hidden;
     }
 
 }
+  /* =========================================================
+   ANLYSTIX PORTFOLIO — ADVANCED LIVE DASHBOARD ANIMATIONS
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   MAIN VISUAL
+   --------------------------------------------------------- */
+
+.portfolio-visual {
+    position: relative;
+    overflow: hidden;
+    perspective: 1200px;
+}
+
+
+/* Moving ambient light */
+
+.portfolio-visual::before {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+
+    top: -80px;
+    left: -100px;
+
+    background: radial-gradient(
+        circle,
+        rgba(0,207,255,.20),
+        transparent 70%
+    );
+
+    filter: blur(20px);
+
+    animation: portfolioAmbientGlow 6s ease-in-out infinite;
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+@keyframes portfolioAmbientGlow {
+
+    0% {
+        transform: translate3d(0,0,0);
+        opacity: .35;
+    }
+
+    50% {
+        transform: translate3d(220px,120px,0);
+        opacity: .8;
+    }
+
+    100% {
+        transform: translate3d(0,0,0);
+        opacity: .35;
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   DASHBOARD GLASS
+   --------------------------------------------------------- */
+
+.portfolio-dashboard {
+
+    position: relative;
+    z-index: 2;
+
+    overflow: hidden;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform .6s cubic-bezier(.16,1,.3,1),
+        box-shadow .6s ease;
+
+}
+
+
+/* Glass reflection */
+
+.portfolio-dashboard::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -120%;
+    left: -70%;
+
+    width: 45%;
+    height: 300%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.12),
+            transparent
+        );
+
+    transform: rotate(20deg);
+
+    animation: dashboardReflection 7s ease-in-out infinite;
+
+    pointer-events: none;
+
+    z-index: 20;
+
+}
+
+
+@keyframes dashboardReflection {
+
+    0% {
+        left: -70%;
+    }
+
+    45% {
+        left: 130%;
+    }
+
+    100% {
+        left: 130%;
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   ACTIVE SLIDE
+   --------------------------------------------------------- */
+
+.portfolio-slide.active .portfolio-dashboard {
+
+    animation:
+        dashboardFloat 5s ease-in-out infinite;
+
+}
+
+
+@keyframes dashboardFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-5px) scale(1.008);
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   PROJECT 1 — REVENUE CHART
+   --------------------------------------------------------- */
+
+.portfolio-slide.active
+.dashboard-chart path {
+
+    stroke-dasharray: 1400;
+
+    stroke-dashoffset: 1400;
+
+    animation:
+        chartDraw 2.2s cubic-bezier(.16,1,.3,1) forwards;
+
+}
+
+
+@keyframes chartDraw {
+
+    to {
+        stroke-dashoffset: 0;
+    }
+
+}
+
+
+/* Revenue glow */
+
+.portfolio-slide.active
+.dashboard-chart {
+
+    animation:
+        chartGlow 3s ease-in-out infinite alternate;
+
+}
+
+
+@keyframes chartGlow {
+
+    from {
+        filter:
+            drop-shadow(0 0 0 rgba(0,207,255,0));
+    }
+
+    to {
+        filter:
+            drop-shadow(0 0 12px rgba(0,207,255,.45));
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   PROJECT 1 — KPI NUMBERS
+   --------------------------------------------------------- */
+
+.portfolio-slide.active
+.dashboard-top strong,
+.portfolio-slide.active
+.dashboard-stats strong {
+
+    animation:
+        numberPulse 2.8s ease-in-out infinite;
+
+}
+
+
+@keyframes numberPulse {
+
+    0%,
+    100% {
+        opacity: .85;
+    }
+
+    50% {
+        opacity: 1;
+        text-shadow:
+            0 0 14px rgba(0,207,255,.45);
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   PROJECT 2 — OEE CIRCLE
+   --------------------------------------------------------- */
+
+.portfolio-slide.active
+.oee-circle {
+
+    animation:
+        oeePulse 3s ease-in-out infinite;
+
+}
+
+
+@keyframes oeePulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        filter:
+            drop-shadow(0 0 4px rgba(0,207,255,.15));
+    }
+
+    50% {
+        transform: scale(1.035);
+        filter:
+            drop-shadow(0 0 18px rgba(0,207,255,.5));
+    }
+
+}
+
+
+/* OEE KPI cards */
+
+.portfolio-slide.active
+.oee-kpis > div {
+
+    animation:
+        kpiFloat 4s ease-in-out infinite;
+
+}
+
+
+.portfolio-slide.active
+.oee-kpis > div:nth-child(2) {
+
+    animation-delay: .5s;
+
+}
+
+
+.portfolio-slide.active
+.oee-kpis > div:nth-child(3) {
+
+    animation-delay: 1s;
+
+}
+
+
+@keyframes kpiFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+
+}
+
+
+/* Machine running indicator */
+
+.machine-status span {
+
+    animation:
+        statusPulse 1.4s ease-in-out infinite;
+
+}
+
+
+@keyframes statusPulse {
+
+    0% {
+        transform: scale(.8);
+        opacity: .45;
+    }
+
+    50% {
+        transform: scale(1.35);
+        opacity: 1;
+        box-shadow:
+            0 0 14px rgba(0,207,255,.8);
+    }
+
+    100% {
+        transform: scale(.8);
+        opacity: .45;
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   PROJECT 3 — LOGISTICS ROUTE
+   --------------------------------------------------------- */
+
+.portfolio-slide.active
+.route-line {
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #00cfff,
+            transparent
+        );
+
+    background-size: 200% 100%;
+
+    animation:
+        routeFlow 2.2s linear infinite;
+
+}
+
+
+@keyframes routeFlow {
+
+    from {
+        background-position: 200% 0;
+    }
+
+    to {
+        background-position: -200% 0;
+    }
+
+}
+
+
+/* Truck movement */
+
+.portfolio-slide.active
+.truck-icon {
+
+    animation:
+        truckMove 4s ease-in-out infinite;
+
+}
+
+
+@keyframes truckMove {
+
+    0% {
+        transform:
+            translateX(-5px)
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateX(18px)
+            translateY(-3px);
+    }
+
+    100% {
+        transform:
+            translateX(-5px)
+            translateY(0);
+    }
+
+}
+
+
+/* Location pulse */
+
+.portfolio-slide.active
+.location i {
+
+    animation:
+        locationPulse 2s ease-in-out infinite;
+
+}
+
+
+.portfolio-slide.active
+.location-two i {
+
+    animation-delay: 1s;
+
+}
+
+
+@keyframes locationPulse {
+
+    0% {
+        transform: scale(1);
+        opacity: .7;
+    }
+
+    50% {
+        transform: scale(1.25);
+        opacity: 1;
+        filter:
+            drop-shadow(0 0 8px rgba(0,207,255,.7));
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: .7;
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   PROJECT 4 — ECOMMERCE FUNNEL
+   --------------------------------------------------------- */
+
+.portfolio-slide.active
+.funnel-step {
+
+    animation:
+        funnelReveal 3.5s ease-in-out infinite;
+
+}
+
+
+.portfolio-slide.active
+.funnel-step:nth-child(2) {
+
+    animation-delay: .25s;
+
+}
+
+
+.portfolio-slide.active
+.funnel-step:nth-child(3) {
+
+    animation-delay: .5s;
+
+}
+
+
+.portfolio-slide.active
+.funnel-step:nth-child(4) {
+
+    animation-delay: .75s;
+
+}
+
+
+@keyframes funnelReveal {
+
+    0%,
+    100% {
+        transform: translateX(0);
+        opacity: .82;
+    }
+
+    50% {
+        transform: translateX(5px);
+        opacity: 1;
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   PROJECT 5 — SQL DATA BARS
+   --------------------------------------------------------- */
+
+.portfolio-slide.active
+.sql-bars > div span {
+
+    transform-origin: left center;
+
+    animation:
+        sqlBarGrow 2.5s cubic-bezier(.16,1,.3,1) infinite alternate;
+
+}
+
+
+.portfolio-slide.active
+.sql-bars > div:nth-child(2) span {
+
+    animation-delay: .3s;
+
+}
+
+
+.portfolio-slide.active
+.sql-bars > div:nth-child(3) span {
+
+    animation-delay: .6s;
+
+}
+
+
+.portfolio-slide.active
+.sql-bars > div:nth-child(4) span {
+
+    animation-delay: .9s;
+
+}
+
+
+.portfolio-slide.active
+.sql-bars > div:nth-child(5) span {
+
+    animation-delay: 1.2s;
+
+}
+
+
+@keyframes sqlBarGrow {
+
+    from {
+        transform: scaleX(.55);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+
+}
+
+
+/* SQL LIVE badge */
+
+.sql-header strong {
+
+    animation:
+        liveBlink 1.5s ease-in-out infinite;
+
+}
+
+
+@keyframes liveBlink {
+
+    0%,
+    100% {
+        opacity: .6;
+    }
+
+    50% {
+        opacity: 1;
+        text-shadow:
+            0 0 12px rgba(0,207,255,.8);
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   PROJECT 6 — CUSTOMER EXPERIENCE CHART
+   --------------------------------------------------------- */
+
+.portfolio-slide.active
+.cx-chart div {
+
+    transform-origin: bottom center;
+
+    animation:
+        cxBars 2.4s ease-in-out infinite alternate;
+
+}
+
+
+.portfolio-slide.active
+.cx-chart div:nth-child(1) {
+    animation-delay: .1s;
+}
+
+.portfolio-slide.active
+.cx-chart div:nth-child(2) {
+    animation-delay: .3s;
+}
+
+.portfolio-slide.active
+.cx-chart div:nth-child(3) {
+    animation-delay: .5s;
+}
+
+.portfolio-slide.active
+.cx-chart div:nth-child(4) {
+    animation-delay: .7s;
+}
+
+.portfolio-slide.active
+.cx-chart div:nth-child(5) {
+    animation-delay: .9s;
+}
+
+.portfolio-slide.active
+.cx-chart div:nth-child(6) {
+    animation-delay: 1.1s;
+}
+
+
+@keyframes cxBars {
+
+    from {
+        transform: scaleY(.82);
+    }
+
+    to {
+        transform: scaleY(1.05);
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   MOUSE HOVER — PREMIUM 3D
+   --------------------------------------------------------- */
+
+.portfolio-slide:hover
+.portfolio-dashboard {
+
+    transform:
+        rotateX(2deg)
+        rotateY(-2deg)
+        translateY(-6px)
+        scale(1.015);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.35),
+        0 0 35px rgba(0,207,255,.12);
+
+}
+
+
+/* ---------------------------------------------------------
+   PORTFOLIO INFO
+   --------------------------------------------------------- */
+
+.portfolio-slide.active
+.portfolio-info {
+
+    animation:
+        infoReveal .7s cubic-bezier(.16,1,.3,1);
+
+}
+
+
+@keyframes infoReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   REDUCED MOTION
+   --------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .portfolio-dashboard,
+    .portfolio-dashboard::before,
+    .portfolio-slide *,
+    .portfolio-visual::before {
+
+        animation: none !important;
+
+        transition: none !important;
+
+    }
+
+}
 </style>
 </head>
 <body>
