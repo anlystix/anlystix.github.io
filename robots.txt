@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anlystix.github.io/sitemap.xml
